@@ -1,19 +1,49 @@
 -- Settings object of options and relative value
 local Options = {
+    -- General
     backup = false,
-    number = true,
-    relativenumber = true,
-    -- cursorline = true,
-    autoindent = true,
     clipboard = "unnamedplus",
 
+    -- Leftside numbers
+    number = true,
+    relativenumber = true,
+
+    --Tabs
+    showtabline = 4,
+    shiftwidth = 4,
+    tabstop = 4,
+    smartindent = true, 
+    autoindent = true,
+
+    -- Line
+    linebreak = true,
+    wrap = true,
+    whichwrap = "bs<>[]hl",
+    showmatch = true,
+
+    -- Windows
+    title = true,
+    splitright = true,
+    splitbelow = true,
+
+    fillchars = {eob = ' '},
+    list = true,
+    signcolumn = "yes",
+
+    -- Sounds
+    errorbells = false,
+    visualbell = false,
+
+    -- Unicode
+    emoji = true,
+    fileencoding = "utf-8",
     guifont = "monospace:h17",
-    conceallevel = 0,
-    smartcase = true,
+
+    -- Cmd
     cmdheight = 4,
 
+    -- Other
     mouse = 'a',
-    fileencoding = "utf-8"
 }
 
 
