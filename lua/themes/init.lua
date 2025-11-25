@@ -1,5 +1,5 @@
-FOLDER
+local FOLDER = "themes."
 
 return function()
-    require("gruvbox-material")
+    require(FOLDER .. "setTheme")
 end

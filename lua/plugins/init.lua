@@ -1,3 +1,5 @@
+local FOLDER = "plugins."
+
 return function()
-	print("Hello")
+	require(FOLDER .. "packer")
 end

@@ -29,6 +29,7 @@ local Options = {
     fillchars = {eob = ' '},
     list = true,
     signcolumn = "yes",
+    termguicolors = true,
 
     -- Sounds
     errorbells = false,
