@@ -1,5 +1,11 @@
 local FOLDER = "plugins."
 
 return function()
-	require(FOLDER .. "packer")
+	-- Main package manager
+	local fPacker = require(FOLDER .. "packer")
+	fPacker()
+
+	-- Plugins conflig loading
+	local fAutoPairs = require(FOLDER .. "autopairs")
+	fAutoPairs()
 end

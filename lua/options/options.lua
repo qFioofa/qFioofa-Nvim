@@ -9,7 +9,7 @@ local Options = {
     relativenumber = true,
 
     --Tabs
-    showtabline = 4,
+    showtabline = 0,
     shiftwidth = 4,
     tabstop = 4,
     smartindent = true, 
@@ -26,8 +26,13 @@ local Options = {
     splitright = true,
     splitbelow = true,
 
-    fillchars = {eob = ' '},
+    fillchars = {
+        eob = ' '
+    },
     list = true,
+    listchars = {
+        tab = '│ '
+    },
     signcolumn = "yes",
     termguicolors = true,
 
@@ -37,7 +42,7 @@ local Options = {
 
     -- Unicode
     emoji = true,
-    fileencoding = "utf-8",
+    encoding = "utf-8",
     guifont = "monospace:h17",
 
     -- Cmd

@@ -4,7 +4,8 @@ local PACKER_INSTALL_PATH = fn.stdpath "data" .. "/site/pack/packer/start/packer
 
 local PACKS_LIST = {
     "wbthomason/packer.nvim", -- Have packer manage itself
-    "sainnhe/gruvbox-material" -- Gruvbox-material theme
+    "sainnhe/gruvbox-material", -- Gruvbox-material theme
+    "windwp/nvim-autopairs" -- Autopairs: {} [] () '' ""
 }
 
 local packer = nil
@@ -62,5 +63,5 @@ return function()
     init_packages()
     
     -- Force load all plugins
-    vim.cmd('PackerLoad')
+    -- vim.cmd('PackerLoad')
 end

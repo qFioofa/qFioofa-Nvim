@@ -2,5 +2,6 @@ local FOLDER = "themes."
 
 return function()
     require(FOLDER .. "setTheme")
-    require(FOLDER .. "setNumbers")
+	require(FOLDER .. "setCharacters")
+	require(FOLDER .. "setNumbers")
 end
