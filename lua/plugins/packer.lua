@@ -5,7 +5,9 @@ local PACKER_INSTALL_PATH = fn.stdpath "data" .. "/site/pack/packer/start/packer
 local PACKS_LIST = {
     "wbthomason/packer.nvim", -- Have packer manage itself
     "sainnhe/gruvbox-material", -- Gruvbox-material theme
-    "windwp/nvim-autopairs" -- Autopairs: {} [] () '' ""
+	"windwp/nvim-autopairs", -- Autopairs: {} [] () '' ""
+	"kyazdani42/nvim-tree.lua", -- Nvim tree aka Explorer
+	"kyazdani42/nvim-web-devicons" -- Icons extantion for nvim tree
 }
 
 local packer = nil
