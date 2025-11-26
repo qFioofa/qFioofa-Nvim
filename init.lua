@@ -1,11 +1,15 @@
-local fPlugins = require("plugins.init")
-local fOptions = require("options.init")
-local fTheme = require("themes.init")
+local initList = {
+	require("options.init"),
+	require("plugins.init"),
+	require("themes.init")
+}
 
 function init_all()
-	fOptions()
-	fPlugins()
-	fTheme()
+	for _, initFunction in ipairs(initList) do
+		local success, result = pcall(
+			initFunction
+		)
+	end
 end
 
 init_all()

@@ -4,7 +4,12 @@ local plugins = {
 	"autopairs",
 	"nvim-tree",
 	"stay-centered",
-	"nvim-colorizer"
+	"nvim-colorizer",
+	"oil",
+	"Comment",
+	"flash",
+	"render-markdown",
+	"tabout",
 }
 
 function loadPluginManager()
@@ -17,7 +22,7 @@ function loadPlugins()
 		local success, packageFunction = pcall(
 			require, FOLDER .. pluginName
 		) 
-
+		require(FOLDER .. pluginName)
 		if not success or type(packageFunction) ~= 'function' then
 			vim.notify('Plugin with relative name: ' .. pluginName .. ' is not loaded', vim.log.levels.WARN)        
 		else

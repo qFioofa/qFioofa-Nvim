@@ -3,7 +3,8 @@ local FOLDER = "themes."
 local themeParts = {
 	"setTheme",
 	"setCharacters",
-	"setNumbers"
+	"setNumbers",
+	"setFlash"
 }
 
 function loadAll()

@@ -76,7 +76,7 @@ local Options = {
 		}
 	}
 }
- 
+
 return function()
 	local nvim_tree = require(PACKAGE_NAME)
 

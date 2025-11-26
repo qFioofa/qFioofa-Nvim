@@ -9,7 +9,11 @@ local PACKS_LIST = {
 	"kyazdani42/nvim-tree.lua", -- Nvim tree aka Explorer
 	"kyazdani42/nvim-web-devicons", -- Icons extantion for nvim tree
 	"arnamak/stay-centered.nvim", -- Stay cursor in the senter
-	"norcalli/nvim-colorizer.lua" -- Color hex in terminal
+	"norcalli/nvim-colorizer.lua", -- Color hex in terminal
+	"numToStr/Comment.nvim", -- Work with commants
+	"stevearc/oil.nvim", -- Explorer && Buffer modefier
+	"abecodes/tabout.nvim", -- Tab out pair symbols
+	"folke/flash.nvim" -- Fast search
 }
 
 local packer = nil
