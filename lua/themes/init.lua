@@ -1,7 +1,17 @@
 local FOLDER = "themes."
 
+local themeParts = {
+	"setTheme",
+	"setCharacters",
+	"setNumbers"
+}
+
+function loadAll()
+	for _, themePartName in ipairs(themeParts) do
+		require(FOLDER .. themePartName)
+	end
+end
+
 return function()
-    require(FOLDER .. "setTheme")
-	require(FOLDER .. "setCharacters")
-	require(FOLDER .. "setNumbers")
+	loadAll()
 end

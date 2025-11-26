@@ -19,7 +19,6 @@ local Options = {
     linebreak = true,
     wrap = true,
     whichwrap = "bs<>[]hl",
-    showmatch = true,
 
     -- Windows
     title = true,
