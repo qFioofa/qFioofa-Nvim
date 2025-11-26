@@ -3,9 +3,9 @@ local fOptions = require("options.init")
 local fTheme = require("themes.init")
 
 function init_all()
-    fPlugins()
-    fOptions()
-    fTheme()
+	fOptions()
+	fPlugins()
+	fTheme()
 end
 
 init_all()

@@ -49,6 +49,7 @@ local Options = {
 
     -- Other
     mouse = 'a',
+	termguicolors = true
 }
 
 

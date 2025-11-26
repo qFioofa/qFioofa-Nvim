@@ -7,7 +7,9 @@ local PACKS_LIST = {
     "sainnhe/gruvbox-material", -- Gruvbox-material theme
 	"windwp/nvim-autopairs", -- Autopairs: {} [] () '' ""
 	"kyazdani42/nvim-tree.lua", -- Nvim tree aka Explorer
-	"kyazdani42/nvim-web-devicons" -- Icons extantion for nvim tree
+	"kyazdani42/nvim-web-devicons", -- Icons extantion for nvim tree
+	"arnamak/stay-centered.nvim", -- Stay cursor in the senter
+	"norcalli/nvim-colorizer.lua" -- Color hex in terminal
 }
 
 local packer = nil

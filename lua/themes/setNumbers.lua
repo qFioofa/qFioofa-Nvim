@@ -1,7 +1,7 @@
 vim.api.nvim_set_hl(0, 'LineNr', {
     fg = '#fabd2f',
     bg = 'NONE',
-    blend = 50,
+    blend = 5,
     bold = false,
     italic = false, 
     reverse = false,

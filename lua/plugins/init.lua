@@ -2,7 +2,9 @@ local FOLDER = "plugins."
 
 local plugins = {
 	"autopairs",
-	"nvim-tree"
+	"nvim-tree",
+	"stay-centered",
+	"nvim-colorizer"
 }
 
 function loadPluginManager()
