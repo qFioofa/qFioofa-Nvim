@@ -2,7 +2,7 @@ local PACKAGE_NAME = "colorizer"
 
 local Options = {
 	"*",
-    user_default_options = {
+	user_default_options = {
         RGB = true,
         RRGGBB = true,
         names = true,

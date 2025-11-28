@@ -13,7 +13,9 @@ local PACKS_LIST = {
 	"numToStr/Comment.nvim", -- Work with commants
 	"stevearc/oil.nvim", -- Explorer && Buffer modefier
 	"abecodes/tabout.nvim", -- Tab out pair symbols
-	"folke/flash.nvim" -- Fast search
+	"folke/flash.nvim", -- Fast search
+	"akinsho/bufferline.nvim", -- Resently opened files on the top
+	"folke/snacks.nvim" -- Dashboard
 }
 
 local packer = nil
@@ -69,7 +71,5 @@ return function()
     
     packer = require('packer')
     init_packages()
-    
-    -- Force load all plugins
-    -- vim.cmd('PackerLoad')
 end
+

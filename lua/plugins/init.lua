@@ -10,6 +10,8 @@ local plugins = {
 	"flash",
 	"render-markdown",
 	"tabout",
+	"bufferline",
+	"dashboard",
 }
 
 function loadPluginManager()
@@ -21,8 +23,8 @@ function loadPlugins()
 	for _, pluginName in ipairs(plugins) do
 		local success, packageFunction = pcall(
 			require, FOLDER .. pluginName
-		) 
-		require(FOLDER .. pluginName)
+		)
+		
 		if not success or type(packageFunction) ~= 'function' then
 			vim.notify('Plugin with relative name: ' .. pluginName .. ' is not loaded', vim.log.levels.WARN)        
 		else
@@ -41,4 +43,5 @@ return function()
 	
 	-- Loading plunigs
 	loadPlugins()
+    vim.cmd('PackerLoad')
 end

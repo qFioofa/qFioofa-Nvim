@@ -1,4 +1,4 @@
-local PACKAGE_NAME = "flash"
+local PACKAGE_NAME = ""
 
 local Options = {
 

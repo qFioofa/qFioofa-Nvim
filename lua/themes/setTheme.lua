@@ -1,6 +1,6 @@
 local FOLDER = 'themes.'
 
-local themeName = 'gruvbox-material'
+local themeName = 'gruvbox-material' -- 'gruvbox-material'
 local backupTheme = 'default'
 
 local notify = true
