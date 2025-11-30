@@ -1,0 +1,20 @@
+local function init_lazy()
+    local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+
+	if not (vim.uv or vim.loop).fs_stat(lazypath) then
+		print("Installing lazy.nvim...")
+		vim.fn.system({
+			"git",
+			"clone",
+			"--filter=blob:none",
+			"--branch=stable",
+			"https://github.com/folke/lazy.nvim.git",
+			lazypath,
+		})
+		print("lazy.nvim installed. Please restart Neovim.")
+	end
+
+	vim.opt.rtp:prepend(lazypath)
+end
+
+return init_lazy

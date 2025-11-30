@@ -51,6 +51,12 @@ or
 bat deploy_config.bat
 ```
 
+# Full wipe
 
+## Linux
+
+```bash
+rm -rf ~/.config/nvim ~/.local/share/nvim ~/.cache/nvim ~/.local/state/nvim
+```
 
 # Config showcase 

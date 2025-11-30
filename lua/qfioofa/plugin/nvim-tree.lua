@@ -6,7 +6,7 @@ local Options = {
 	disable_netrw = true,
 	hijack_netrw = true,
 	open_on_tab = false,
-	hijack_cursor = true,
+	hijack_cursor = false,
 	update_cwd = true,
 	hijack_directories = {
 		enable = true,
@@ -74,7 +74,7 @@ local Options = {
 		width = {
 			min = 30,
 			max = 60,
-			padding = 15
+			padding = 10
 		},
 		number = true,
 		relativenumber = true,

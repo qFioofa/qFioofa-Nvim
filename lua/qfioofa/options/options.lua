@@ -45,11 +45,10 @@ local Options = {
     guifont = "monospace:h17",
 
     -- Cmd
-    cmdheight = 4,
+    cmdheight = 0,
 
     -- Other
     mouse = 'a',
-	termguicolors = true
 }
 
 
