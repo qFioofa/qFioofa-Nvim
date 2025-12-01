@@ -12,7 +12,7 @@ local Options = {
 	},
 	timeout = 3000,
 	top_down = true,
-		background_colour = "Normal",
+	background_colour = "Normal",
 	icons = {
 		ERROR = "",
 		WARN = "",
@@ -20,6 +20,34 @@ local Options = {
 		DEBUG = "",
 		TRACE = "✎"
 	},
+	max_width = function()
+		return math.floor(vim.o.columns * 0.75)
+	end,
+	max_height = function()
+		return math.floor(vim.o.lines * 0.75)
+	end,
+	minimum_height = 1,
+	border = "rounded",
+	width = nil,
+	height = nil,
+	spacing = 1,
+	padding = 1,
+	hide_from_history = false,
+	on_open = nil,
+	on_close = nil,
+	on_visual_close = nil,
+	render_events = {},
+	corner_radius = 0,
+	hl_lookup = {
+		ERROR = "ErrorMsg",
+		WARN = "WarningMsg",
+		INFO = "MoreMsg",
+		DEBUG = "Debug",
+		TRACE = "Comment",
+	},
+	max_notifications = 10,
+	title = "Notification",
+	title_pos = "center",
 }
 
 return function()
@@ -31,3 +59,4 @@ return function()
 	notify.setup(Options)
 	vim.notify = notify
 end
+

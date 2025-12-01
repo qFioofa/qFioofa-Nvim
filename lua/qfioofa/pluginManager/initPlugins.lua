@@ -42,6 +42,15 @@ local function main()
 			}
 		},
 		{
+			'windwp/nvim-autopairs',
+			config = require(pRoot .. "autopairs")
+		},
+		{
+			"rcarriga/nvim-notify",
+			enabled = true,
+			config = require(pRoot .. "notify")
+		},
+		{
 			"folke/snacks.nvim",
 			priority = 1000,
 			config = require(pRoot .. "snacks")
@@ -110,8 +119,7 @@ local function main()
 		{
 			"folke/noice.nvim",
 			enabled = true,
-			-- event = "VeryLazy",
-			-- commit = "5a78b42",
+			event = "VeryLazy",
 			dependencies = {
 				"MunifTanjim/nui.nvim",
 				"rcarriga/nvim-notify",
@@ -124,6 +132,26 @@ local function main()
 				'nvim-treesitter/nvim-treesitter', 
 				'nvim-mini/mini.nvim' 
 			},
+		},
+		{
+			"nvim-telescope/telescope.nvim",
+			dependencies = {
+				'nvim-telescope/telescope-media-files.nvim'
+			},
+			config = require(pRoot .. "telescope")
+		},
+		{
+			"folke/which-key.nvim",
+			enabled = false,
+		    event = "VeryLazy",
+			dependencies = {
+				"nvim-tree/nvim-web-devicons" 
+			},
+			config = require(pRoot .. "which-key"),
+		},
+		{
+			'stevearc/conform.nvim',
+			config = require(pRoot .. "conform")
 		}
 	})
 end

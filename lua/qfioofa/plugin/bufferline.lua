@@ -109,14 +109,6 @@ local Options = {
 			bg = "#1d1d1d",
 			fg = "#1d1d1d"
 		},
-		-- separator_selected = {
-		-- 	bg = "#d65d0e",
-		-- 	fg = "#d65d0e"
-		-- },
-		-- indicator_selected = {
-		-- 	bg = "NONE",
-		-- 	fg = "#d65d0e"
-		-- },
 	},
 }
 
@@ -127,4 +119,52 @@ return function()
 	end
 
 	bufferline.setup(Options)
+
+	-- vim.api.nvim_create_autocmd("BufEnter", {
+	-- 	callback = function()
+	-- 		local max_buffers = 5
+	-- 		local all_buffers = vim.api.nvim_list_bufs()
+	-- 		local loaded_buffers = {}
+	-- 		
+	-- 		for _, buf in ipairs(all_buffers) do
+	-- 			if vim.api.nvim_buf_is_loaded(buf) and vim.bo[buf].buflisted then
+	-- 				table.insert(loaded_buffers, buf)
+	-- 			end
+	-- 		end
+	-- 		
+	-- 		if #loaded_buffers > max_buffers then
+	-- 			local buffers_with_time = {}
+	-- 			for _, buf in ipairs(loaded_buffers) do
+	-- 				local info = vim.fn.getbufinfo(buf)[1]
+	-- 				table.insert(buffers_with_time, {
+	-- 					buf = buf,
+	-- 					lastused = info.lastused,
+	-- 					modified = vim.bo[buf].modified
+	-- 				})
+	-- 			end
+	-- 			
+	-- 			table.sort(buffers_with_time, function(a, b)
+	-- 				if a.modified ~= b.modified then
+	-- 					return not a.modified
+	-- 				end
+	-- 				return a.lastused < b.lastused
+	-- 			end)
+	-- 			
+	-- 			local current_buf = vim.api.nvim_get_current_buf()
+	-- 			local closed_count = 0
+	-- 			
+	-- 			for i = 1, #buffers_with_time do
+	-- 				if closed_count >= (#loaded_buffers - max_buffers) then
+	-- 					break
+	-- 				end
+	-- 				
+	-- 				local buf_info = buffers_with_time[i]
+	-- 				if buf_info.buf ~= current_buf and not buf_info.modified then
+	-- 					vim.api.nvim_buf_delete(buf_info.buf, { force = true })
+	-- 					closed_count = closed_count + 1
+	-- 				end
+	-- 			end
+	-- 		end
+	-- 	end,
+	-- })
 end
