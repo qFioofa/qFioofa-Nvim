@@ -65,28 +65,7 @@ local function setup_views()
 			},
 			timeout = 3000,
 		},
-		notify = {
-			position = {
-				row = 5,
-				col = "100%",
-			},
-			size = {
-				width = 40,
-				height = "auto",
-			},
-			border = {
-				style = "rounded",
-				padding = { 0, 2 },
-			},
-			win_options = {
-				winhighlight = {
-					Normal = "NotifyBackground",
-					FloatBorder = "NotifyBorder",
-					Title = "NotifyTitle",
-				},
-			},
-		},
-	}
+   }
 end
 
 local function setup_routes()
@@ -142,11 +121,10 @@ local function setup_lsp()
 			view = "mini",
 		},
 		signature = {
-			enabled = false, -- Disabled to prevent errors
+			enabled = false, 
 		},
 		message = {
-			enabled = true,
-			view = "notify",
+			enabled = false,
 		},
 		documentation = {
 			view = "hover",
@@ -172,7 +150,6 @@ local function setup_keymaps()
 	end
 end
 
--- Minimal and safe options
 local Options = {
 	cmdline = {
 		enabled = true,
@@ -204,23 +181,4 @@ return function()
 
 	noice.setup(Options)
 	setup_keymaps()
-	
-	-- Remove the test notification completely for now
-	-- vim.schedule(function()
-	--	 vim.notify("Noice setup complete!")
-	-- end)
-	
-	-- Simple recovery command
-	vim.api.nvim_create_user_command("NoiceReset", function()
-		package.loaded["noice"] = nil
-		require("noice").setup(Options)
-		print("Noice reset successfully")
-	end, {})
-	
-	-- Simple test command without complex options
-	vim.api.nvim_create_user_command("TestNotifications", function()
-		vim.notify("Test info notification")
-		vim.notify("Test warning notification", vim.log.levels.WARN)
-		vim.notify("Test error notification", vim.log.levels.ERROR)
-	end, {})
 end

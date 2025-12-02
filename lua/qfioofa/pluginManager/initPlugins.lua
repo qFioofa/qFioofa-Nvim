@@ -46,11 +46,6 @@ local function main()
 			config = require(pRoot .. "autopairs")
 		},
 		{
-			"rcarriga/nvim-notify",
-			enabled = true,
-			config = require(pRoot .. "notify")
-		},
-		{
 			"folke/snacks.nvim",
 			priority = 1000,
 			config = require(pRoot .. "snacks")
@@ -112,11 +107,6 @@ local function main()
 			config = require(pRoot .. "hover")
 		},
 		{
-			"nvim-mini/mini.animate",
-			enabled = true,
-			config = require(pRoot .. "mini-animate")
-		},
-		{
 			"folke/noice.nvim",
 			enabled = true,
 			event = "VeryLazy",
@@ -139,15 +129,6 @@ local function main()
 				'nvim-telescope/telescope-media-files.nvim'
 			},
 			config = require(pRoot .. "telescope")
-		},
-		{
-			"folke/which-key.nvim",
-			enabled = false,
-		    event = "VeryLazy",
-			dependencies = {
-				"nvim-tree/nvim-web-devicons" 
-			},
-			config = require(pRoot .. "which-key"),
 		},
 		{
 			'stevearc/conform.nvim',
