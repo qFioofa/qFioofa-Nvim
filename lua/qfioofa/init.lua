@@ -4,7 +4,7 @@ local saveInit = utils.saveInit
 local order = {
 	"options",
 	"theme",
-	"pluginManager"
+	"pluginManager",
 }
 
 local function main()
@@ -13,7 +13,6 @@ local function main()
 	for _, pack in ipairs(order) do
 		saveInit(pack .. enter)
 	end
-end 
-
+end
 
 return main

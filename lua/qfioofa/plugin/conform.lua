@@ -24,12 +24,12 @@ end
 
 local Options = {
 	formatters_by_ft = setup_formatters(),
-	
+
 	format_on_save = {
 		timeout_ms = 500,
 		lsp_fallback = true,
 	},
-	
+
 	formatters = {
 		prettier = {
 			prepend_args = { "--print-width", "100" },
@@ -50,7 +50,7 @@ end
 return function()
 	local status_ok, conform = pcall(require, PACKAGE_NAME)
 	if not status_ok then
-	   	return
+		return
 	end
 
 	conform.setup(Options)

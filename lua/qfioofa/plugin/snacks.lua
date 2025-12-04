@@ -103,9 +103,19 @@ local main_header =  [[
               🭣🭧╴  ▔          ˝΄  🭜🭘΄             
 ]]
 
+local AnimateOptions = {
+	enabled = true,
+	duration = {
+		step = 25,
+		total = 500, 
+	},
+	easing = "inOutExpo", 
+	fps = 144, 
+}
 
 local Options = {
 	bigfile = { enabled = true },
+	animate = AnimateOptions,
 	dashboard = {
 		enabled = true,
 		width = 50,
@@ -167,6 +177,6 @@ local Options = {
 }
 
 return function()
-  local snacks = require(PACKAGE_NAME)
-  snacks.setup(Options)
+	local snacks = require(PACKAGE_NAME)
+	snacks.setup(Options)
 end

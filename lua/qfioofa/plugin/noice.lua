@@ -1,4 +1,4 @@
- local PACKAGE_NAME = "noice"
+local PACKAGE_NAME = "noice"
 
 local function setup_views()
 	return {
@@ -65,7 +65,7 @@ local function setup_views()
 			},
 			timeout = 3000,
 		},
-   }
+	}
 end
 
 local function setup_routes()
@@ -121,7 +121,7 @@ local function setup_lsp()
 			view = "mini",
 		},
 		signature = {
-			enabled = false, 
+			enabled = false,
 		},
 		message = {
 			enabled = false,
@@ -138,13 +138,44 @@ end
 
 local function setup_keymaps()
 	local keymaps = {
-		{ "<S-Enter>", function() require("noice").redirect(vim.fn.getcmdline()) end, mode = "c", desc = "Redirect Cmdline" },
-		{ "<leader>nl", function() require("noice").cmd("last") end, desc = "Noice Last Message" },
-		{ "<leader>nh", function() require("noice").cmd("history") end, desc = "Noice History" },
-		{ "<leader>na", function() require("noice").cmd("all") end, desc = "Noice All" },
-		{ "<leader>nd", function() require("noice").cmd("dismiss") end, desc = "Dismiss All" },
+		{
+			"<S-Enter>",
+			function()
+				require("noice").redirect(vim.fn.getcmdline())
+			end,
+			mode = "c",
+			desc = "Redirect Cmdline",
+		},
+		{
+			"<leader>nl",
+			function()
+				require("noice").cmd("last")
+			end,
+			desc = "Noice Last Message",
+		},
+		{
+			"<leader>nh",
+			function()
+				require("noice").cmd("history")
+			end,
+			desc = "Noice History",
+		},
+		{
+			"<leader>na",
+			function()
+				require("noice").cmd("all")
+			end,
+			desc = "Noice All",
+		},
+		{
+			"<leader>nd",
+			function()
+				require("noice").cmd("dismiss")
+			end,
+			desc = "Dismiss All",
+		},
 	}
-	
+
 	for _, keymap in ipairs(keymaps) do
 		vim.keymap.set(keymap.mode or "n", keymap[1], keymap[2], { desc = keymap.desc, silent = true, noremap = true })
 	end
@@ -176,7 +207,7 @@ return function()
 	local status_ok, noice = pcall(require, PACKAGE_NAME)
 	if not status_ok then
 		print("Noice not found!")
-		return 
+		return
 	end
 
 	noice.setup(Options)

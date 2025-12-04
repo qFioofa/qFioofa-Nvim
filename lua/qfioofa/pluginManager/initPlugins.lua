@@ -3,94 +3,95 @@ local pRoot = utils.roots.plugins
 
 local function main()
 	local lazy = require("lazy")
-	
+
 	lazy.setup({
 		{
 			"sainnhe/gruvbox-material",
 			priority = 1000,
 			config = function()
-				vim.cmd.colorscheme('gruvbox-material')
-			end
+				vim.cmd.colorscheme("gruvbox-material")
+			end,
 		},
 		{
 			"SmiteshP/nvim-navic",
-			config = function() end
+			config = function() end,
 		},
 		{
 			"MunifTanjim/nui.nvim",
-			config = function() end
+			config = function() end,
 		},
 		{
 			"utilyre/barbecue.nvim",
 			requires = {
 				"SmiteshP/nvim-navic",
-				"nvim-tree/nvim-web-devicons", 
+				"nvim-tree/nvim-web-devicons",
 			},
 			after = "nvim-web-devicons",
-			config = require(pRoot .. "barbecue")
+			config = require(pRoot .. "barbecue"),
 		},
 		{
 			"rmagatti/auto-session",
 			lazy = false,
 			opts = {
-				suppressed_dirs = { 
-					"~/", 
-					"~/Projects", 
-					"~/Downloads", 
-					"/" 
+				suppressed_dirs = {
+					"~/",
+					"~/Projects",
+					"~/Downloads",
+					"/",
 				},
-			}
+			},
 		},
 		{
-			'windwp/nvim-autopairs',
-			config = require(pRoot .. "autopairs")
+			"windwp/nvim-autopairs",
+			config = require(pRoot .. "autopairs"),
 		},
 		{
 			"folke/snacks.nvim",
 			priority = 1000,
-			config = require(pRoot .. "snacks")
+			config = require(pRoot .. "snacks"),
 		},
 		{
 			"nvim-lualine/lualine.nvim",
 			dependencies = { "nvim-tree/nvim-web-devicons" },
-			config = require(pRoot .. "lualine")
+			config = require(pRoot .. "lualine"),
 		},
 		{
 			"kyazdani42/nvim-tree.lua",
 			dependencies = { "nvim-tree/nvim-web-devicons" },
-			config = require(pRoot .. "nvim-tree")
+			config = require(pRoot .. "nvim-tree"),
 		},
 		{
 			"kyazdani42/nvim-web-devicons",
-			enabled = true
+			enabled = true,
 		},
 		{
 			"arnamak/stay-centered.nvim",
-			config = require(pRoot .. "stay-centered")
+			config = require(pRoot .. "stay-centered"),
 		},
 		{
 			"norcalli/nvim-colorizer.lua",
-			config = require(pRoot .. "colorizer")
+			config = require(pRoot .. "colorizer"),
 		},
 		{
 			"numToStr/Comment.nvim",
-			config = require(pRoot .. "Comment")
+			config = require(pRoot .. "Comment"),
 		},
 		{
 			"abecodes/tabout.nvim",
 			dependencies = {
 				"nvim-treesitter/nvim-treesitter",
 			},
-			config = require(pRoot .. "tabout")
+			config = require(pRoot .. "tabout"),
 		},
 		{
 			"folke/flash.nvim",
-			config = require(pRoot .. "flash")
+			config = require(pRoot .. "flash"),
 		},
 		{
 			"akinsho/bufferline.nvim",
+			enable = false,
 			dependencies = { "nvim-tree/nvim-web-devicons" },
-			config = require(pRoot .. "bufferline")
+			config = require(pRoot .. "bufferline"),
 		},
 		{
 			"hrsh7th/nvim-cmp",
@@ -100,11 +101,11 @@ local function main()
 				"hrsh7th/cmp-cmdline",
 				"hrsh7th/cmp-nvim-lsp",
 			},
-			config = require(pRoot .. "cmp")
+			config = require(pRoot .. "cmp"),
 		},
 		{
 			"lewis6991/hover.nvim",
-			config = require(pRoot .. "hover")
+			config = require(pRoot .. "hover"),
 		},
 		{
 			"folke/noice.nvim",
@@ -117,23 +118,67 @@ local function main()
 			config = require(pRoot .. "noice"),
 		},
 		{
-			'meanderingprogrammer/render-markdown.nvim',
-			dependencies = { 
-				'nvim-treesitter/nvim-treesitter', 
-				'nvim-mini/mini.nvim' 
+			"meanderingprogrammer/render-markdown.nvim",
+			dependencies = {
+				"nvim-treesitter/nvim-treesitter",
+				"nvim-mini/mini.nvim",
 			},
 		},
 		{
 			"nvim-telescope/telescope.nvim",
 			dependencies = {
-				'nvim-telescope/telescope-media-files.nvim'
+				"nvim-telescope/telescope-media-files.nvim",
 			},
-			config = require(pRoot .. "telescope")
+			config = require(pRoot .. "telescope"),
 		},
 		{
-			'stevearc/conform.nvim',
-			config = require(pRoot .. "conform")
-		}
+			"stevearc/conform.nvim",
+			config = require(pRoot .. "conform"),
+		},
+		{
+			"neovim/nvim-lspconfig",
+			dependencies = {
+				"williamboman/mason.nvim",
+				"williamboman/mason-lspconfig.nvim",
+				"WhoIsSethDaniel/mason-tool-installer.nvim",
+				"hrsh7th/cmp-nvim-lsp",
+			},
+			config = require(pRoot .. "lsp"),
+		},
+		{
+			"nvim-treesitter/nvim-treesitter",
+			opts = {
+				indent = { enable = true },
+				highlight = { enable = true },
+				folds = { enable = true },
+				ensure_installed = {
+					"bash",
+					"c",
+					"diff",
+					"html",
+					"javascript",
+					"jsdoc",
+					"json",
+					"jsonc",
+					"lua",
+					"luadoc",
+					"luap",
+					"markdown",
+					"markdown_inline",
+					"printf",
+					"python",
+					"query",
+					"regex",
+					"toml",
+					"tsx",
+					"typescript",
+					"vim",
+					"vimdoc",
+					"xml",
+					"yaml",
+				},
+			},
+		},
 	})
 end
 

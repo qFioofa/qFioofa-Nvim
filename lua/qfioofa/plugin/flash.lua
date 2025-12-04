@@ -7,7 +7,7 @@ local Options = {
 		multi_window = true,
 		wrap = true,
 		incremental = false,
-		regex = false
+		regex = false,
 	},
 	action = nil,
 	modes = {
@@ -15,17 +15,17 @@ local Options = {
 			enabled = true,
 			jump_labels = false,
 			autohide = false,
-			highlight = {groups = {"FlashMatch"}},
+			highlight = { groups = { "FlashMatch" } },
 		},
 		search = {
 			enabled = true,
-			highlight = {groups = {"FlashMatch", "FlashCurrent"}},
+			highlight = { groups = { "FlashMatch", "FlashCurrent" } },
 		},
 		treesitter = {
 			labels = "abcdefghijklmnopqrstuvwxyz",
 			jump_labels = false,
 			autojump = false,
-			highlight = {groups = {"FlashTS", "FlashTSCurrent"}},
+			highlight = { groups = { "FlashTS", "FlashTSCurrent" } },
 		},
 	},
 	highlight = {
@@ -37,7 +37,7 @@ local Options = {
 function setBinds()
 	local keymap = vim.keymap
 
-	keymap.set({'n','x','o'}, 's', function()
+	keymap.set({ "n", "x", "o" }, "s", function()
 		require(PACKAGE_NAME).jump()
 	end)
 end

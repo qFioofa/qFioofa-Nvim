@@ -1,8 +1,8 @@
 local CONFIG_ROOT = "qfioofa."
 local OPTIONS_ROOT = CONFIG_ROOT .. "options."
-local PLUGINS_ROOT =  CONFIG_ROOT .. "plugin."
+local PLUGINS_ROOT = CONFIG_ROOT .. "plugin."
 local THEME_ROOT = "theme."
-local PLUGINMANAGER_ROOT =  "pluginManager."
+local PLUGINMANAGER_ROOT = "pluginManager."
 
 local NOTIFY = true
 
@@ -60,5 +60,5 @@ return {
 		plugins = PLUGINS_ROOT,
 		theme = THEME_ROOT,
 		pluginManager = PLUGINMANAGER_ROOT,
-	}
+	},
 }

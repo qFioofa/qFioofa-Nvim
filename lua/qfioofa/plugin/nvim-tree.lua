@@ -111,6 +111,16 @@ local function configure_bindings()
 	}
 end
 
+local function setBinds()
+	local keymap = vim.api.nvim_set_keymap
+		local opts = {
+		noremap = true, 
+		silent = true 
+	}
+
+	keymap("c", "<C-e>", ":NvimTreeToggle<CR>", opts)
+end
+
 return function()
 	local nvim_tree = require(PACKAGE_NAME)
 
@@ -136,4 +146,5 @@ return function()
 	end
 
 	nvim_tree.setup(Options)
+	setBinds()
 end

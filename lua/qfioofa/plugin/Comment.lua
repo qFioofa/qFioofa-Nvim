@@ -2,17 +2,17 @@ local PACKAGE_NAME = "Comment"
 
 local Options = {
 	toggler = {
-		line = 'gcc',
-		block = 'gbc',
+		line = "gcc",
+		block = "gbc",
 	},
 	opleader = {
-		line = 'gc',
-		block = 'gb',
+		line = "gc",
+		block = "gb",
 	},
 	extra = {
-		above = 'gcO',
-		below = 'gco',
-		eol = 'gcA',
+		above = "gcO",
+		below = "gco",
+		eol = "gcA",
 	},
 	mappings = {
 		basic = true,

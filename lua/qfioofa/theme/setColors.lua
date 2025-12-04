@@ -1,30 +1,29 @@
 local hl = vim.api.nvim_set_hl
 
 local function defineColors()
-	hl(0, 'Whitespace', {
-		fg = '#2d2d2d',
-		bg = 'NONE'
+	hl(0, "Whitespace", {
+		fg = "#2d2d2d",
+		bg = "NONE",
 	})
 
-	hl(0, 'LineNr', {
-		fg = '#fabd2f',
-		bg = 'NONE',
+	hl(0, "LineNr", {
+		fg = "#fabd2f",
+		bg = "NONE",
 	})
 
-	hl(0, 'CursorLineNr', {
-		fg = '#fabd2f',
-		bg = 'NONE',
+	hl(0, "CursorLineNr", {
+		fg = "#fabd2f",
+		bg = "NONE",
 	})
 
-
-	hl(0, 'FileExplorer', {
+	hl(0, "FileExplorer", {
 		fg = "#ffffff",
-		bg = "#1d1d1d"
+		bg = "#1d1d1d",
 	})
 
-	hl(0, 'RRED', {
+	hl(0, "RRED", {
 		fg = "#ff0000",
-		bg = "#2d2d2d"
+		bg = "#2d2d2d",
 	})
 
 	hl(0, "NoiceMini", { bg = "#1d1d1d", fg = "#1d1d1d" })
@@ -50,6 +49,5 @@ local function defineColors()
 end
 
 vim.api.nvim_create_autocmd("ColorScheme", {
-	callback = defineColors
+	callback = defineColors,
 })
-

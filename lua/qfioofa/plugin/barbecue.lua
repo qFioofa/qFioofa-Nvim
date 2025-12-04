@@ -43,10 +43,8 @@ local Options = {
 		Operator = "󰆕 ",
 		TypeParameter = "󰊄 ",
 	},
-	theme = 'auto',
-	highlight = {
-
-	},
+	theme = "auto",
+	highlight = {},
 	exclude_filetypes = { "help", "netrw", "NvimTree", "lazy", "mason", "toggleterm" },
 }
 

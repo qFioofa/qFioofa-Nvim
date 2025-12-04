@@ -1,9 +1,5 @@
 local PACKAGE_NAME = ""
 
-local Options = {
+local Options = {}
 
-}
-
-return function()
-
-end
+return function() end

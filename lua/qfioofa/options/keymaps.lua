@@ -25,7 +25,7 @@ vim.g.maplocalleader = " "
 
 -- Command --
 keymap("c", "Q", ":qa!<CR>", opts)
-keymap("c", "<C-e>", ":NvimTreeToggle<CR>", opts)
+keymap("c", "W", ":w<CR>", opts)
 
 -- Normal --
 -- Better window navigation

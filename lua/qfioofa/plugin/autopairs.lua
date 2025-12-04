@@ -9,8 +9,8 @@ local Options = {
 	},
 	disable_filetype = { "TelescopePrompt" },
 	fast_wrap = {
-	chars = { "{", "[", "(", '"', "'" },
-	map = "<M-e>",
+		chars = { "{", "[", "(", '"', "'" },
+		map = "<M-e>",
 		pattern = string.gsub([[ [%'%"%)%>%]%)%}%,] ]], "%s+", ""),
 		offset = 0, -- Offset from pattern match
 		end_key = "$",
