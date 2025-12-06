@@ -201,12 +201,17 @@ local Options = {
 	},
 	views = setup_views(),
 	routes = setup_routes(),
+	notify = {
+		enabled = true,
+		view = "notify",
+		max_height = 3,
+		max_width = 40,
+	},
 }
 
 return function()
 	local status_ok, noice = pcall(require, PACKAGE_NAME)
 	if not status_ok then
-		print("Noice not found!")
 		return
 	end
 

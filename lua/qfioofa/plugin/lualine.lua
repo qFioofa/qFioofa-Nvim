@@ -1,5 +1,40 @@
 local PACKAGE_NAME = "lualine"
 
+local function get_lsp_status()
+	local clients = vim.lsp.get_clients()
+	if #clients == 0 then
+		return "LSP: Off"
+	end
+
+	local current_file = vim.api.nvim_buf_get_name(0)
+	if current_file == "" then
+		return "LSP: No File"
+	end
+
+	local filetype = vim.api.nvim_buf_get_option(0, "filetype")
+	if filetype == "" then
+		return "LSP: No FT"
+	end
+
+	local active_clients = {}
+	for _, client in ipairs(clients) do
+		if client.config and client.config.filetypes then
+			for _, ft in ipairs(client.config.filetypes) do
+				if ft == filetype then
+					table.insert(active_clients, client.name)
+					break
+				end
+			end
+		end
+	end
+
+	if #active_clients == 0 then
+		return "LSP: No Client"
+	else
+		return "LSP: " .. table.concat(active_clients, ", ")
+	end
+end
+
 local Options = {
 	options = {
 		theme = {
@@ -42,7 +77,7 @@ local Options = {
 	sections = {
 		lualine_a = { "mode" },
 		lualine_b = { "branch", "diff" },
-		lualine_c = { "filename" },
+		lualine_c = { "filename", get_lsp_status },
 		lualine_x = { "diagnostics", "filetype" },
 		lualine_y = { "progress" },
 		lualine_z = { "location" },

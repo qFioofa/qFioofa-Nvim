@@ -61,7 +61,14 @@ rm -rf ~/.config/nvim ~/.local/share/nvim ~/.cache/nvim ~/.local/state/nvim
 
 # Config showcase 
 
+![dashboard](./photos/dashboard.jpg)
 
-# Userfull
+# Useful
 
-You can isntall all fonts from `Nerds fonts` from this [sourse](https://github.com/ryanoasis/nerd-fonts?tab=readme-ov-file#option-7-install-script)
+You can install all fonts from `Nerds fonts` from this [sourse](https://github.com/ryanoasis/nerd-fonts?tab=readme-ov-file#option-7-install-script)
+
+Check size of pluings:
+
+```bash
+du -ch ~/.local/share/nvim/lazy/* | tail -1
+```

@@ -1,14 +1,11 @@
 local BARBECUE_NAME = "barbecue"
 
 local Options = {
-	attach_navic = false,
-	include_following = false,
+	attach_navic = true,
+	include_following = true,
 	show_dir = false,
 	show_file = false,
 	show_basename = false,
-	dirname_depth = 1,
-	basename_depth = 1,
-	custom_basename = nil,
 	context_follow_icon_color = true,
 	symbols = {
 		separator = " > ",
@@ -16,6 +13,9 @@ local Options = {
 		mod = "[+]",
 		ro = "RO",
 	},
+	modified = function(bufnr)
+		return vim.bo[bufnr].modified
+	end,
 	kinds = {
 		File = "󰈙 ",
 		Module = " ",
@@ -52,7 +52,5 @@ return function()
 	local barbecue = require(BARBECUE_NAME)
 
 	barbecue.setup(Options)
-
-	local barbecueUI = require(BARBECUE_NAME .. ".ui")
-	barbecueUI.toggle(true)
+	require("barbecue.ui").toggle(true)
 end

@@ -5,29 +5,37 @@ local function main()
 	local lazy = require("lazy")
 
 	lazy.setup({
+		-- {
+		-- 	"akinsho/bufferline.nvim",
+		-- 	enable = false,
+		-- 	dependencies = { "nvim-tree/nvim-web-devicons" },
+		-- 	config = require(pRoot .. "bufferline"),
+		-- },
 		{
-			"sainnhe/gruvbox-material",
+			"qfioofa/yugen-ash.nvim",
+			lazy = false,
 			priority = 1000,
 			config = function()
-				vim.cmd.colorscheme("gruvbox-material")
+				vim.cmd("colorscheme yugen-ash")
 			end,
 		},
+		-- {
+		-- 	"bettervim/yugen",
+		-- 	config = function()
+		-- 		vim.cmd("colorscheme yugen")
+		-- 	end,
+		-- 	priority = 1000,
+		-- },
 		{
 			"SmiteshP/nvim-navic",
-			config = function() end,
+			dependencies = {
+				"neovim/nvim-lspconfig",
+			},
+			config = require(pRoot .. "navic"),
 		},
 		{
 			"MunifTanjim/nui.nvim",
 			config = function() end,
-		},
-		{
-			"utilyre/barbecue.nvim",
-			requires = {
-				"SmiteshP/nvim-navic",
-				"nvim-tree/nvim-web-devicons",
-			},
-			after = "nvim-web-devicons",
-			config = require(pRoot .. "barbecue"),
 		},
 		{
 			"rmagatti/auto-session",
@@ -61,10 +69,6 @@ local function main()
 			config = require(pRoot .. "nvim-tree"),
 		},
 		{
-			"kyazdani42/nvim-web-devicons",
-			enabled = true,
-		},
-		{
 			"arnamak/stay-centered.nvim",
 			config = require(pRoot .. "stay-centered"),
 		},
@@ -84,22 +88,13 @@ local function main()
 			config = require(pRoot .. "tabout"),
 		},
 		{
-			"folke/flash.nvim",
-			config = require(pRoot .. "flash"),
-		},
-		{
-			"akinsho/bufferline.nvim",
-			enable = false,
-			dependencies = { "nvim-tree/nvim-web-devicons" },
-			config = require(pRoot .. "bufferline"),
-		},
-		{
 			"hrsh7th/nvim-cmp",
 			dependencies = {
 				"hrsh7th/cmp-buffer",
 				"hrsh7th/cmp-path",
 				"hrsh7th/cmp-cmdline",
 				"hrsh7th/cmp-nvim-lsp",
+				"saghen/blink.cmp",
 			},
 			config = require(pRoot .. "cmp"),
 		},
@@ -138,18 +133,25 @@ local function main()
 		{
 			"neovim/nvim-lspconfig",
 			dependencies = {
-				"williamboman/mason.nvim",
-				"williamboman/mason-lspconfig.nvim",
+				{ "mason-org/mason.nvim", opts = {} },
+				"mason-org/mason-lspconfig.nvim",
 				"WhoIsSethDaniel/mason-tool-installer.nvim",
-				"hrsh7th/cmp-nvim-lsp",
+				{ "j-hui/fidget.nvim", opts = {} },
+				"saghen/blink.cmp",
 			},
 			config = require(pRoot .. "lsp"),
 		},
 		{
 			"nvim-treesitter/nvim-treesitter",
+			build = ":TSUpdate",
+			main = "nvim-treesitter.configs",
 			opts = {
 				indent = { enable = true },
-				highlight = { enable = true },
+				highlight = {
+					enable = true,
+					additional_vim_regex_highlighting = false,
+				},
+				auto_installed = true,
 				folds = { enable = true },
 				ensure_installed = {
 					"bash",
@@ -176,6 +178,25 @@ local function main()
 					"vimdoc",
 					"xml",
 					"yaml",
+					"python",
+					"typescript",
+					"svelte",
+				},
+			},
+		},
+		-- UML
+		{
+			"javiorfo/nvim-soil",
+			dependencies = { "javiorfo/nvim-nyctophilia" },
+			lazy = true,
+			ft = "plantuml",
+			opts = {
+				actions = {
+					redraw = false,
+				},
+				image = {
+					darkmode = false,
+					format = "png",
 				},
 			},
 		},
