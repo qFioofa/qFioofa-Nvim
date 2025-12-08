@@ -7,6 +7,7 @@ return {
 			diagnostics = {
 				globals = { "vim" },
 			},
+			disable = { "undefined-globa" },
 			workspace = {
 				library = vim.api.nvim_get_runtime_file("", true),
 				checkThirdParty = false,
@@ -28,6 +29,11 @@ return {
 			completion = {
 				callSnippet = "Replace",
 				keywordSnippet = "Replace",
+			},
+		},
+		emmyLua = {
+			diagnostics = {
+				disable = { "undefined-global" },
 			},
 		},
 	},

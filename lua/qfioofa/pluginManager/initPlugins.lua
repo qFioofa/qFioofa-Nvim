@@ -131,6 +131,11 @@ local function main()
 			config = require(pRoot .. "conform"),
 		},
 		{
+			"ray-x/lsp_signature.nvim",
+			event = "InsertEnter",
+			config = require(pRoot .. "lsp-signature"),
+		},
+		{
 			"neovim/nvim-lspconfig",
 			dependencies = {
 				{ "mason-org/mason.nvim", opts = {} },

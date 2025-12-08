@@ -12,6 +12,9 @@ local Options = {
 		enable = true,
 		auto_open = true,
 	},
+	filters = {
+		dotfiles = false,
+	},
 	diagnostics = {
 		enable = true,
 		icons = {
@@ -61,23 +64,23 @@ local Options = {
 					empty_open = "",
 					symlink = "",
 				},
-			}
-		}
+			},
+		},
 	},
 	actions = {
 		open_file = {
 			quit_on_open = false,
 			resize_window = true,
-		}
+		},
 	},
 	view = {
 		width = {
 			min = 30,
 			max = 60,
-			padding = 10
+			padding = 10,
 		},
-		number = true,
-		relativenumber = true,
+		number = false,
+		relativenumber = false,
 		side = "left",
 	},
 }
@@ -113,9 +116,9 @@ end
 
 local function setBinds()
 	local keymap = vim.api.nvim_set_keymap
-		local opts = {
-		noremap = true, 
-		silent = true 
+	local opts = {
+		noremap = true,
+		silent = true,
 	}
 
 	keymap("c", "<C-e>", ":NvimTreeToggle<CR>", opts)
@@ -132,14 +135,14 @@ return function()
 		local custom_mappings = configure_bindings()
 		for _, mapping in ipairs(custom_mappings) do
 			local action_func = api[mapping.action]
-			
+
 			if action_func then
-				vim.keymap.set("n", mapping.key, action_func, { 
-					noremap = true, 
-					silent = true, 
+				vim.keymap.set("n", mapping.key, action_func, {
+					noremap = true,
+					silent = true,
 					nowait = true,
 					buffer = bufnr,
-					desc = mapping.desc
+					desc = mapping.desc,
 				})
 			end
 		end
