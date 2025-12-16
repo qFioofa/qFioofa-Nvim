@@ -6,11 +6,6 @@ local function defineColors()
 		bg = "#1d1d1d",
 	})
 
-	hl(0, "Cursor", {
-		fg = "#ffffff",
-		bg = "NONE",
-	})
-
 	-- LSP progress highlights
 	hl(0, "NoiceLspProgressTitle", { fg = "#FFBE89", bold = true })
 	hl(0, "NoiceLspProgressClient", { fg = "#82aaff" })

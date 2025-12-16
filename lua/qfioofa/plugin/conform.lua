@@ -8,7 +8,7 @@ local function setup_formatters()
 		typescript = { "prettier" },
 		javascriptreact = { "prettier" },
 		typescriptreact = { "prettier" },
-		json = { "prettier" },
+		json = { "clang-format" },
 		html = { "prettier" },
 		css = { "prettier" },
 		scss = { "prettier" },
@@ -39,7 +39,7 @@ local Options = {
 
 local function setBinds()
 	vim.keymap.set({ "n", "v" }, "<leader>cf", function()
-		conform.format({
+		require(PACKAGE_NAME).format({
 			async = true,
 			lsp_fallback = true,
 			timeout_ms = 1000,

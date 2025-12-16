@@ -11,6 +11,21 @@ local function main()
 		-- 	dependencies = { "nvim-tree/nvim-web-devicons" },
 		-- 	config = require(pRoot .. "bufferline"),
 		-- },
+		-- {
+		-- 	"ellisonleao/gruvbox.nvim",
+		-- 	lazy = false,
+		-- 	priority = 1000,
+		-- 	config = function()
+		-- 		vim.cmd("colorscheme gruvbox")
+		-- 	end,
+		-- },
+		-- {
+		-- 	"bettervim/yugen",
+		-- 	config = function()
+		-- 		vim.cmd("colorscheme yugen")
+		-- 	end,
+		-- 	priority = 1000,
+		-- },
 		{
 			"qfioofa/yugen-ash.nvim",
 			lazy = false,
@@ -19,13 +34,6 @@ local function main()
 				vim.cmd("colorscheme yugen-ash")
 			end,
 		},
-		-- {
-		-- 	"bettervim/yugen",
-		-- 	config = function()
-		-- 		vim.cmd("colorscheme yugen")
-		-- 	end,
-		-- 	priority = 1000,
-		-- },
 		{
 			"SmiteshP/nvim-navic",
 			dependencies = {
@@ -148,8 +156,12 @@ local function main()
 		},
 		{
 			"nvim-treesitter/nvim-treesitter",
+			commit = "42fc28b",
 			build = ":TSUpdate",
 			main = "nvim-treesitter.configs",
+			dependencies = {
+				"nvim-treesitter/playground",
+			},
 			opts = {
 				indent = { enable = true },
 				highlight = {
