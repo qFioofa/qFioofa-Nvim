@@ -3,7 +3,6 @@ local saveInit = utils.saveInit
 
 local order = {
 	"options",
-	"theme",
 	"pluginManager",
 }
 
