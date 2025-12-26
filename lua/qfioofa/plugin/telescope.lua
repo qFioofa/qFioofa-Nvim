@@ -2,6 +2,7 @@ local PACKAGE_NAME = "telescope"
 
 local function setup_extensions()
 	return {
+		extensions_list = { "themes", "terms" },
 		fzf = {
 			fuzzy = true,
 			override_generic_sorter = true,
@@ -13,6 +14,18 @@ end
 
 local function setup_defaults()
 	return {
+		prompt_prefix = "   ",
+		selection_caret = " ",
+		entry_prefix = " ",
+		sorting_strategy = "ascending",
+		layout_config = {
+			horizontal = {
+				prompt_position = "top",
+				preview_width = 0.55,
+			},
+			width = 0.87,
+			height = 0.80,
+		},
 		file_ignore_patterns = {
 			"node_modules",
 			".git",

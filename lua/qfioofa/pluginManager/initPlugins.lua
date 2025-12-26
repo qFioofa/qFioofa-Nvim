@@ -12,7 +12,7 @@ local function main()
 		-- 	config = require(pRoot .. "bufferline"),
 		-- },
 		-- {
-		-- 	"ellisonleao/gruvbox.nvim",
+		-- 	jellisonleao/gruvbox.nvim",
 		-- 	lazy = false,
 		-- 	priority = 1000,
 		-- 	config = function()
@@ -271,6 +271,7 @@ local function main()
 								},
 								diagnostics = {
 									globals = { "vim" },
+									enable = false,
 								},
 								workspace = {
 									library = vim.api.nvim_get_runtime_file("", true),
@@ -283,6 +284,12 @@ local function main()
 						},
 					},
 				}
+
+				vim.diagnostic.config({
+					virtual_text = true,
+					signs = false,
+					underline = true,
+				})
 
 				require("mason").setup()
 
@@ -316,6 +323,7 @@ local function main()
 				indent = { enable = true },
 				highlight = {
 					enable = true,
+					use_languagetree = true,
 					additional_vim_regex_highlighting = false,
 				},
 				auto_installed = true,
@@ -350,6 +358,51 @@ local function main()
 					"svelte",
 				},
 			},
+		},
+		{
+			"rcarriga/nvim-notify",
+			opts = {
+				level = 2,
+				max_height = function()
+					return math.floor(vim.o.lines * 0.5)
+				end,
+				max_width = function()
+					return math.floor(vim.o.columns * 0.75)
+				end,
+				render = "compact",
+				stages = "fade", -- "fade_in_slide_out", "fade", "slide", "static"
+				timeout = 1500,
+				top_down = true,
+				icons = {
+					ERROR = "",
+					WARN = "",
+					INFO = "",
+					DEBUG = "",
+					TRACE = "✎",
+				},
+				-- highlight = {
+				--   ERROR = "NotifyERRORBody",
+				--   WARN = "NotifyWARNBody",
+				--   INFO = "NotifyINFOBody",
+				--   DEBUG = "NotifyDEBUGBody",
+				--   TRACE = "NotifyTRACEBody",
+				-- },
+				background_colour = "#000000",
+				minimum_width = 10,
+			},
+			keys = {
+				{
+					"<leader>un",
+					function()
+						require("notify").dismiss({ silent = true, pending = true })
+					end,
+					desc = "Dismiss All Notifications",
+				},
+			},
+			init = function()
+				-- Set as default notification handler
+				vim.notify = require("notify")
+			end,
 		},
 		{
 			"utilyre/barbecue.nvim",

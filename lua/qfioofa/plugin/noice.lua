@@ -188,7 +188,7 @@ local Options = {
 	},
 	messages = {
 		enabled = true,
-		view = "cmdline_popup",
+		view = "notify",
 	},
 	popupmenu = setup_popupmenu(),
 	lsp = setup_lsp(),
@@ -201,12 +201,6 @@ local Options = {
 	},
 	views = setup_views(),
 	routes = setup_routes(),
-	notify = {
-		enabled = true,
-		view = "notify",
-		max_height = 3,
-		max_width = 40,
-	},
 }
 
 return function()

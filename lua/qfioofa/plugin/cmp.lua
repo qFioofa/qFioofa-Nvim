@@ -90,14 +90,12 @@ local function getOptions()
 			{ name = "nvim_lsp" },
 			{ name = "buffer" },
 			{ name = "path" },
+			{ name = "async_path" },
 		},
 		confirm_opts = {
 			behavior = cmp.ConfirmBehavior.Replace,
 			select = false,
 		},
-		-- documentation = {
-		-- 	border = { "╭", "─", "╮", "│", "╯", "─", "╰", "│" },
-		-- },
 		experimental = {
 			ghost_text = false,
 			native_menu = false,
