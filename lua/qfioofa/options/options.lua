@@ -1,58 +1,59 @@
 -- Settings object of options and relative value
 local Options = {
-    -- General
-    backup = false,
-    clipboard = "unnamedplus",
+	-- General
+	backup = false,
+	clipboard = "unnamedplus",
 
-    -- Leftside numbers
-    number = true,
-    relativenumber = true,
+	-- Leftside numbers
+	number = true,
+	relativenumber = true,
+	cursorline = true,
+	cursorlineopt = "number",
 
-    --Tabs
-    showtabline = 0,
-    shiftwidth = 4,
-    tabstop = 4,
-    smartindent = true, 
-    autoindent = true,
+	--Tabs
+	showtabline = 0,
+	shiftwidth = 4,
+	tabstop = 4,
+	smartindent = true,
+	autoindent = true,
 
-    -- Line
-    linebreak = true,
-    wrap = true,
-    whichwrap = "bs<>[]hl",
+	-- Line
+	linebreak = true,
+	wrap = true,
+	whichwrap = "bs<>[]hl",
 
-    -- Windows
-    title = true,
-    splitright = true,
-    splitbelow = true,
+	-- Windows
+	title = true,
+	splitright = true,
+	splitbelow = true,
 
-    fillchars = {
-        eob = ' '
-    },
-    list = true,
-    listchars = {
-        tab = '│ '
-    },
-    signcolumn = "yes",
-    termguicolors = true,
+	fillchars = {
+		eob = " ",
+	},
+	list = true,
+	listchars = {
+		tab = "│ ",
+	},
+	signcolumn = "yes",
+	termguicolors = true,
 
-    -- Sounds
-    errorbells = false,
-    visualbell = false,
+	-- Sounds
+	errorbells = false,
+	visualbell = false,
 
-    -- Unicode
-    emoji = true,
-    encoding = "utf-8",
-    guifont = "monospace:h17",
+	-- Unicode
+	emoji = true,
+	encoding = "utf-8",
+	guifont = "monospace:h17",
 
-    -- Cmd
-    cmdheight = 0,
+	-- Cmd
+	cmdheight = 0,
 
-    -- Other
-    mouse = 'a',
+	-- Other
+	mouse = "a",
 }
-
 
 -- Loading all options in vim
 for OptionName, OptionValue in pairs(Options) do
-    vim.opt[OptionName] = OptionValue
+	vim.opt[OptionName] = OptionValue
 end
