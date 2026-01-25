@@ -26,6 +26,16 @@ local function main()
 		-- 	end,
 		-- 	priority = 1000,
 		-- },
+		-- {
+		-- 	"rose-pine/neovim",
+		-- 	name = "rose-pine",
+		-- 	config = function()
+		-- 		vim.cmd("colorscheme rose-pine")
+		-- 		require("rose-pine").setup({
+		-- 			variant = "main",
+		-- 		})
+		-- 	end,
+		-- },
 		{
 			"qfioofa/yugen-ash.nvim",
 			lazy = false,
@@ -442,6 +452,23 @@ local function main()
 					mode = "cursor",
 				})
 			end,
+		},
+		{
+			"kdheepak/lazygit.nvim",
+			lazy = true,
+			cmd = {
+				"LazyGit",
+				"LazyGitConfig",
+				"LazyGitCurrentFile",
+				"LazyGitFilter",
+				"LazyGitFilterCurrentFile",
+			},
+			dependencies = {
+				"nvim-lua/plenary.nvim",
+			},
+			keys = {
+				{ "<leader>lg", "<cmd>LazyGit<cr>", desc = "LazyGit" },
+			},
 		},
 		-- UML
 		{
