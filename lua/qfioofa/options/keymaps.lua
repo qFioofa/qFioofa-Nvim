@@ -1,10 +1,10 @@
 local opts = {
-	noremap = true, 
-	silent = true 
+	noremap = true,
+	silent = true,
 }
 
-local term_opts = { 
-	silent = true 
+local term_opts = {
+	silent = true,
 }
 
 -- Shorten function name
@@ -67,7 +67,6 @@ keymap("t", "<C-h>", "<C-\\><C-N><C-w>h", term_opts)
 keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
-keymap('t', '<Esc>', '<C-\\><C-n>', term_opts)
+keymap("t", "<Esc>", "<C-\\><C-n>", term_opts)
 -- Open terminal window on the right side from normal mode
-keymap('n', '<leader>tt' , ':vsplit | wincmd l | terminal<CR>:vertical resize 63<CR>:startinsert<CR>', opts)
-
+keymap("n", "<leader>tt", ":vsplit | wincmd l | terminal<CR>:vertical resize 63<CR>:startinsert<CR>", opts)

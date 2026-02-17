@@ -33,6 +33,8 @@ local Options = {
 	list = true,
 	listchars = {
 		tab = "│ ",
+		space = "·",
+		trail = "•",
 	},
 	signcolumn = "yes",
 	termguicolors = true,

@@ -56,9 +56,61 @@ local function main()
 			config = function() end,
 		},
 		{
+			"okuuva/auto-save.nvim",
+			lazy = false,
+			keys = {
+				{ "<leader>as", "<cmd>ASToggle<CR>", desc = "Toggle auto-save" },
+			},
+			opts = {
+				enabled = true,
+				trigger_events = {
+					immediate_save = { "BufLeave" },
+					defer_save = {},
+					cancel_deferred_save = {},
+				},
+				condition = function(buf)
+					local excluded_filetypes = {
+						"nvimtree",
+						"NvimTree",
+						"gitcommit",
+						"help",
+						"man",
+						"TelescopePrompt",
+						"toggleterm",
+						"oil",
+						"neo-tree",
+						"alpha",
+						"dashboard",
+						"lazygit",
+						"Outline",
+						"prompt",
+					}
+
+					local filetype = vim.fn.getbufvar(buf, "&filetype")
+					local buftype = vim.fn.getbufvar(buf, "&buftype")
+
+					if vim.tbl_contains(excluded_filetypes, filetype) then
+						return false
+					end
+
+					if buftype ~= "" then
+						return false
+					end
+
+					return true
+				end,
+				write_all_buffers = false,
+				noautocmd = false,
+				lockmarks = false,
+				debounce_delay = 1000,
+				debug = false,
+			},
+		},
+		{
 			"rmagatti/auto-session",
 			lazy = false,
 			opts = {
+				auto_restore_last_session = true,
 				suppressed_dirs = {
 					"~/",
 					"~/Projects",
@@ -151,7 +203,12 @@ local function main()
 		{
 			"ray-x/lsp_signature.nvim",
 			event = "InsertEnter",
-			config = require(pRoot .. "lsp-signature"),
+			opts = {
+				bind = true,
+				handler_opts = {
+					border = "rounded",
+				},
+			},
 		},
 		{
 			"neovim/nvim-lspconfig",
@@ -294,6 +351,32 @@ local function main()
 						},
 					},
 				}
+
+				-- UML LSP installation
+				-- Install go
+				-- sudo apt install golang-go
+				--
+				-- install lsp
+				-- go install github.com/ptdewey/plantuml-lsp@latest
+
+				local lspconfig = require("lspconfig")
+				local configs = require("lspconfig.configs")
+				if not configs.plantuml_lsp then
+					configs.plantuml_lsp = {
+						default_config = {
+							cmd = {
+								"plantuml-lsp",
+								"--exec-path=plantuml",
+							},
+							filetypes = { "plantuml", "uml", "puml" },
+							root_dir = function(fname)
+								return lspconfig.util.find_git_ancestor(fname) or lspconfig.util.path.dirname(fname)
+							end,
+							settings = {},
+						},
+					}
+				end
+				lspconfig.plantuml_lsp.setup({})
 
 				vim.diagnostic.config({
 					virtual_text = true,
