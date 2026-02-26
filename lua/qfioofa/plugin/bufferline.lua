@@ -18,13 +18,13 @@ local Options = {
 		tab_size = 21,
 		diagnostics = false,
 		diagnostics_update_in_insert = false,
-		offsets = { 
-			{ 
-				filetype = "NvimTree", 
+		offsets = {
+			{
+				filetype = "NvimTree",
 				text = " File explorer",
 				highlight = "FileExplorer",
-				padding = 0 ,
-			} 
+				padding = 0,
+			},
 		},
 		show_buffer_icons = true,
 		show_buffer_close_icons = true,
@@ -40,7 +40,7 @@ local Options = {
 			bg = "#1d1d1d",
 			fg = "#ffffff",
 			bold = false,
-			italic = false, 
+			italic = false,
 			reverse = false,
 			standout = false,
 			nocombine = false,
@@ -50,7 +50,7 @@ local Options = {
 			bg = "#1d1d1d",
 			fg = "#f1f1f1",
 			bold = false,
-			italic = false, 
+			italic = false,
 			reverse = false,
 			standout = false,
 			nocombine = false,
@@ -58,16 +58,16 @@ local Options = {
 		},
 		close_button = {
 			bg = "#1d1d1d",
-			fg = "#f1f1f1"
+			fg = "#f1f1f1",
 		},
 		close_button_visible = {
 			bg = "#1d1d1d",
-			fg = "#f1f1f1"
+			fg = "#f1f1f1",
 		},
 		tab_selected = {
 			bg = "#1d1d1d",
 			fg = "#f1f1f1",
-			italic = false, 
+			italic = false,
 			reverse = false,
 			standout = false,
 			nocombine = false,
@@ -75,39 +75,39 @@ local Options = {
 		},
 		tab = {
 			bg = "#d65d0e",
-			fg = "#d79921"
+			fg = "#d79921",
 		},
 		tab_close = {
 			bg = "NONE",
-			fg = "#d65d0e"
+			fg = "#d65d0e",
 		},
 		duplicate_selected = {
 			bg = "#1d1d1d",
-			fg = "#f1f1f1"
+			fg = "#f1f1f1",
 		},
 		duplicate_visible = {
 			bg = "#1d1d1d",
-			fg = "#f1f1f1"
+			fg = "#f1f1f1",
 		},
 		duplicate = {
 			bg = "#1d1d1d",
-			fg = "#f1f1f1"
+			fg = "#f1f1f1",
 		},
 		modified = {
 			bg = "#1d1d1d",
-			fg = '#d79921',
+			fg = "#d79921",
 		},
 		modified_selected = {
 			bg = "#1d1d1d",
-			fg = "#d79921"
+			fg = "#d79921",
 		},
 		modified_visible = {
 			bg = "#1d1d1d",
-			fg = "#d79921"
+			fg = "#d79921",
 		},
 		separator = {
 			bg = "#1d1d1d",
-			fg = "#1d1d1d"
+			fg = "#1d1d1d",
 		},
 	},
 }
@@ -115,8 +115,8 @@ local Options = {
 local function setBinds()
 	local keymap = vim.api.nvim_set_keymap
 	local opts = {
-		noremap = true, 
-		silent = true 
+		noremap = true,
+		silent = true,
 	}
 
 	keymap("n", "<leader>q", function()

@@ -7,6 +7,7 @@ Personal Nvim config.
 *   [About](#about)
 *   [Features](#features)
 *   [Prerequisites](#prerequisites)
+    * [Outside dependencies](#outside-dependencies)
 *   [Installation](#installation)
     *   [Linux](#linux)
     *   [Windows](#windows)
@@ -40,6 +41,14 @@ Before installing, ensure you have the following software installed:
 
 *   **Git:** Required for cloning the repository.
 *   **Neovim:** Version 0.11.5 or higher is recommended (`nvim --version`).
+
+### Outside dependencies
+
+Image viewer protocol
+
+```bash
+sudo apt install imagemagick
+```
 
 ### Installing Prerequisites (Examples)
 
