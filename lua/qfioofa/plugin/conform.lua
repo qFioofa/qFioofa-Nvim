@@ -31,8 +31,16 @@ local Options = {
 	},
 
 	formatters = {
+		["clang-format"] = {
+			"--style={BasedOnStyle: LLVM, IndentWidth: 4, TabWidth: 4, UseTab: Always}",
+		},
 		prettier = {
-			prepend_args = { "--print-width", "100" },
+			"--tab-width",
+			"4",
+			"--print-width",
+			"100",
+			"--use-tabs",
+			"true",
 		},
 	},
 }

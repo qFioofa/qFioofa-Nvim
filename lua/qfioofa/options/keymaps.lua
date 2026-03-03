@@ -71,4 +71,9 @@ keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 keymap("t", "<Esc>", "<C-\\><C-n>", term_opts)
 -- Open terminal window on the right side from normal mode
-keymap("n", "<leader>tt", ":vsplit | wincmd l | terminal<CR>:vertical resize 63<CR>:startinsert<CR>", opts)
+keymap(
+	"n",
+	"<leader>tt",
+	":vsplit | wincmd l | terminal<CR>:vertical resize 80<CR>:startinsert<CR>",
+	opts
+)
