@@ -5,11 +5,11 @@ local function main()
 	local lazy = require("lazy")
 
 	lazy.setup({
-		-- {
-		-- 	dir = "~/.config/nvim/lazy/physical-keyboard.nvim",
-		-- 	event = "VeryLazy",
-		-- 	config = function() end,
-		-- },
+		{
+			dir = "~/.config/nvim/lazy/physical-keyboard.nvim",
+			event = "VeryLazy",
+			config = function() end,
+		},
 		-- {
 		-- 	"akinsho/bufferline.nvim",
 		-- 	enable = false,

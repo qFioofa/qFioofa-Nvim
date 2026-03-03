@@ -33,7 +33,7 @@ local Options = {
 	list = true,
 	listchars = {
 		tab = "│ ",
-		space = "·",
+		nbsp = "·",
 		trail = "•",
 	},
 	signcolumn = "yes",
