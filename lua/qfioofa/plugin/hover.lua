@@ -61,14 +61,6 @@ local function setup_keymaps()
 			end,
 			{ desc = "hover.nvim (next source)" },
 		},
-		{
-			"n",
-			"<MouseMove>",
-			function()
-				require("hover").mouse()
-			end,
-			{ desc = "hover.nvim (mouse)" },
-		},
 	}
 
 	for _, keymap in ipairs(keymaps) do

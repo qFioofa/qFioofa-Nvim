@@ -8,7 +8,11 @@ local function main()
 		{
 			dir = "~/.config/nvim/lazy/physical-keyboard.nvim",
 			event = "VeryLazy",
-			config = function() end,
+			opts = {
+				active_layouts = {
+					"ru-en",
+				},
+			},
 		},
 		-- {
 		-- 	"akinsho/bufferline.nvim",
