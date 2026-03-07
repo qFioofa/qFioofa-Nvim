@@ -1,85 +1,131 @@
 local PACKAGE_NAME = "lualine"
 
-local function get_lsp_status()
-	local clients = vim.lsp.get_clients()
-	if #clients == 0 then
-		return "LSP: Off"
-	end
+local s = {
+	b = { bg = "#bc735c", fg = "#fafafa" },
+	c = { bg = "#151515", fg = "#fafafa" },
 
-	local current_file = vim.api.nvim_buf_get_name(0)
-	if current_file == "" then
-		return "LSP: No File"
-	end
+	y = { bg = "#303030", fg = "#fafafa" },
+	x = { bg = "#000000", fg = "#fafafa" },
+}
 
-	local filetype = vim.api.nvim_buf_get_option(0, "filetype")
-	if filetype == "" then
-		return "LSP: No FT"
-	end
-
-	local active_clients = {}
-	for _, client in ipairs(clients) do
-		if client.config and client.config.filetypes then
-			for _, ft in ipairs(client.config.filetypes) do
-				if ft == filetype then
-					table.insert(active_clients, client.name)
-					break
-				end
-			end
-		end
-	end
-
-	if #active_clients == 0 then
-		return "LSP: No Client"
-	else
-		return "LSP: " .. table.concat(active_clients, ", ")
-	end
-end
+local bg = "#151515"
 
 local Options = {
 	options = {
 		theme = {
 			normal = {
-				a = { bg = "#d65d0e", fg = "#ffffff" },
-				b = { bg = "#2d2d2d", fg = "#ffffff" },
-				c = { bg = "#2d2d2d", fg = "#ffffff" },
+				a = { bg = "#bf616a", fg = "#fafafa" },
+				b = s.b,
+				c = s.c,
+
+				y = s.y,
+				x = s.x,
 			},
+
 			insert = {
-				a = { bg = "#98971a", fg = "#ffffff" },
-				b = { bg = "#2d2d2d", fg = "#ffffff" },
-				c = { bg = "#2d2d2d", fg = "#ffffff" },
+				a = { bg = "#9db89c", fg = "#303030" },
+				b = s.b,
+				c = s.c,
+
+				y = s.y,
+				x = s.x,
 			},
 			visual = {
-				a = { bg = "#d79921", fg = "#ffffff" },
-				b = { bg = "#2d2d2d", fg = "#ffffff" },
-				c = { bg = "#2d2d2d", fg = "#ffffff" },
+				a = { bg = "#D4A017", fg = "#303030" },
+				b = s.b,
+				c = s.c,
+
+				y = s.y,
+				x = s.x,
 			},
 			replace = {
-				a = { bg = "#8ec07c", fg = "#ffffff" },
-				b = { bg = "#2d2d2d", fg = "#ffffff" },
-				c = { bg = "#2d2d2d", fg = "#ffffff" },
+				a = { bg = "#8dd3c3", fg = "#303030" },
+				b = s.b,
+				c = s.c,
+
+				y = s.y,
+				x = s.x,
 			},
 			command = {
-				a = { bg = "#d3869b", fg = "#ffffff" },
-				b = { bg = "#2d2d2d", fg = "#ffffff" },
-				c = { bg = "#2d2d2d", fg = "#ffffff" },
+				a = { bg = "#c678dd", fg = "#303030" },
+				b = s.b,
+				c = s.c,
+
+				y = s.y,
+				x = s.x,
 			},
 			terminal = {
-				a = { bg = "#1d1d1d", fg = "#ffffff" },
-				b = { bg = "#2d2d2d", fg = "#ffffff" },
-				c = { bg = "#2d2d2d", fg = "#ffffff" },
+				a = { bg = "#7A7A7A", fg = "#fafafa" },
+				b = s.b,
+				c = s.c,
+
+				y = s.y,
+				x = s.x,
 			},
 		},
-		component_separators = { left = " |", right = "| " },
-		section_separators = { left = "", right = "" },
+		component_separators = "",
+		section_separators = { left = "", right = "" },
 		disabled_filetypes = {},
 		always_divide_middle = true,
 	},
 	sections = {
-		lualine_a = { "mode" },
-		lualine_b = { "branch", "diff" },
-		lualine_c = { "filename", get_lsp_status },
-		lualine_x = { "diagnostics", "filetype" },
-		lualine_y = { "progress" },
+		lualine_a = {
+			{
+				"mode",
+				icon = "",
+				separator = { left = "", right = "" },
+				right_padding = 2,
+			},
+		},
+		lualine_b = {
+			{
+				"branch",
+				icon = "",
+				separator = { left = "", right = "" },
+				right_padding = 2,
+			},
+		},
+		lualine_c = {
+			"%=",
+		},
+		lualine_x = {
+			{
+				"diagnostics",
+				icon = " ",
+				separator = { left = "", right = "" },
+				right_padding = 2,
+			},
+		},
+		lualine_y = {
+			{
+				"filename",
+				icon = "",
+				separator = { left = "", right = "" },
+				-- right_padding = 2,
+				symbols = {
+					modified = "",
+					readonly = "",
+					unnamed = "[No Name]",
+					newfile = "[New]",
+				},
+			},
+		},
+		lualine_z = {
+			{
+				"location",
+				icon = "",
+				separator = { left = "", right = "" },
+				left_padding = 2,
+				right_padding = 2,
+			},
+		},
+	},
+	inactive_sections = {
+		lualine_a = { "filename" },
+		lualine_b = {},
+		lualine_c = {},
+		lualine_x = {},
+		lualine_y = {},
 		lualine_z = { "location" },
 	},
 }

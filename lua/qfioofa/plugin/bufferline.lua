@@ -112,18 +112,6 @@ local Options = {
 	},
 }
 
-local function setBinds()
-	local keymap = vim.api.nvim_set_keymap
-	local opts = {
-		noremap = true,
-		silent = true,
-	}
-
-	keymap("n", "<leader>q", function()
-		require("bufferline").close_all()
-	end, { desc = "Close all buffers" })
-end
-
 return function()
 	local status_ok, bufferline = pcall(require, PACKAGE_NAME)
 	if not status_ok then

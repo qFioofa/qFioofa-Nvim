@@ -20,7 +20,7 @@ end
 vim.api.nvim_create_autocmd("WinEnter", {
 	group = vim.api.nvim_create_augroup("WindowSizeActive", { clear = true }),
 	callback = function()
-		local min_width = 80
+		local min_width = 100
 
 		if isExcludedWindow() then
 			return
