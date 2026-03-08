@@ -15,12 +15,6 @@ local function main()
 			},
 		},
 		-- {
-		-- 	"akinsho/bufferline.nvim",
-		-- 	enable = false,
-		-- 	dependencies = { "nvim-tree/nvim-web-devicons" },
-		-- 	config = require(pRoot .. "bufferline"),
-		-- },
-		-- {
 		-- 	jellisonleao/gruvbox.nvim",
 		-- 	lazy = false,
 		-- 	priority = 1000,

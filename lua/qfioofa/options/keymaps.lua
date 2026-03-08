@@ -24,8 +24,8 @@ vim.g.maplocalleader = " "
 --   command_mode = "c",
 
 -- Command --
-keymap("c", "Q", ":qa!<CR>", opts)
-keymap("c", "W", ":w<CR>", opts)
+keymap("n", "<leader>QQ", ":qa!<CR>", opts)
+keymap("n", "<leader>W", ":w!<CR>", opts)
 
 -- Normal --
 -- Better window navigation
@@ -74,6 +74,6 @@ keymap("t", "<Esc>", "<C-\\><C-n>", term_opts)
 keymap(
 	"n",
 	"<leader>tt",
-	":vsplit | wincmd l | terminal<CR>:vertical resize 80<CR>:startinsert<CR>",
+	":vsplit | wincmd l | terminal<CR>:vertical resize 100<CR>:startinsert<CR>",
 	opts
 )

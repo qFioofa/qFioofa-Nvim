@@ -8,8 +8,6 @@ local s = {
 	x = { bg = "#000000", fg = "#fafafa" },
 }
 
-local bg = "#151515"
-
 local Options = {
 	options = {
 		theme = {
@@ -65,7 +63,7 @@ local Options = {
 		},
 		component_separators = "",
 		section_separators = { left = "", right = "" },
-		disabled_filetypes = {},
+		disabled_filetypes = { "NvimTree" },
 		always_divide_middle = true,
 	},
 	sections = {

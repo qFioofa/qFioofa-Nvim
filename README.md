@@ -167,6 +167,8 @@ rmdir /s /q "%LOCALAPPDATA%\nvim" "%LOCALAPPDATA%\nvim-data" "%TEMP%\nvim*" 2>nu
 
 ![dashboard](./photos/dashboard.jpg)
 
+![lualine](./photos/lualine.png)
+
 ## Useful Commands
 
 - **Install Nerd Fonts (Linux):** Follow instructions from the [source](https://github.com/ryanoasis/nerd-fonts?tab=readme-ov-file#option-7-install-script). Example using the install script:
