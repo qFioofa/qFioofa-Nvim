@@ -2,6 +2,7 @@ local PACKAGE_NAME = "conform"
 
 local function setup_formatters()
 	return {
+		bash = { "beautysh" },
 		lua = { "stylua" },
 		python = { "black", "isort" },
 		javascript = { "prettier" },

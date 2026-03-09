@@ -8,7 +8,7 @@ local term_opts = {
 }
 
 -- Shorten function name
-local keymap = vim.api.nvim_set_keymap
+local keymap = vim.keymap.set
 
 --Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
@@ -24,8 +24,9 @@ vim.g.maplocalleader = " "
 --   command_mode = "c",
 
 -- Command --
-keymap("n", "<leader>QQ", ":qa!<CR>", opts)
-keymap("n", "<leader>W", ":w!<CR>", opts)
+keymap("n", "<leader><C-q>", ":qa!<CR>", opts)
+keymap("n", "<leader><C-w>", ":w!<CR>", opts)
+keymap({ "n", "v" }, "<C-;>", ":", opts)
 
 -- Normal --
 -- Better window navigation
@@ -70,6 +71,7 @@ keymap("t", "<C-j>", "<C-\\><C-N><C-w>j", term_opts)
 keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", term_opts)
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", term_opts)
 keymap("t", "<Esc>", "<C-\\><C-n>", term_opts)
+
 -- Open terminal window on the right side from normal mode
 keymap(
 	"n",
