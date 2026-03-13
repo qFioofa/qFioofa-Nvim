@@ -31,19 +31,7 @@ local Options = {
 		lsp_fallback = true,
 	},
 
-	formatters = {
-		["clang-format"] = {
-			"--style={BasedOnStyle: LLVM, IndentWidth: 4, TabWidth: 4, UseTab: Always}",
-		},
-		prettier = {
-			"--tab-width",
-			"4",
-			"--print-width",
-			"100",
-			"--use-tabs",
-			"true",
-		},
-	},
+	formatters = {},
 }
 
 local function setBinds()

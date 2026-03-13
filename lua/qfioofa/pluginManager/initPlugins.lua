@@ -233,6 +233,40 @@ local function main()
 						{ clear = true }
 					),
 					callback = function(event)
+						-- Keymaps
+						vim.keymap.set("n", "<leader>tl", function()
+							local clients = vim.lsp.get_clients({ bufnr = 0 })
+							if next(clients) then
+								for _, client in ipairs(clients) do
+									vim.lsp.buf_detach_client(0, client.id)
+								end
+								vim.notify("LSP OFF", vim.log.levels.WARN)
+							else
+								vim.cmd("edit")
+								vim.notify("LSP ON", vim.log.levels.INFO)
+							end
+						end, { desc = "Toggle LSP (Detach/Reload)" })
+
+						--- Messages with error
+						vim.keymap.set("n", "<leader>to", function()
+							local errs = vim.diagnostic.get(0)
+							if #errs > 0 then
+								vim.diagnostic.setloclist({ open = true })
+							end
+						end, { desc = "Open lsp error messages" })
+
+						---
+						vim.keymap.set("n", "<leader>te", function()
+							local buf = vim.api.nvim_get_current_buf()
+							local state =
+								vim.diagnostic.is_enabled({ bufnr = buf })
+							vim.diagnostic.enable(not state, { bufnr = buf })
+							vim.notify(
+								state and "Diagnostic hidden"
+									or "Diagnostic shown",
+								vim.log.levels.INFO
+							)
+						end, { desc = "Toggle Errors Visibility" })
 						-- NOTE: Remember that Lua is a real programming language, and as such it is possible
 						-- to define small helper and utility functions so you don't have to repeat yourself.
 						--
