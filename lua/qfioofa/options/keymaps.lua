@@ -27,6 +27,7 @@ vim.g.maplocalleader = " "
 keymap("n", "<leader><C-q>", ":qa!<CR>", opts)
 keymap("n", "<leader><C-w>", ":w!<CR>", opts)
 keymap({ "n", "v" }, "<C-;>", ":", opts)
+keymap("n", "Y", "y$", opts)
 
 -- Normal --
 -- Better window navigation

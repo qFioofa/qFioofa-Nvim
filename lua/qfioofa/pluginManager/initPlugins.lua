@@ -6,7 +6,7 @@ local function main()
 
 	lazy.setup({
 		{
-			dir = "~/.config/nvim/lazy/physical-keyboard.nvim",
+			"qFioofa/physical-keyboard.nvim",
 			event = "VeryLazy",
 			opts = {
 				active_layouts = {
@@ -688,13 +688,13 @@ local function main()
 				},
 			},
 		},
-		{
-			"3rd/image.nvim",
-			build = false,
-			opts = {
-				processor = "magick_cli",
-			},
-		},
+		-- {
+		-- 	"3rd/image.nvim",
+		-- 	build = false,
+		-- 	opts = {
+		-- 		processor = "magick_cli",
+		-- 	},
+		-- },
 	})
 end
 
