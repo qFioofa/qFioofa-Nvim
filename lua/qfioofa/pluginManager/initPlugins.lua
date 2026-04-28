@@ -5,15 +5,15 @@ local function main()
 	local lazy = require("lazy")
 
 	lazy.setup({
-		{
-			"qFioofa/physical-keyboard.nvim",
-			event = "VeryLazy",
-			opts = {
-				active_layouts = {
-					"ru-en",
-				},
-			},
-		},
+		-- {
+		-- 	"qFioofa/physical-keyboard.nvim",
+		-- 	event = "VeryLazy",
+		-- 	opts = {
+		-- 		active_layouts = {
+		-- 			"ru-en",
+		-- 		},
+		-- 	},
+		-- },
 		-- {
 		-- 	"jellisonleao/gruvbox.nvim",
 		-- 	lazy = false,
@@ -44,6 +44,7 @@ local function main()
 			lazy = false,
 			priority = 1000,
 			config = function()
+				-- require("yugen-ash").setup({ variant = "muted" })
 				vim.cmd("colorscheme yugen-ash")
 			end,
 		},
@@ -673,21 +674,22 @@ local function main()
 			},
 		},
 		-- UML
-		{
-			"javiorfo/nvim-soil",
-			dependencies = { "javiorfo/nvim-nyctophilia" },
-			lazy = true,
-			ft = "plantuml",
-			opts = {
-				actions = {
-					redraw = false,
-				},
-				image = {
-					darkmode = false,
-					format = "png",
-				},
-			},
-		},
+		-- Repo does not exists
+		-- {
+		-- 	"javiorfo/nvim-soil",
+		-- 	dependencies = { "javiorfo/nvim-nyctophilia" },
+		-- 	lazy = true,
+		-- 	ft = "plantuml",
+		-- 	opts = {
+		-- 		actions = {
+		-- 			redraw = false,
+		-- 		},
+		-- 		image = {
+		-- 			darkmode = false,
+		-- 			format = "png",
+		-- 		},
+		-- 	},
+		-- },
 		-- {
 		-- 	"3rd/image.nvim",
 		-- 	build = false,
