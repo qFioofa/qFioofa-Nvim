@@ -2,6 +2,16 @@
 
 Personal Nvim config.
 
+Tested Nvim version:
+
+```
+NVIM v0.11.5
+Build type: Release
+LuaJIT 2.1.1741730670
+```
+
+[Download link](https://github.com/neovim/neovim/releases/tag/v0.11.5)
+
 ## Legend / Table of Contents
 
 - [About](#about)
