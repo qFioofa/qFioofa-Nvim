@@ -59,3 +59,12 @@ local Options = {
 for OptionName, OptionValue in pairs(Options) do
 	vim.opt[OptionName] = OptionValue
 end
+
+-- Set PowerShell as default shell on Windows
+if vim.fn.has("win32") == 1 or vim.fn.has("win64") == 1 then
+	vim.o.shell = "pwsh"
+	vim.o.shellcmdflag = "-NoLogo -NoProfile -Command"
+	vim.o.shellredir = "| Out-File -Encoding UTF8 %s"
+	vim.o.shellquote = ""
+	vim.o.shellxquote = ""
+end

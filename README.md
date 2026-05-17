@@ -4,6 +4,8 @@ Personal Nvim config.
 
 Tested Nvim version:
 
+[Download link](https://github.com/neovim/neovim/releases/tag/v0.11.5)
+
 ```
 NVIM v0.11.5
 Build type: Release
