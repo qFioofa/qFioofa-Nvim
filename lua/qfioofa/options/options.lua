@@ -62,8 +62,20 @@ end
 
 -- Set PowerShell as default shell on Windows
 if vim.fn.has("win32") == 1 or vim.fn.has("win64") == 1 then
-	vim.o.shell = "pwsh"
-	vim.o.shellcmdflag = "-NoLogo -NoProfile -Command"
+	local find_powershell = function()
+		if vim.fn.executable("pwsh") == 1 then
+			return "pwsh"
+		end
+		if vim.fn.executable("powershell") == 1 then
+			return "powershell"
+		end
+		-- Fallback to absolute Windows path
+		return os.getenv("SystemRoot")
+			.. "\\System32\\WindowsPowerShell\\v1.0\\powershell.exe"
+	end
+
+	vim.o.shell = find_powershell()
+	vim.o.shellcmdflag = "-NoLogo"
 	vim.o.shellredir = "| Out-File -Encoding UTF8 %s"
 	vim.o.shellquote = ""
 	vim.o.shellxquote = ""
