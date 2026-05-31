@@ -16,6 +16,8 @@ local parsers = {
 	"bash",
 	"c",
 	"diff",
+	"dockerfile",
+	"go",
 	"html",
 	"javascript",
 	"jsdoc",

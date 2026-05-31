@@ -1,6 +1,8 @@
 return {
 	formatters_by_ft = {
-		bash = { "beautysh" },
+		sh = { "shfmt" },
+		bash = { "shfmt" },
+		toml = { "taplo" },
 		lua = { "stylua" },
 		python = { "black", "isort" },
 		javascript = { "prettier" },

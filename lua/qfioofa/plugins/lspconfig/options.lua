@@ -6,6 +6,27 @@ return {
 	svelte = {},
 	ts_ls = {},
 	clangd = {},
+
+	-- Python: pyright for types, ruff for fast linting + import sorting.
+	pyright = {},
+	ruff = {},
+
+	-- Go
+	gopls = {},
+
+	-- Bash / shell
+	bashls = {},
+
+	-- Docker
+	dockerls = {},
+
+	-- TOML (taplo also provides formatting, used by conform below)
+	taplo = {},
+
+	-- Markdown / XML
+	marksman = {},
+	lemminx = {},
+
 	lua_ls = {
 		-- `workspace.library` is intentionally omitted: neodev (a dependency in
 		-- this plugin spec) configures the runtime library for Neovim Lua dev,

@@ -91,7 +91,13 @@ local function config()
 
 	local ensure_installed = vim.tbl_keys(servers or {})
 	vim.list_extend(ensure_installed, {
+		-- Formatters used by conform (LSP servers are added from `servers` above).
+		-- gofmt ships with the Go toolchain, so it is not installed via Mason.
 		"stylua",
+		"black",
+		"isort",
+		"shfmt",
+		"prettier",
 	})
 	require("mason-tool-installer").setup({
 		ensure_installed = ensure_installed,
