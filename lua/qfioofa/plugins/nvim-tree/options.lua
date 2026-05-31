@@ -76,16 +76,16 @@ return {
 			glyphs = {
 				default = "",
 				symlink = "",
-				modified = "●",
+				modified = "",
 				bookmark = "",
 				git = {
-					unstaged = "",
-					staged = "✓",
+					unstaged = "●",
+					staged = "",
 					unmerged = "",
-					renamed = "➜",
+					renamed = "",
+					untracked = "",
 					deleted = "",
-					untracked = "★",
-					ignored = "◌",
+					ignored = "",
 				},
 				folder = {
 					default = "",
