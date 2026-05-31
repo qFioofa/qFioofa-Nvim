@@ -1,6 +1,6 @@
 local CONFIG_ROOT = "qfioofa."
 local OPTIONS_ROOT = CONFIG_ROOT .. "options."
-local PLUGINS_ROOT = CONFIG_ROOT .. "plugin."
+local PLUGINS_ROOT = CONFIG_ROOT .. "plugins."
 local THEME_ROOT = "theme."
 local PLUGINMANAGER_ROOT = "pluginManager."
 
