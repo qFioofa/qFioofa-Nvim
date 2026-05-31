@@ -62,6 +62,18 @@ Image viewer protocol
 sudo apt install imagemagick
 ```
 
+PlantUML language server (optional — only needed for `.puml`/`.uml`/`plantuml`
+files). It is **not** managed by Mason and must be installed manually:
+
+```bash
+# Requires Go
+sudo apt install golang-go
+go install github.com/ptdewey/plantuml-lsp@latest
+```
+
+Ensure the resulting `plantuml-lsp` binary is on your `PATH` and the `plantuml`
+executable is available for it to call.
+
 ### Installing Prerequisites (Examples)
 
 #### Linux (Ubuntu/Debian)

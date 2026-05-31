@@ -1,15 +1,11 @@
 local function config()
-	local ok, telescope = pcall(require, "telescope")
-	if not ok then
-		return
-	end
-
-	telescope.setup(require("qfioofa.plugins.telescope.options"))
-	require("qfioofa.plugins.telescope.keymaps")()
+	require("telescope").setup(require("qfioofa.plugins.telescope.options"))
 end
 
 return {
 	"nvim-telescope/telescope.nvim",
+	cmd = "Telescope",
+	keys = require("qfioofa.plugins.telescope.keymaps"),
 	dependencies = {
 		"nvim-telescope/telescope-media-files.nvim",
 	},

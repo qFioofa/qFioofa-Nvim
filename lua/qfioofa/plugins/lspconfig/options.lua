@@ -7,6 +7,9 @@ return {
 	ts_ls = {},
 	clangd = {},
 	lua_ls = {
+		-- `workspace.library` is intentionally omitted: neodev (a dependency in
+		-- this plugin spec) configures the runtime library for Neovim Lua dev,
+		-- which is cheaper than scanning the whole runtime path here.
 		settings = {
 			Lua = {
 				runtime = {
@@ -15,10 +18,6 @@ return {
 				diagnostics = {
 					globals = { "vim" },
 					enable = true,
-				},
-				workspace = {
-					library = vim.api.nvim_get_runtime_file("", true),
-					checkThirdParty = false,
 				},
 				telemetry = {
 					enable = false,

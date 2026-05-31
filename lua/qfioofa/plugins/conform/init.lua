@@ -1,14 +1,11 @@
 local function config()
-	local ok, conform = pcall(require, "conform")
-	if not ok then
-		return
-	end
-
-	conform.setup(require("qfioofa.plugins.conform.options"))
-	require("qfioofa.plugins.conform.keymaps")()
+	require("conform").setup(require("qfioofa.plugins.conform.options"))
 end
 
 return {
 	"stevearc/conform.nvim",
+	event = "BufWritePre",
+	cmd = "ConformInfo",
+	keys = require("qfioofa.plugins.conform.keymaps"),
 	config = config,
 }

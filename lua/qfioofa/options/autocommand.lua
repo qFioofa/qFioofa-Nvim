@@ -22,6 +22,16 @@ vim.api.nvim_create_autocmd("WinEnter", {
 	callback = function()
 		local min_width = 100
 
+		-- Don't fight floating windows (popups, completion, etc.).
+		if vim.api.nvim_win_get_config(0).relative ~= "" then
+			return
+		end
+
+		-- Nothing to widen against in a single-window layout.
+		if #vim.api.nvim_tabpage_list_wins(0) < 2 then
+			return
+		end
+
 		if isExcludedWindow() then
 			return
 		end

@@ -9,6 +9,7 @@ local NOTIFY = true
 local function nWarn(message)
 	if not message or type(message) ~= "string" then
 		vim.notify("nWarn: need message to display", vim.log.levels.ERROR)
+		return
 	end
 	vim.notify(message, vim.log.levels.WARN)
 end
@@ -16,6 +17,7 @@ end
 local function nError(message)
 	if not message or type(message) ~= "string" then
 		vim.notify("nError: need message to display", vim.log.levels.ERROR)
+		return
 	end
 	vim.notify(message, vim.log.levels.ERROR)
 end

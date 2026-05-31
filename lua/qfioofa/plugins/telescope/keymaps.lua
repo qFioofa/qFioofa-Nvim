@@ -1,53 +1,19 @@
-return function()
-	local builtin = require("telescope.builtin")
-
-	-- Find files
-	vim.keymap.set("n", "<leader>ff", function()
-		builtin.find_files()
-	end, { desc = "Find Files" })
-
-	-- Find in files (grep)
-	vim.keymap.set("n", "<leader>fg", function()
-		builtin.live_grep()
-	end, { desc = "Find in Files" })
-
-	-- Find in current buffer
-	vim.keymap.set("n", "<leader>fb", function()
-		builtin.current_buffer_fuzzy_find()
-	end, { desc = "Find in Buffer" })
-
-	-- Recent files
-	vim.keymap.set("n", "<leader>fr", function()
-		builtin.oldfiles()
-	end, { desc = "Recent Files" })
-
-	-- Help tags
-	vim.keymap.set("n", "<leader>fh", function()
-		builtin.help_tags()
-	end, { desc = "Help Tags" })
-
-	-- Commands
-	vim.keymap.set("n", "<leader>fc", function()
-		builtin.commands()
-	end, { desc = "Commands" })
-
-	-- Keymaps
-	vim.keymap.set("n", "<leader>fk", function()
-		builtin.keymaps()
-	end, { desc = "Keymaps" })
-
-	-- Buffers
-	vim.keymap.set("n", "<leader>fl", function()
-		builtin.buffers()
-	end, { desc = "List Buffers" })
-
-	-- Git files
-	vim.keymap.set("n", "<leader>gf", function()
-		builtin.git_files()
-	end, { desc = "Git Files" })
-
-	-- Git status
-	vim.keymap.set("n", "<leader>gs", function()
-		builtin.git_status()
-	end, { desc = "Git Status" })
+-- Returned as a lazy.nvim `keys` spec so telescope only loads on first use.
+local function builtin(name)
+	return function()
+		require("telescope.builtin")[name]()
+	end
 end
+
+return {
+	{ "<leader>ff", builtin("find_files"), desc = "Find Files" },
+	{ "<leader>fg", builtin("live_grep"), desc = "Find in Files" },
+	{ "<leader>fb", builtin("current_buffer_fuzzy_find"), desc = "Find in Buffer" },
+	{ "<leader>fr", builtin("oldfiles"), desc = "Recent Files" },
+	{ "<leader>fh", builtin("help_tags"), desc = "Help Tags" },
+	{ "<leader>fc", builtin("commands"), desc = "Commands" },
+	{ "<leader>fk", builtin("keymaps"), desc = "Keymaps" },
+	{ "<leader>fl", builtin("buffers"), desc = "List Buffers" },
+	{ "<leader>gf", builtin("git_files"), desc = "Git Files" },
+	{ "<leader>gs", builtin("git_status"), desc = "Git Status" },
+}
