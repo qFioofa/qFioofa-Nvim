@@ -1,5 +1,6 @@
 
 @echo off
+chcp 65001 >nul
 setlocal enabledelayedexpansion
 
 set NVIM_CONFIG_DIR=%USERPROFILE%\AppData\Local\nvim
