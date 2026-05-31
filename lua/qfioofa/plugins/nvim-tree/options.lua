@@ -79,11 +79,11 @@ return {
 				modified = "",
 				bookmark = "",
 				git = {
-					unstaged = "●",
+					unstaged = "",
 					staged = "",
 					unmerged = "",
 					renamed = "",
-					untracked = "",
+					untracked = "",
 					deleted = "",
 					ignored = "",
 				},
