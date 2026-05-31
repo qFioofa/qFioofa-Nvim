@@ -93,8 +93,8 @@ return function(event)
 	-- Execute a code action.
 	map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
 
-	-- Opens a popup that displays documentation about the word under your cursor.
-	map("K", vim.lsp.buf.hover, "Hover Documentation")
+	-- Note: `K` (hover documentation) is handled by hover.nvim, which already
+	-- includes an LSP source, so it is intentionally not mapped here.
 
 	-- WARN: This is not Goto Definition, this is Goto Declaration.
 	map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")

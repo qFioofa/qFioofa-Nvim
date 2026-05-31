@@ -37,9 +37,9 @@ return function()
 	end, { desc = "Keymaps" })
 
 	-- Buffers
-	vim.keymap.set("n", "<leader>fb", function()
+	vim.keymap.set("n", "<leader>fl", function()
 		builtin.buffers()
-	end, { desc = "Buffers" })
+	end, { desc = "List Buffers" })
 
 	-- Git files
 	vim.keymap.set("n", "<leader>gf", function()

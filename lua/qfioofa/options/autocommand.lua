@@ -1,5 +1,5 @@
 local function isExcludedWindow()
-	local ft = vim.api.nvim_buf_get_option(0, "filetype")
+	local ft = vim.api.nvim_get_option_value("filetype", { buf = 0 })
 
 	local buf_name = vim.api.nvim_buf_get_name(0)
 	local excluded_filetypes = { "nvimtree", "NvimTree" }

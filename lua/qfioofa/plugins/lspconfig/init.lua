@@ -72,8 +72,8 @@ local function config()
 				},
 				filetypes = { "plantuml", "uml", "puml" },
 				root_dir = function(fname)
-					return lspconfig.util.find_git_ancestor(fname)
-						or lspconfig.util.path.dirname(fname)
+					return lspconfig.util.root_pattern(".git")(fname)
+						or vim.fs.dirname(fname)
 				end,
 				settings = {},
 			},
@@ -98,6 +98,7 @@ local function config()
 	})
 
 	require("mason-lspconfig").setup({
+		ensure_installed = vim.tbl_keys(servers or {}),
 		handlers = {
 			function(server_name)
 				local server = servers[server_name] or {}

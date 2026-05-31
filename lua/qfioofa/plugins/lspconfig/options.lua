@@ -1,10 +1,11 @@
 -- Language servers to configure (and install via mason).
+-- Keys must be lspconfig server names (not mason package names). Formatters
+-- like clang-format are handled separately by conform, not here.
 return {
 	eslint = {},
 	svelte = {},
-	["typescript-language-server"] = {},
-	["clang-format"] = {},
-	["clangd"] = {},
+	ts_ls = {},
+	clangd = {},
 	lua_ls = {
 		settings = {
 			Lua = {
@@ -13,7 +14,7 @@ return {
 				},
 				diagnostics = {
 					globals = { "vim" },
-					enable = false,
+					enable = true,
 				},
 				workspace = {
 					library = vim.api.nvim_get_runtime_file("", true),
