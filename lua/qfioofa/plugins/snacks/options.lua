@@ -113,6 +113,10 @@ local AnimateOptions = {
 
 return {
 	bigfile = { enabled = true },
+	-- Inline image preview (PNG/JPG/GIF/etc. and images in markdown).
+	-- Cross-platform: renders via the Kitty graphics protocol, so it needs a
+	-- capable terminal (Kitty, WezTerm, Ghostty) plus ImageMagick on PATH.
+	image = { enabled = true },
 	animate = AnimateOptions,
 	dashboard = {
 		enabled = true,

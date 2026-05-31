@@ -20,6 +20,37 @@ local function td(description)
 	return vim.tbl_extend("force", term_opts, { desc = description })
 end
 
+-- Open the URL (or file path) under the cursor with the OS handler.
+-- `vim.ui.open` is cross-platform: explorer on Windows, open on macOS,
+-- xdg-open/wslview on Linux.
+local function open_under_cursor()
+	local line = vim.api.nvim_get_current_line()
+	local col = vim.api.nvim_win_get_cursor(0)[2] + 1
+
+	-- Prefer a URL on the current line that spans the cursor.
+	local url_pattern = "%a[%w+.-]*://[%w-_%.%?%.:/%+=&#@!~,;'%%]+"
+	local from = 1
+	while true do
+		local s, e = line:find(url_pattern, from)
+		if not s then
+			break
+		end
+		if col >= s and col <= e + 1 then
+			vim.ui.open(line:sub(s, e))
+			return
+		end
+		from = e + 1
+	end
+
+	-- Fall back to whatever is under the cursor (file path, www.… link).
+	local cfile = vim.fn.expand("<cfile>")
+	if cfile ~= "" then
+		vim.ui.open(cfile)
+	else
+		vim.notify("No URL or file under cursor", vim.log.levels.WARN)
+	end
+end
+
 --Remap space as leader key
 keymap("", "<Space>", "<Nop>", opts)
 vim.g.mapleader = " "
@@ -38,6 +69,7 @@ keymap("n", "<leader><C-q>", ":qa!<CR>", d("Quit all (force)"))
 keymap("n", "<leader><C-w>", ":w!<CR>", d("Write file (force)"))
 keymap({ "n", "v" }, "<C-;>", ":", d("Enter command mode"))
 keymap("n", "Y", "y$", d("Yank to end of line"))
+keymap("n", "gx", open_under_cursor, d("Open link/file under cursor"))
 
 -- Normal --
 -- Better window navigation
