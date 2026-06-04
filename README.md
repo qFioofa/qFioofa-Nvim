@@ -193,6 +193,20 @@ rmdir /s /q "%LOCALAPPDATA%\nvim" "%LOCALAPPDATA%\nvim-data" "%TEMP%\nvim*" 2>nu
 
 ![lualine](./photos/lualine.png)
 
+## Nix
+
+Ships a `flake.nix` exposing a Home Manager module (`homeManagerModules.default`).
+It symlinks the repo root to `~/.config/nvim` via `xdg.configFile`, so the config
+can be managed declaratively instead of running `deploy_config.sh`.
+
+```nix
+# flake inputs
+qFioofa-nvim.url = "github:qFioofa/qFioofa-Nvim";
+
+# home configuration
+imports = [ qFioofa-nvim.homeManagerModules.default ];
+```
+
 ## Useful Commands
 
 - **Install Nerd Fonts (Linux):** Follow instructions from the [source](https://github.com/ryanoasis/nerd-fonts?tab=readme-ov-file#option-7-install-script). Example using the install script:
