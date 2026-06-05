@@ -115,10 +115,5 @@ keymap("t", "<C-k>", "<C-\\><C-N><C-w>k", td("Terminal: focus up window"))
 keymap("t", "<C-l>", "<C-\\><C-N><C-w>l", td("Terminal: focus right window"))
 keymap("t", "<Esc>", "<C-\\><C-n>", td("Terminal: exit to normal mode"))
 
--- Open terminal window on the right side from normal mode
-keymap(
-	"n",
-	"<leader>tt",
-	":vsplit | wincmd l | terminal<CR>:vertical resize 100<CR>:startinsert<CR>",
-	d("Open terminal (vertical split)")
-)
+-- <leader>tt now opens a floating terminal via toggleterm.nvim
+-- (see lua/qfioofa/plugins/toggleterm).
