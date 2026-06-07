@@ -1,5 +1,5 @@
 return {
-	auto_restore_last_session = true,
+	auto_restore_last_session = false,
 	suppressed_dirs = {
 		"~/",
 		"~/Projects",

@@ -1,4 +1,9 @@
 local function config()
+	local highlight_augroup = vim.api.nvim_create_augroup(
+		"kickstart-lsp-highlight",
+		{ clear = false }
+	)
+
 	vim.api.nvim_create_autocmd("LspAttach", {
 		group = vim.api.nvim_create_augroup(
 			"kickstart-lsp-attach",
@@ -13,10 +18,6 @@ local function config()
 				client
 				and client.server_capabilities.documentHighlightProvider
 			then
-				local highlight_augroup = vim.api.nvim_create_augroup(
-					"kickstart-lsp-highlight",
-					{ clear = false }
-				)
 				vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
 					buffer = event.buf,
 					group = highlight_augroup,
@@ -101,22 +102,70 @@ local function config()
 	})
 	require("mason-tool-installer").setup({
 		ensure_installed = ensure_installed,
+		-- Install missing tools on startup; fidget renders the progress UI.
+		run_on_start = true,
 	})
+
+	-- Start a server only when its executable is actually on PATH. If the
+	-- binary is missing (Mason still installing, or a Nix build that did not
+	-- link), skip the start instead of letting Neovim crash the client with
+	-- "quit with exit code 127", and remember it so the UI can report it.
+	local missing = {}
+	local function setup_server(server_name)
+		local server = servers[server_name] or {}
+		server.capabilities = vim.tbl_deep_extend(
+			"force",
+			{},
+			capabilities,
+			server.capabilities or {}
+		)
+
+		local cfg = vim.lsp.config[server_name]
+		local cmd = cfg and cfg.cmd
+		local exe = type(cmd) == "table" and cmd[1] or nil
+		if exe and vim.fn.executable(exe) == 0 then
+			missing[server_name] = true
+			return false
+		end
+
+		missing[server_name] = nil
+		require("lspconfig")[server_name].setup(server)
+		return true
+	end
 
 	require("mason-lspconfig").setup({
 		ensure_installed = vim.tbl_keys(servers or {}),
 		handlers = {
 			function(server_name)
-				local server = servers[server_name] or {}
-				server.capabilities = vim.tbl_deep_extend(
-					"force",
-					{},
-					capabilities,
-					server.capabilities or {}
-				)
-				require("lspconfig")[server_name].setup(server)
+				setup_server(server_name)
 			end,
 		},
+	})
+
+	-- When Mason finishes installing, start the servers that were skipped and
+	-- re-fire FileType so they attach to already-open buffers — no restart.
+	vim.api.nvim_create_autocmd("User", {
+		pattern = "MasonToolsUpdateCompleted",
+		callback = function()
+			local started = {}
+			for server_name in pairs(missing) do
+				if setup_server(server_name) then
+					table.insert(started, server_name)
+				end
+			end
+			if next(missing) then
+				vim.notify(
+					"LSP not installed: "
+						.. table.concat(vim.tbl_keys(missing), ", ")
+						.. "\nRun :Mason to install.",
+					vim.log.levels.WARN,
+					{ title = "LSP" }
+				)
+			end
+			if #started > 0 then
+				vim.cmd("silent! doautoall FileType")
+			end
+		end,
 	})
 end
 
