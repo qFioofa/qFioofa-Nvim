@@ -99,6 +99,7 @@ local function config()
 		"isort",
 		"shfmt",
 		"prettier",
+		"sql-formatter",
 	})
 	require("mason-tool-installer").setup({
 		ensure_installed = ensure_installed,

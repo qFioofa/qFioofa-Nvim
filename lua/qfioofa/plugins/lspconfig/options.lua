@@ -20,6 +20,10 @@ return {
 	-- Docker
 	dockerls = {},
 
+	-- SQL (general + PostgreSQL). sql-language-server provides completion,
+	-- linting and hover; formatting is handled by sql_formatter in conform.
+	sqlls = {},
+
 	-- TOML (taplo also provides formatting, used by conform below)
 	taplo = {},
 

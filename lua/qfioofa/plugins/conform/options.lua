@@ -21,6 +21,10 @@ return {
 		c = { "clang-format" },
 		cpp = { "clang-format" },
 		java = { "google-java-format" },
+		sql = { "sql_formatter" },
+		pgsql = { "sql_formatter" },
+		mysql = { "sql_formatter" },
+		plsql = { "sql_formatter" },
 	},
 
 	format_on_save = {
@@ -28,5 +32,11 @@ return {
 		lsp_format = "fallback",
 	},
 
-	formatters = {},
+	formatters = {
+		-- Format with the PostgreSQL dialect so pg-specific syntax (e.g. casts,
+		-- RETURNING, JSON operators) is preserved instead of being mangled.
+		sql_formatter = {
+			prepend_args = { "--language", "postgresql" },
+		},
+	},
 }

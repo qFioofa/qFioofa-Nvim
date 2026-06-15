@@ -32,6 +32,7 @@ local parsers = {
 	"python",
 	"query",
 	"regex",
+	"sql",
 	"toml",
 	"tsx",
 	"typescript",
