@@ -134,6 +134,10 @@ local function config()
 		return true
 	end
 
+	-- Patch sql-language-server's bundled deps before it is started below, so
+	-- an already-installed sqlls does not crash on Node strict `exports`.
+	require("qfioofa.plugins.lspconfig.patch_sqlls").run()
+
 	require("mason-lspconfig").setup({
 		ensure_installed = vim.tbl_keys(servers or {}),
 		handlers = {
@@ -148,6 +152,10 @@ local function config()
 	vim.api.nvim_create_autocmd("User", {
 		pattern = "MasonToolsUpdateCompleted",
 		callback = function()
+			-- Mason overwrites node_modules on (re)install, so re-apply the
+			-- sql-language-server exports patch before starting the server.
+			require("qfioofa.plugins.lspconfig.patch_sqlls").run()
+
 			local started = {}
 			for server_name in pairs(missing) do
 				if setup_server(server_name) then
