@@ -15,6 +15,7 @@ local parsers = {
 	"dockerfile",
 	"go",
 	"html",
+	"java",
 	"javascript",
 	"jsdoc",
 	"json",

@@ -50,12 +50,6 @@ local function config()
 				client.server_capabilities.hoverProvider = false
 			end
 
-			if client:supports_method("textDocument/foldingRange") then
-				local win = vim.api.nvim_get_current_win()
-				vim.wo[win][0].foldexpr = "v:lua.vim.lsp.foldexpr()"
-				vim.wo[win][0].foldmethod = "expr"
-			end
-
 			if client:supports_method("textDocument/codeLens") then
 				vim.lsp.codelens.refresh({ bufnr = event.buf })
 				vim.api.nvim_create_autocmd(
@@ -140,6 +134,14 @@ local function config()
 		"shfmt",
 		"prettier",
 		"sql-formatter",
+		-- Java toolchain. jdtls is started by nvim-jdtls from ftplugin/java.lua
+		-- (NOT via vim.lsp.config), so it stays out of lspconfig/options.lua;
+		-- we only install it here. java-debug-adapter + java-test feed nvim-dap
+		-- and jdtls test runners; google-java-format is used by conform.
+		"jdtls",
+		"java-debug-adapter",
+		"java-test",
+		"google-java-format",
 	})
 	require("mason-tool-installer").setup({
 		ensure_installed = ensure_installed,
@@ -184,4 +186,5 @@ return {
 		{ "folke/neodev.nvim", opts = {} },
 	},
 	config = config,
+
 }

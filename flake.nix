@@ -54,7 +54,8 @@
 
           # Runtimes Mason uses to fetch/build/run servers & formatters.
           nodejs python3 go
-          jdk17               # in case a JVM-backed server is added
+          jdk21               # Java: jdtls (needs 21+), java-debug-adapter,
+                              # java-test, google-java-format all run on the JVM
 
           # Install toolchain Mason shells out to, plus tools the config uses.
           gcc gnumake curl wget git unzip gzip gnutar ripgrep fd

@@ -8,7 +8,7 @@ return {
 		{ "<leader>f", group = "Find" },
 		{ "<leader>g", group = "Git / Goto" },
 		{ "<leader>c", group = "Code" },
-		{ "<leader>d", group = "Diagnostics / Delete" },
+		{ "<leader>d", group = "Diagnostics / Debug / Delete" },
 		{ "<leader>t", group = "Toggle / Terminal" },
 		{ "<leader>n", group = "Noice" },
 		{ "<leader>r", group = "Rename" },
