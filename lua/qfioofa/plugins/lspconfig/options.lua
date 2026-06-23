@@ -49,7 +49,6 @@ return {
 	pyright = {},
 	ruff = {},
 
-	-- Go
 	gopls = {
 		settings = {
 			gopls = {
@@ -72,10 +71,7 @@ return {
 		},
 	},
 
-	-- Bash / shell
 	bashls = {},
-
-	-- Docker
 	dockerls = {},
 
 	-- SQL (general + PostgreSQL). sql-language-server provides completion,
@@ -85,7 +81,6 @@ return {
 	-- TOML (taplo also provides formatting, used by conform below)
 	taplo = {},
 
-	-- Markdown / XML
 	marksman = {},
 	lemminx = {},
 

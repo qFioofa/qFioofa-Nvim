@@ -1,9 +1,13 @@
+local actions = require("telescope.actions")
+
 return {
 	defaults = {
 		prompt_prefix = "   ",
 		selection_caret = " ",
 		entry_prefix = " ",
 		sorting_strategy = "ascending",
+		-- flex auto-switches horizontal/vertical based on window width.
+		layout_strategy = "flex",
 		layout_config = {
 			horizontal = {
 				prompt_position = "top",
@@ -19,12 +23,23 @@ return {
 			"%.tmp",
 			"%.cache",
 		},
-		path_display = { "truncate" },
+		-- "smart" shows just enough path to disambiguate; wrap instead of cut.
+		path_display = { "smart" },
+		wrap_results = true,
+		winblend = 10,
+		mappings = {
+			i = {
+				["<C-u>"] = actions.preview_scrolling_up,
+				["<C-d>"] = actions.preview_scrolling_down,
+				["<C-q>"] = actions.send_to_qflist + actions.open_qflist,
+				["<esc>"] = actions.close,
+			},
+		},
 	},
 	pickers = {
 		find_files = {
 			hidden = true,
-			previewer = false,
+			previewer = true,
 		},
 		grep_string = {
 			only_one_result = true,
@@ -34,9 +49,15 @@ return {
 				return { "--hidden" }
 			end,
 		},
+		buffers = {
+			sort_mru = true,
+			ignore_current_buffer = true,
+			mappings = {
+				i = { ["<C-x>"] = actions.delete_buffer },
+			},
+		},
 	},
 	extensions = {
-		extensions_list = { "themes", "terms" },
 		fzf = {
 			fuzzy = true,
 			override_generic_sorter = true,

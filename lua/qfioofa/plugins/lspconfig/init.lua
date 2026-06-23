@@ -95,12 +95,6 @@ local function config()
 		vim.lsp.config(server_name, server)
 	end
 
-	-- UML LSP installation
-	-- Install go
-	-- sudo apt install golang-go
-	--
-	-- install lsp
-	-- go install github.com/ptdewey/plantuml-lsp@latest
 	-- Only wire up plantuml-lsp when both the language server and the
 	-- `plantuml` renderer it shells out to are on PATH. Otherwise Neovim
 	-- spawn-errors on every .puml/.uml buffer. Install with:
