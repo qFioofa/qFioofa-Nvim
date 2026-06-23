@@ -4,15 +4,73 @@
 return {
 	eslint = {},
 	svelte = {},
-	ts_ls = {},
-	clangd = {},
+
+	-- Inlay hints must be enabled in the server settings, otherwise the
+	-- <leader>th toggle in keymaps.lua has nothing to show.
+	ts_ls = {
+		settings = {
+			typescript = {
+				inlayHints = {
+					includeInlayParameterNameHints = "all",
+					includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+					includeInlayFunctionParameterTypeHints = true,
+					includeInlayVariableTypeHints = true,
+					includeInlayPropertyDeclarationTypeHints = true,
+					includeInlayFunctionLikeReturnTypeHints = true,
+					includeInlayEnumMemberValueHints = true,
+				},
+			},
+			javascript = {
+				inlayHints = {
+					includeInlayParameterNameHints = "all",
+					includeInlayParameterNameHintsWhenArgumentMatchesName = false,
+					includeInlayFunctionParameterTypeHints = true,
+					includeInlayVariableTypeHints = true,
+					includeInlayPropertyDeclarationTypeHints = true,
+					includeInlayFunctionLikeReturnTypeHints = true,
+					includeInlayEnumMemberValueHints = true,
+				},
+			},
+		},
+	},
+
+	-- offsetEncoding pins utf-16 so clangd stops warning about multiple
+	-- offset encodings when paired with cmp's capabilities.
+	clangd = {
+		capabilities = { offsetEncoding = { "utf-16" } },
+		cmd = {
+			"clangd",
+			"--clang-tidy",
+			"--header-insertion=iwyu",
+		},
+	},
 
 	-- Python: pyright for types, ruff for fast linting + import sorting.
 	pyright = {},
 	ruff = {},
 
 	-- Go
-	gopls = {},
+	gopls = {
+		settings = {
+			gopls = {
+				hints = {
+					assignVariableTypes = true,
+					compositeLiteralFields = true,
+					compositeLiteralTypes = true,
+					constantValues = true,
+					functionTypeParameters = true,
+					parameterNames = true,
+					rangeVariableTypes = true,
+				},
+				staticcheck = true,
+				analyses = {
+					unusedparams = true,
+					nilness = true,
+					unusedwrite = true,
+				},
+			},
+		},
+	},
 
 	-- Bash / shell
 	bashls = {},

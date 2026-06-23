@@ -4,7 +4,7 @@ return {
 		"hover.providers.lsp",
 		"hover.providers.dap",
 		"hover.providers.man",
-		"hover.providers.dictionary",
+		-- "hover.providers.dictionary",  -- natural-language defs, not code
 		-- "hover.providers.gh",
 		-- "hover.providers.gh_user",
 		-- "hover.providers.jira",

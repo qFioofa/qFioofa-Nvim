@@ -75,9 +75,13 @@ return {
 		format = function(entry, vim_item)
 			vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
 			vim_item.menu = ({
-				nvim_lsp = "[LSP]",
-				buffer = "[Buffer]",
-				path = "[Path]",
+				nvim_lsp = "󰒋 [LSP]",
+				buffer = "󰦨 [Buffer]",
+				path = "󰉋 [Path]",
+				async_path = "󰉋 [Path]",
+				cmdline = " [Cmd]",
+				luasnip = " [Snip]",
+				nvim_lua = " [Lua]",
 			})[entry.source.name]
 			return vim_item
 		end,

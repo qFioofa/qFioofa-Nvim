@@ -1,7 +1,3 @@
--- nvim-treesitter needs a C compiler to build parsers. If none is available
--- we skip parser installation so startup is not spammed with
--- "No C compiler found!" errors. Install any of cc/gcc/clang/cl/zig and the
--- parsers below will be installed automatically on the next start.
 local function has_compiler()
 	for _, exe in ipairs({ "cc", "gcc", "clang", "cl", "zig" }) do
 		if vim.fn.executable(exe) == 1 then

@@ -99,6 +99,12 @@ return function(event)
 	-- WARN: This is not Goto Definition, this is Goto Declaration.
 	map("gD", vim.lsp.buf.declaration, "[G]oto [D]eclaration")
 
+	-- Run the CodeLens on the current line (e.g. gopls "run test | debug").
+	-- Lenses are refreshed from the LspAttach autocmd in init.lua.
+	if client and client:supports_method("textDocument/codeLens") then
+		map("<leader>cl", vim.lsp.codelens.run, "[C]ode [L]ens run")
+	end
+
 	-- Enable inlay hints if the language server supports them.
 	if
 		client

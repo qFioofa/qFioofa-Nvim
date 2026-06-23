@@ -1,4 +1,16 @@
 local function config()
+	vim.o.winborder = "rounded"
+	vim.o.exrc = true
+
+	local function set_lsp_hl()
+		vim.api.nvim_set_hl(0, "LspReferenceText", { link = "Visual" })
+		vim.api.nvim_set_hl(0, "LspReferenceRead", { link = "Visual" })
+		vim.api.nvim_set_hl(0, "LspReferenceWrite", { link = "Visual" })
+		vim.api.nvim_set_hl(0, "LspInlayHint", { link = "Comment" })
+	end
+	set_lsp_hl()
+	vim.api.nvim_create_autocmd("ColorScheme", { callback = set_lsp_hl })
+
 	local highlight_augroup = vim.api.nvim_create_augroup(
 		"kickstart-lsp-highlight",
 		{ clear = false }
@@ -12,7 +24,6 @@ local function config()
 		callback = function(event)
 			require("qfioofa.plugins.lspconfig.keymaps")(event)
 
-			-- Highlight references of the word under the cursor on CursorHold.
 			local client = vim.lsp.get_client_by_id(event.data.client_id)
 			if
 				client
@@ -29,6 +40,34 @@ local function config()
 					group = highlight_augroup,
 					callback = vim.lsp.buf.clear_references,
 				})
+			end
+
+			if not client then
+				return
+			end
+
+			if client.name == "ruff" then
+				client.server_capabilities.hoverProvider = false
+			end
+
+			if client:supports_method("textDocument/foldingRange") then
+				local win = vim.api.nvim_get_current_win()
+				vim.wo[win][0].foldexpr = "v:lua.vim.lsp.foldexpr()"
+				vim.wo[win][0].foldmethod = "expr"
+			end
+
+			if client:supports_method("textDocument/codeLens") then
+				vim.lsp.codelens.refresh({ bufnr = event.buf })
+				vim.api.nvim_create_autocmd(
+					{ "BufEnter", "CursorHold", "InsertLeave" },
+					{
+						buffer = event.buf,
+						group = highlight_augroup,
+						callback = function()
+							vim.lsp.codelens.refresh({ bufnr = event.buf })
+						end,
+					}
+				)
 			end
 		end,
 	})
@@ -47,14 +86,14 @@ local function config()
 		end,
 	})
 
-	local capabilities = vim.lsp.protocol.make_client_capabilities()
-	capabilities = vim.tbl_deep_extend(
-		"force",
-		capabilities,
-		require("cmp_nvim_lsp").default_capabilities()
-	)
+	local capabilities = require("cmp_nvim_lsp").default_capabilities()
+	vim.lsp.config("*", { capabilities = capabilities })
 
 	local servers = require("qfioofa.plugins.lspconfig.options")
+
+	for server_name, server in pairs(servers) do
+		vim.lsp.config(server_name, server)
+	end
 
 	-- UML LSP installation
 	-- Install go
@@ -62,38 +101,45 @@ local function config()
 	--
 	-- install lsp
 	-- go install github.com/ptdewey/plantuml-lsp@latest
-	local lspconfig = require("lspconfig")
-	local configs = require("lspconfig.configs")
-	if not configs.plantuml_lsp then
-		configs.plantuml_lsp = {
-			default_config = {
-				cmd = {
-					"plantuml-lsp",
-					"--exec-path=plantuml",
-				},
-				filetypes = { "plantuml", "uml", "puml" },
-				root_dir = function(fname)
-					return lspconfig.util.root_pattern(".git")(fname)
-						or vim.fs.dirname(fname)
-				end,
-				settings = {},
-			},
-		}
+	-- Only wire up plantuml-lsp when both the language server and the
+	-- `plantuml` renderer it shells out to are on PATH. Otherwise Neovim
+	-- spawn-errors on every .puml/.uml buffer. Install with:
+	--   go install github.com/ptdewey/plantuml-lsp@latest   (then add $(go env GOPATH)/bin to PATH)
+	--   plus the `plantuml` package for the --exec-path=plantuml renderer.
+	if
+		vim.fn.executable("plantuml-lsp") == 1
+		and vim.fn.executable("plantuml") == 1
+	then
+		vim.lsp.config("plantuml_lsp", {
+			cmd = { "plantuml-lsp", "--exec-path=plantuml" },
+			filetypes = { "plantuml", "uml", "puml" },
+			root_markers = { ".git" },
+		})
+		vim.lsp.enable("plantuml_lsp")
 	end
-	lspconfig.plantuml_lsp.setup({})
 
 	vim.diagnostic.config({
-		virtual_text = true,
-		signs = false,
+		virtual_text = false,
+		virtual_lines = { current_line = true },
 		underline = true,
+		signs = {
+			text = {
+				[vim.diagnostic.severity.ERROR] = "󰅚",
+				[vim.diagnostic.severity.WARN] = "󰀪",
+				[vim.diagnostic.severity.HINT] = "󰌶",
+				[vim.diagnostic.severity.INFO] = "󰋽",
+			},
+			numhl = {
+				[vim.diagnostic.severity.ERROR] = "DiagnosticSignError",
+				[vim.diagnostic.severity.WARN] = "DiagnosticSignWarn",
+			},
+		},
 	})
 
 	require("mason").setup()
 
 	local ensure_installed = vim.tbl_keys(servers or {})
 	vim.list_extend(ensure_installed, {
-		-- Formatters used by conform (LSP servers are added from `servers` above).
-		-- gofmt ships with the Go toolchain, so it is not installed via Mason.
 		"stylua",
 		"black",
 		"isort",
@@ -103,36 +149,8 @@ local function config()
 	})
 	require("mason-tool-installer").setup({
 		ensure_installed = ensure_installed,
-		-- Install missing tools on startup; fidget renders the progress UI.
 		run_on_start = true,
 	})
-
-	-- Start a server only when its executable is actually on PATH. If the
-	-- binary is missing (Mason still installing, or a Nix build that did not
-	-- link), skip the start instead of letting Neovim crash the client with
-	-- "quit with exit code 127", and remember it so the UI can report it.
-	local missing = {}
-	local function setup_server(server_name)
-		local server = servers[server_name] or {}
-		server.capabilities = vim.tbl_deep_extend(
-			"force",
-			{},
-			capabilities,
-			server.capabilities or {}
-		)
-
-		local cfg = vim.lsp.config[server_name]
-		local cmd = cfg and cfg.cmd
-		local exe = type(cmd) == "table" and cmd[1] or nil
-		if exe and vim.fn.executable(exe) == 0 then
-			missing[server_name] = true
-			return false
-		end
-
-		missing[server_name] = nil
-		require("lspconfig")[server_name].setup(server)
-		return true
-	end
 
 	-- Patch sql-language-server's bundled deps before it is started below, so
 	-- an already-installed sqlls does not crash on Node strict `exports`.
@@ -140,40 +158,24 @@ local function config()
 
 	require("mason-lspconfig").setup({
 		ensure_installed = vim.tbl_keys(servers or {}),
-		handlers = {
-			function(server_name)
-				setup_server(server_name)
-			end,
-		},
+		-- We enable servers ourselves below, so mason-lspconfig must not auto
+		-- enable everything it installed (that also pulls in formatters like
+		-- stylua as bogus LSP clients).
+		automatic_enable = false,
 	})
 
-	-- When Mason finishes installing, start the servers that were skipped and
-	-- re-fire FileType so they attach to already-open buffers — no restart.
+	-- Enable our servers. `vim.lsp.enable` starts them on matching FileType,
+	-- including buffers that are already open, so no restart is needed.
+	vim.lsp.enable(vim.tbl_keys(servers or {}))
+
+	-- Mason overwrites node_modules on (re)install, so re-apply the
+	-- sql-language-server exports patch and (re)enable servers that were just
+	-- installed — again without a restart.
 	vim.api.nvim_create_autocmd("User", {
 		pattern = "MasonToolsUpdateCompleted",
 		callback = function()
-			-- Mason overwrites node_modules on (re)install, so re-apply the
-			-- sql-language-server exports patch before starting the server.
 			require("qfioofa.plugins.lspconfig.patch_sqlls").run()
-
-			local started = {}
-			for server_name in pairs(missing) do
-				if setup_server(server_name) then
-					table.insert(started, server_name)
-				end
-			end
-			if next(missing) then
-				vim.notify(
-					"LSP not installed: "
-						.. table.concat(vim.tbl_keys(missing), ", ")
-						.. "\nRun :Mason to install.",
-					vim.log.levels.WARN,
-					{ title = "LSP" }
-				)
-			end
-			if #started > 0 then
-				vim.cmd("silent! doautoall FileType")
-			end
+			vim.lsp.enable(vim.tbl_keys(servers or {}))
 		end,
 	})
 end
