@@ -143,6 +143,27 @@ local function config()
 		"java-test",
 		"google-java-format",
 	})
+	-- mason-tool-installer fires one error notification per package that fails
+	-- to install, so a bad run shows up as a stream of popups. Swallow those
+	-- individual errors and collect the package names; they are reported as a
+	-- single message from the MasonToolsUpdateCompleted handler below.
+	local failed_installs = {}
+	local base_notify = vim.notify
+	vim.notify = function(msg, level, opts)
+		if
+			type(msg) == "string"
+			and opts
+			and opts.title == "mason-tool-installer"
+			and level == vim.log.levels.ERROR
+		then
+			failed_installs[#failed_installs + 1] = msg:match(
+				"^(.-): failed to install"
+			) or msg
+			return
+		end
+		return base_notify(msg, level, opts)
+	end
+
 	require("mason-tool-installer").setup({
 		ensure_installed = ensure_installed,
 		run_on_start = true,
@@ -175,6 +196,19 @@ local function config()
 		callback = function()
 			require("qfioofa.plugins.lspconfig.patch_sqlls").run()
 			vim.lsp.enable(vim.tbl_keys(servers or {}))
+
+			if #failed_installs > 0 then
+				-- base_notify bypasses the swallowing wrapper above.
+				base_notify(
+					"Mason: failed to install "
+						.. #failed_installs
+						.. " tool(s): "
+						.. table.concat(failed_installs, ", "),
+					vim.log.levels.ERROR,
+					{ title = "Mason" }
+				)
+				failed_installs = {}
+			end
 		end,
 	})
 end
