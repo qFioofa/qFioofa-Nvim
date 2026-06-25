@@ -1,6 +1,9 @@
 return {
 	providers = {
-		"hover.providers.diagnostic",
+		-- diagnostic registers with priority 1001 (above lsp), so on any symbol
+		-- that also has a diagnostic it shadows the LSP doc on K. Diagnostics are
+		-- already shown inline (virtual_lines.current_line), so keep K = doc only.
+		-- "hover.providers.diagnostic",
 		"hover.providers.lsp",
 		"hover.providers.dap",
 		"hover.providers.man",

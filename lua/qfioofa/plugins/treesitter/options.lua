@@ -38,6 +38,10 @@ local parsers = {
 	"xml",
 	"yaml",
 	"svelte",
+	"elixir",
+	"erlang",
+	"heex",
+	"eex",
 }
 
 local compiler_available = has_compiler()

@@ -3,6 +3,58 @@ if not ok then
 	return
 end
 
+local function java_major(bin)
+	local out = vim.fn.system({ bin, "-version" })
+	local v = out:match('version%s+"([^"]+)"')
+	if not v then
+		return 0
+	end
+	return tonumber(v:match("^1%.(%d+)") or v:match("^(%d+)")) or 0
+end
+
+local function find_java(min)
+	local list, seen = {}, {}
+	local function add(p)
+		if p and p ~= "" and not seen[p] then
+			seen[p] = true
+			list[#list + 1] = p
+		end
+	end
+	add(vim.env.JDTLS_JAVA_HOME and vim.env.JDTLS_JAVA_HOME .. "/bin/java")
+	add(vim.env.JAVA_HOME and vim.env.JAVA_HOME .. "/bin/java")
+	add("/run/current-system/sw/bin/java")
+	add(vim.fn.exepath("java"))
+	for _, g in
+		ipairs(vim.fn.glob("/nix/store/*-openjdk-21*/bin/java", true, true))
+	do
+		add(g)
+	end
+	for _, g in ipairs(vim.fn.glob("/usr/lib/jvm/*/bin/java", true, true)) do
+		add(g)
+	end
+	for _, c in ipairs(list) do
+		if vim.fn.executable(c) == 1 and java_major(c) >= min then
+			return c
+		end
+	end
+end
+
+local java_bin = vim.g.jdtls_java
+if not java_bin then
+	java_bin = find_java(21)
+	if java_bin then
+		vim.g.jdtls_java = java_bin
+	end
+end
+if not java_bin then
+	vim.notify(
+		"jdtls: no JDK 21+ found. Set $JAVA_HOME (or $JDTLS_JAVA_HOME) to a JDK 21+.",
+		vim.log.levels.ERROR
+	)
+	return
+end
+local java_home = vim.fn.fnamemodify(java_bin, ":h:h")
+
 local mason = vim.fn.stdpath("data") .. "/mason"
 local jdtls_pkg = mason .. "/packages/jdtls"
 
@@ -53,7 +105,7 @@ vim.list_extend(
 )
 
 local cmd = {
-	"java",
+	java_bin,
 	"-Declipse.application=org.eclipse.jdt.ls.core.id1",
 	"-Dosgi.bundles.defaultStartLevel=4",
 	"-Declipse.product=org.eclipse.jdt.ls.core.product",
@@ -91,11 +143,12 @@ local config = {
 
 	settings = {
 		java = {
+			home = java_home,
 			eclipse = { downloadSources = true },
 			maven = { downloadSources = true },
 			references = { includeDecompiledSources = true },
-			implementationsCodeLens = { enabled = true },
-			referencesCodeLens = { enabled = true },
+			implementationsCodeLens = { enabled = false },
+			referencesCodeLens = { enabled = false },
 			signatureHelp = { enabled = true },
 			format = { enabled = true },
 			completion = {

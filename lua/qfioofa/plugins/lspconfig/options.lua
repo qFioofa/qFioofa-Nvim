@@ -74,6 +74,11 @@ return {
 	bashls = {},
 	dockerls = {},
 
+	-- Elixir + Erlang. elixirls covers .ex/.exs/.heex; erlangls covers .erl/.hrl.
+	-- Mason package names (elixir-ls, erlang-ls) are mapped by mason-lspconfig.
+	elixirls = {},
+	erlangls = {},
+
 	-- SQL (general + PostgreSQL). sql-language-server provides completion,
 	-- linting and hover; formatting is handled by sql_formatter in conform.
 	sqlls = {},

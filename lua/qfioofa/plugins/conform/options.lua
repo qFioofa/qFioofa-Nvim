@@ -21,6 +21,8 @@ return {
 		c = { "clang-format" },
 		cpp = { "clang-format" },
 		java = { "google-java-format" },
+		elixir = { "mix" },
+		heex = { "mix" },
 		sql = { "sql_formatter" },
 		pgsql = { "sql_formatter" },
 		mysql = { "sql_formatter" },
