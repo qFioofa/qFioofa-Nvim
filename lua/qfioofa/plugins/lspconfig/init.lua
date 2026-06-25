@@ -152,11 +152,14 @@ local function config()
 	-- an already-installed sqlls does not crash on Node strict `exports`.
 	require("qfioofa.plugins.lspconfig.patch_sqlls").run()
 
+	-- mason-tool-installer above is the SOLE installer: it already maps each
+	-- lspconfig server name to its mason package and installs it alongside the
+	-- formatters/java tools. Giving mason-lspconfig its own ensure_installed
+	-- made a SECOND install runner race the first one on startup — colliding on
+	-- lockfiles ("installation is already running in another process") and
+	-- corrupting staging dirs (sqlls). So mason-lspconfig only provides the
+	-- name mapping here; it installs nothing and enables nothing.
 	require("mason-lspconfig").setup({
-		ensure_installed = vim.tbl_keys(servers or {}),
-		-- We enable servers ourselves below, so mason-lspconfig must not auto
-		-- enable everything it installed (that also pulls in formatters like
-		-- stylua as bogus LSP clients).
 		automatic_enable = false,
 	})
 
