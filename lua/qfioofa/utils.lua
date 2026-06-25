@@ -37,17 +37,18 @@ local function saveInit(path, root)
 
 	if not success then
 		if NOTIFY then
-			nWarn("[saveInit] | " .. full_module_path .. " | Error in loading relative path |\n" .. Function)
+			nWarn(
+				"[saveInit] | "
+					.. full_module_path
+					.. " | Error in loading relative path |\n"
+					.. Function
+			)
 		end
 		return
 	end
 
 	if type(Function) == "function" then
 		Function()
-	else
-		-- if NOTIFY then
-		-- 	nWarn("[saveInit] | " .. full_module_path .. " | Module did not return a function to execute")
-		-- end
 	end
 end
 

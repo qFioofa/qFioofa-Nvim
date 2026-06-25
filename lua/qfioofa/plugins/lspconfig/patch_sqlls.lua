@@ -72,8 +72,7 @@ end
 
 -- Patch the sqlls install in place. Returns the number of packages patched.
 function M.run()
-	local root = vim.fn.stdpath("data")
-		.. "/mason/packages/sqlls/node_modules"
+	local root = vim.fn.stdpath("data") .. "/mason/packages/sqlls/node_modules"
 	if uv.fs_stat(root) == nil then
 		return 0
 	end

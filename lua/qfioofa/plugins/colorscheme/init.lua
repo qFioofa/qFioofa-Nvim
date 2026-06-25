@@ -14,9 +14,6 @@ return {
 			variant = "muted",
 		},
 		config = function()
-			-- require("yugen-ash").setup({
-			-- 	variant = "muted",
-			-- })
 			vim.cmd("colorscheme yugen-ash")
 		end,
 	},

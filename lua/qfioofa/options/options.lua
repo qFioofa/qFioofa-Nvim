@@ -1,4 +1,3 @@
--- Settings object of options and relative value
 local Options = {
 	-- General
 	backup = false,
@@ -55,7 +54,6 @@ local Options = {
 	mouse = "a",
 }
 
--- Loading all options in vim
 for OptionName, OptionValue in pairs(Options) do
 	vim.opt[OptionName] = OptionValue
 end

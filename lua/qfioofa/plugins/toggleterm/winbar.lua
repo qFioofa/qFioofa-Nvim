@@ -24,10 +24,15 @@ end
 ---Attach the winbar to a toggleterm terminal window (float or split).
 ---@param term table Terminal instance passed to the `on_open` callback.
 function M.attach(term)
-	if not term or not term.window or not vim.api.nvim_win_is_valid(term.window) then
+	if
+		not term
+		or not term.window
+		or not vim.api.nvim_win_is_valid(term.window)
+	then
 		return
 	end
-	vim.wo[term.window].winbar = "%{%v:lua.require('qfioofa.plugins.toggleterm.winbar').render()%}"
+	vim.wo[term.window].winbar =
+		"%{%v:lua.require('qfioofa.plugins.toggleterm.winbar').render()%}"
 
 	-- Pre-build lualine's transitional separator highlights for this window now,
 	-- outside a redraw. Creating highlight groups during the winbar's draw-time

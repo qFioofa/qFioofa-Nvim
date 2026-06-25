@@ -34,7 +34,6 @@ local sections = {
 			"filename",
 			icon = "",
 			separator = { left = "", right = "" },
-			-- right_padding = 2,
 			symbols = {
 				modified = "",
 				readonly = "",

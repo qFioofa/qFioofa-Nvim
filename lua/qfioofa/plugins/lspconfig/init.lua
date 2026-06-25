@@ -189,5 +189,4 @@ return {
 		{ "folke/neodev.nvim", opts = {} },
 	},
 	config = config,
-
 }

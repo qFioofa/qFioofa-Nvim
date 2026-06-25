@@ -65,14 +65,6 @@
         # (e.g. marksman pulling in libicu): point the loader at /usr/lib too.
         profile = ''
           export LD_LIBRARY_PATH=/usr/lib:/usr/lib64''${LD_LIBRARY_PATH:+:$LD_LIBRARY_PATH}
-          # Mason builds gopls (and other go servers) with `go install`. With
-          # cgo on, go shells out to gcc to link and dies inside this FHS env
-          # with "ld: cannot find Scrt1.o/crti.o" — no glibc startfiles here.
-          # gopls is pure Go, so building it without cgo links statically and
-          # needs no C toolchain at all.
-          # ponytail: CGO_ENABLED=0 for every go build in nvim; all Mason go
-          # tools are pure Go. Drop it (and add glibc.dev) only if a cgo tool
-          # is ever needed here.
           export CGO_ENABLED=0
         '';
       };

@@ -39,6 +39,11 @@ return function()
 	}
 
 	for _, keymap in ipairs(keymaps) do
-		vim.keymap.set(keymap.mode or "n", keymap[1], keymap[2], { desc = keymap.desc, silent = true, noremap = true })
+		vim.keymap.set(
+			keymap.mode or "n",
+			keymap[1],
+			keymap[2],
+			{ desc = keymap.desc, silent = true, noremap = true }
+		)
 	end
 end
