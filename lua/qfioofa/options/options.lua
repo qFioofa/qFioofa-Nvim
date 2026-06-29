@@ -2,6 +2,7 @@ local Options = {
 	-- General
 	backup = false,
 	clipboard = "unnamedplus",
+	undofile = true,
 
 	-- Leftside numbers
 	number = true,

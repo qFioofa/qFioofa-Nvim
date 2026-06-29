@@ -52,20 +52,6 @@ local function setup(capabilities, attach_hook)
 				client.server_capabilities.hoverProvider = false
 			end
 
-			if client:supports_method("textDocument/codeLens") then
-				vim.lsp.codelens.refresh({ bufnr = event.buf })
-				vim.api.nvim_create_autocmd(
-					{ "BufEnter", "CursorHold", "InsertLeave" },
-					{
-						buffer = event.buf,
-						group = highlight_augroup,
-						callback = function()
-							vim.lsp.codelens.refresh({ bufnr = event.buf })
-						end,
-					}
-				)
-			end
-
 			if attach_hook then
 				attach_hook(client, event)
 			end
