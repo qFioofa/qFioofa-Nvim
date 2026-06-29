@@ -1,9 +1,7 @@
-local utils = require("qfioofa.utils")
-local saveInit = utils.saveInit
-local root = utils.roots.pluginManager
-
 local function main()
-	saveInit(root .. "initPlugins")
+	local profile = require("qfioofa.pluginManager.profile")
+	local backend = require("qfioofa.pluginManager.backends." .. profile)
+	backend()
 end
 
 return main

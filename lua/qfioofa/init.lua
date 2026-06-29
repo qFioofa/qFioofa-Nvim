@@ -4,6 +4,7 @@ local saveInit = utils.saveInit
 local order = {
 	"options",
 	"pluginManager",
+	"languages",
 }
 
 local function main()
