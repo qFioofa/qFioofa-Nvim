@@ -1,7 +1,3 @@
--- vim.pack backend (Neovim >= 0.12). Reads the existing lazy specs and drives
--- vim.pack.add + setup. Loads eagerly: event/ft/cmd/lazy are ignored as
--- triggers; `keys` are applied as real mappings.
-
 local GROUPS = { "common", "v012" }
 
 local function modname_candidates(repo)
@@ -14,7 +10,6 @@ local function url(repo)
 	return "https://github.com/" .. repo
 end
 
--- A single spec has a repo string at [1]; a list-of-specs has a table at [1].
 local function as_specs(mod)
 	if type(mod) ~= "table" then
 		return {}
@@ -25,7 +20,14 @@ local function as_specs(mod)
 	return mod
 end
 
--- Depth-first: dependencies before their dependent.
+local function pin(spec)
+	local version = spec.version
+	if version == "*" then
+		version = nil
+	end
+	return version or spec.commit or spec.tag or spec.branch
+end
+
 local function collect(spec, out, builds, seen)
 	if type(spec) == "string" then
 		spec = { spec }
@@ -44,20 +46,24 @@ local function collect(spec, out, builds, seen)
 		builds[name] = spec.build
 	end
 
-	if not seen[repo] then
-		seen[repo] = true
-		out[#out + 1] = {
-			spec = spec,
-			entry = {
-				src = url(repo),
-				name = spec.name,
-				version = spec.version
-					or spec.commit
-					or spec.tag
-					or spec.branch,
-			},
-		}
+	local existing = seen[repo]
+	if existing then
+		for k, v in pairs(spec) do
+			if existing.spec[k] == nil then
+				existing.spec[k] = v
+			end
+		end
+		existing.entry.name = existing.entry.name or spec.name
+		existing.entry.version = existing.entry.version or pin(spec)
+		return
 	end
+
+	local item = {
+		spec = spec,
+		entry = { src = url(repo), name = spec.name, version = pin(spec) },
+	}
+	seen[repo] = item
+	out[#out + 1] = item
 end
 
 local function run_setup(spec)
@@ -127,11 +133,35 @@ local function scan_specs(group)
 			end
 		end
 	end
-	-- priority desc so colorscheme (1000) loads first.
 	table.sort(specs, function(a, b)
 		return (a.priority or 50) > (b.priority or 50)
 	end)
 	return specs
+end
+
+local function orphans(ordered, installed)
+	local want = {}
+	for _, item in ipairs(ordered) do
+		want[item.entry.name or item.entry.src:match("[^/]+$")] = true
+	end
+	local gone = {}
+	for _, name in ipairs(installed) do
+		if not want[name] then
+			gone[#gone + 1] = name
+		end
+	end
+	return gone
+end
+
+local function cleanup(ordered)
+	local installed = {}
+	for _, p in ipairs(vim.pack.get()) do
+		installed[#installed + 1] = p.spec.name
+	end
+	local gone = orphans(ordered, installed)
+	if #gone > 0 then
+		pcall(vim.pack.del, gone)
+	end
 end
 
 local function register_builds(builds)
@@ -174,6 +204,7 @@ local function main()
 		add[#add + 1] = item.entry
 	end
 	vim.pack.add(add)
+	cleanup(ordered)
 
 	for _, item in ipairs(ordered) do
 		local ok, err = pcall(run_setup, item.spec)
@@ -186,7 +217,6 @@ local function main()
 	end
 end
 
--- :lua require("qfioofa.pluginManager.backends.pack").demo()
 local function demo()
 	assert(modname_candidates("folke/flash.nvim")[1] == "flash")
 	assert(modname_candidates("rcarriga/nvim-notify")[2] == "notify")
@@ -208,6 +238,23 @@ local function demo()
 	assert(out[3].spec[1] == "a/main")
 	assert(out[3].entry.version == "deadbee")
 	assert(builds["main"] == ":TSUpdate" and builds["dep2"] == "make")
+
+	local star = {}
+	collect({ "a/wild", version = "*" }, star, {}, {})
+	assert(star[1].entry.version == nil)
+
+	local m, _, ms = {}, {}, {}
+	collect("a/ts", m, {}, ms)
+	collect({ "a/ts", branch = "master", opts = { x = 1 } }, m, {}, ms)
+	assert(#m == 1, "merged, not duplicated")
+	assert(m[1].entry.version == "master")
+	assert(m[1].spec.opts.x == 1)
+
+	local gone = orphans({
+		{ entry = { name = "keep", src = "https://github.com/a/keep" } },
+		{ entry = { src = "https://github.com/a/derived.nvim" } },
+	}, { "keep", "derived.nvim", "stale" })
+	assert(#gone == 1 and gone[1] == "stale")
 
 	print("pack.demo: ok")
 end

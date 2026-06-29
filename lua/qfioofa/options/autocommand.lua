@@ -17,6 +17,14 @@ local function isExcludedWindow()
 	return false
 end
 
+-- Briefly highlight yanked text as visual feedback.
+vim.api.nvim_create_autocmd("TextYankPost", {
+	group = vim.api.nvim_create_augroup("YankHighlight", { clear = true }),
+	callback = function()
+		vim.hl.on_yank()
+	end,
+})
+
 vim.api.nvim_create_autocmd("WinEnter", {
 	group = vim.api.nvim_create_augroup("WindowSizeActive", { clear = true }),
 	callback = function()

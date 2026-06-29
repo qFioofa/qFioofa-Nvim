@@ -22,9 +22,14 @@ return {
 			"DapBreakpoint",
 			{ text = "", texthl = "DiagnosticSignError" }
 		)
-		vim.fn.sign_define(
-			"DapStopped",
-			{ text = "", texthl = "DiagnosticSignWarn" }
-		)
+		-- The stopped marker is otherwise just a gutter glyph, easy to misread
+		-- as sitting on a nearby line (e.g. a breakpoint on the function header).
+		-- linehl/numhl highlight the whole current line so it's unmistakable.
+		vim.fn.sign_define("DapStopped", {
+			text = "",
+			texthl = "DiagnosticSignWarn",
+			linehl = "Visual",
+			numhl = "DiagnosticSignWarn",
+		})
 	end,
 }
