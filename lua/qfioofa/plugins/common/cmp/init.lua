@@ -1,5 +1,5 @@
 local function config()
-	require("cmp").setup(require("qfioofa.plugins.v011.cmp.options"))
+	require("cmp").setup(require("qfioofa.plugins.common.cmp.options"))
 end
 
 return {

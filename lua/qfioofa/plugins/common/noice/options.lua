@@ -107,8 +107,7 @@ end
 
 local function setup_popupmenu()
 	return {
-		enabled = true,
-		backend = "nui",
+		enabled = false,
 	}
 end
 

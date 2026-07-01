@@ -1,27 +1,7 @@
--- >=0.12: native capabilities + built-in vim.lsp.completion (no nvim-cmp).
+-- >=0.12: capabilities from cmp_nvim_lsp (nvim-cmp lives in common/cmp).
 local function config()
-	vim.o.completeopt = "menuone,noselect,fuzzy"
-	pcall(function()
-		vim.o.autocomplete = true
-	end)
-
-	local capabilities = vim.lsp.protocol.make_client_capabilities()
-
-	local function attach_hook(client, event)
-		if client:supports_method("textDocument/completion") then
-			vim.lsp.completion.enable(
-				true,
-				client.id,
-				event.buf,
-				{ autotrigger = true }
-			)
-		end
-	end
-
-	require("qfioofa.plugins.common.lspconfig.shared")(
-		capabilities,
-		attach_hook
-	)
+	local capabilities = require("cmp_nvim_lsp").default_capabilities()
+	require("qfioofa.plugins.common.lspconfig.shared")(capabilities)
 end
 
 return {
