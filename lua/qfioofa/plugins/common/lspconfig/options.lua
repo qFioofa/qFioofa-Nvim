@@ -74,10 +74,13 @@ return {
 	bashls = {},
 	dockerls = {},
 
-	-- Elixir + Erlang. elixirls covers .ex/.exs/.heex; erlangls covers .erl/.hrl.
-	-- Mason package names (elixir-ls, erlang-ls) are mapped by mason-lspconfig.
+	-- Elixir + Erlang. elixirls covers .ex/.exs/.heex; elp covers .erl.
+	-- erlangls was dropped: nvim-lspconfig no longer ships an lsp/erlangls.lua
+	-- (so cmd is nil and it crash-loops on every buffer), and its mason package
+	-- builds from source via rebar3, which isn't installed. elp (Erlang Language
+	-- Platform) ships a prebuilt mason binary and a working default config.
 	elixirls = {},
-	erlangls = {},
+	elp = {},
 
 	-- SQL (general + PostgreSQL). sql-language-server provides completion,
 	-- linting and hover; formatting is handled by sql_formatter in conform.

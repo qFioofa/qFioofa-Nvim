@@ -1,3 +1,11 @@
+-- ponytail: shim the deprecated vim.tbl_flatten (removed API, still called by
+-- several plugins) to its non-deprecated equivalent so it stops emitting the
+-- deprecation warning. Must run before plugins load. Drop when every plugin
+-- migrates off it.
+vim.tbl_flatten = function(t)
+	return vim.iter(t):flatten(math.huge):totable()
+end
+
 local Options = {
 	-- General
 	backup = false,
@@ -58,6 +66,10 @@ local Options = {
 
 	-- Cmd
 	cmdheight = 0,
+	-- Drop "pum" from the 0.12 default (pum,tagfile) so command-line completion
+	-- renders as the classic horizontal wildmenu above the command line instead
+	-- of the popup that 0.12 anchors at the bottom.
+	wildoptions = "tagfile",
 
 	-- Other
 	mouse = "a",
