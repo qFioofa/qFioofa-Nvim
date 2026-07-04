@@ -93,9 +93,22 @@ local function setup(capabilities, attach_hook)
 		vim.lsp.enable("plantuml_lsp")
 	end
 
+	-- Cap a virtual-lines diagnostic at ~1/3 of the screen (height/3 rows worth
+	-- of wrapped text), so a huge Java message can't eat the whole window.
+	local function truncate_diag(diagnostic)
+		local msg = diagnostic.code
+				and (diagnostic.code .. ": " .. diagnostic.message)
+			or diagnostic.message
+		local budget = math.floor(vim.o.lines / 3) * vim.o.columns
+		if #msg > budget then
+			msg = msg:sub(1, budget - 1) .. "…"
+		end
+		return msg
+	end
+
 	vim.diagnostic.config({
 		virtual_text = false,
-		virtual_lines = { current_line = true },
+		virtual_lines = { current_line = true, format = truncate_diag },
 		underline = true,
 		signs = {
 			text = {
