@@ -74,6 +74,11 @@ return {
 		fields = { "kind", "abbr", "menu" },
 		format = function(entry, vim_item)
 			vim_item.kind = string.format("%s", kind_icons[vim_item.kind])
+			local hl = require("colorful-menu").cmp_highlights(entry)
+			if hl ~= nil then
+				vim_item.abbr_hl_group = hl.highlights
+				vim_item.abbr = hl.text
+			end
 			vim_item.menu = ({
 				nvim_lsp = "󰒋 [LSP]",
 				buffer = "󰦨 [Buffer]",
