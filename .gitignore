@@ -45,3 +45,9 @@ luac.out
 
 # nix build output
 result
+
+# vim.pack / lazy.nvim lockfiles: written at runtime by nvim. Tracking them
+# ships them read-only via the Nix store (xdg.configFile source = ./.), which
+# breaks vim.pack lockfile writes with EROFS.
+nvim-pack-lock.json
+lazy-lock.json
