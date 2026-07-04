@@ -189,6 +189,57 @@ local function register_builds(builds)
 	})
 end
 
+local function register_commands()
+	local function names()
+		local out = {}
+		for _, p in ipairs(vim.pack.get()) do
+			out[#out + 1] = p.spec.name
+		end
+		return out
+	end
+	local function complete(arglead)
+		return vim.tbl_filter(function(n)
+			return n:find(arglead, 1, true) == 1
+		end, names())
+	end
+
+	-- :PackUpdate [names...]  (! = apply without the confirm buffer)
+	vim.api.nvim_create_user_command("PackUpdate", function(o)
+		vim.pack.update(#o.fargs > 0 and o.fargs or nil, { force = o.bang })
+	end, {
+		nargs = "*",
+		bang = true,
+		complete = complete,
+		desc = "Update plugins (! skips confirm buffer)",
+	})
+
+	-- :PackList  — show installed plugins + pinned version
+	vim.api.nvim_create_user_command("PackList", function()
+		local lines = {}
+		for _, p in ipairs(vim.pack.get()) do
+			lines[#lines + 1] = ("%-32s %s"):format(
+				p.spec.name,
+				p.spec.version or ""
+			)
+		end
+		table.sort(lines)
+		vim.notify(
+			table.concat(lines, "\n"),
+			vim.log.levels.INFO,
+			{ title = "Installed plugins (" .. #lines .. ")" }
+		)
+	end, { desc = "List installed plugins" })
+
+	-- :PackDel <names...>  — remove plugin(s)
+	vim.api.nvim_create_user_command("PackDel", function(o)
+		vim.pack.del(o.fargs)
+	end, {
+		nargs = "+",
+		complete = complete,
+		desc = "Remove plugin(s)",
+	})
+end
+
 local function main()
 	local ordered, builds, seen = {}, {}, {}
 	for _, group in ipairs(GROUPS) do
@@ -205,6 +256,7 @@ local function main()
 	end
 	vim.pack.add(add)
 	cleanup(ordered)
+	register_commands()
 
 	for _, item in ipairs(ordered) do
 		local ok, err = pcall(run_setup, item.spec)
