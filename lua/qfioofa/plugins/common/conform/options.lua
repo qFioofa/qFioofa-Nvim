@@ -33,7 +33,7 @@ return {
 		go = { "gofmt" },
 		c = { "clang-format" },
 		cpp = { "clang-format" },
-		java = { "google-java-format" },
+		java = { "clang-format" },
 		elixir = { "mix" },
 		heex = { "mix" },
 		sql = { "sql_formatter" },

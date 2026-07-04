@@ -139,7 +139,6 @@ local function setup(capabilities, attach_hook)
 		"jdtls",
 		"java-debug-adapter",
 		"java-test",
-		"google-java-format",
 	})
 
 	-- Swallow per-package install errors and report them once below.
