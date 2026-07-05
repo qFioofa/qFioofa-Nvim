@@ -68,20 +68,6 @@ end
 
 local function setup_routes()
 	return {
-		-- Skip jdtls edit-time validation progress; keep init/build progress
-		{
-			filter = {
-				event = "lsp",
-				kind = "progress",
-				cond = function(msg)
-					local p = vim.tbl_get(msg, "opts", "progress")
-					return p ~= nil
-						and p.client == "jdtls"
-						and (p.title or ""):find("Validat") ~= nil
-				end,
-			},
-			opts = { skip = true },
-		},
 		-- Show written/saved messages as mini
 		{
 			filter = {
@@ -127,9 +113,9 @@ end
 
 local function setup_lsp()
 	return {
+		-- All LSP progress is suppressed; init/errors come via lspconfig/notify.
 		progress = {
-			enabled = true,
-			view = "mini",
+			enabled = false,
 		},
 		signature = {
 			enabled = false,

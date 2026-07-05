@@ -72,6 +72,8 @@ local function setup(capabilities, attach_hook)
 		end,
 	})
 
+	require("qfioofa.plugins.common.lspconfig.notify").install_handlers()
+
 	vim.lsp.config("*", { capabilities = capabilities })
 
 	local servers = require("qfioofa.plugins.common.lspconfig.options")

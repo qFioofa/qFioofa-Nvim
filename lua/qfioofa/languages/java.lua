@@ -176,6 +176,9 @@ function M.start()
 		return
 	end
 
+	-- Progress + message throttling (init window then errors-only) is handled
+	-- universally for every LSP in lspconfig/notify, driven by LspAttach.
+
 	if require("qfioofa.pluginManager.profile") == "pack" then
 		vim.lsp.start({
 			name = "jdtls",
