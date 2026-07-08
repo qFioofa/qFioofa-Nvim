@@ -1,4 +1,5 @@
 local cmp = require("cmp")
+local ok_ls, luasnip = pcall(require, "luasnip")
 
 local check_backspace = function()
 	local col = vim.fn.col(".") - 1
@@ -50,6 +51,8 @@ return {
 		["<Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_next_item()
+			elseif ok_ls and luasnip.expand_or_locally_jumpable() then
+				luasnip.expand_or_jump()
 			elseif check_backspace() then
 				fallback()
 			else
@@ -62,6 +65,8 @@ return {
 		["<S-Tab>"] = cmp.mapping(function(fallback)
 			if cmp.visible() then
 				cmp.select_prev_item()
+			elseif ok_ls and luasnip.locally_jumpable(-1) then
+				luasnip.jump(-1)
 			else
 				fallback()
 			end
@@ -69,6 +74,11 @@ return {
 			"i",
 			"s",
 		}),
+	},
+	snippet = {
+		expand = function(args)
+			require("luasnip").lsp_expand(args.body)
+		end,
 	},
 	formatting = {
 		fields = { "kind", "abbr", "menu" },
@@ -93,6 +103,7 @@ return {
 	},
 	sources = {
 		{ name = "nvim_lsp" },
+		{ name = "luasnip" },
 		{ name = "buffer" },
 		{ name = "path" },
 		{ name = "async_path" },

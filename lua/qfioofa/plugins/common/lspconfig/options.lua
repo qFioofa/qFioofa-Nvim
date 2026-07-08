@@ -92,6 +92,10 @@ return {
 	marksman = {},
 	lemminx = {},
 
+	-- Typst. tinymist bundles its own typst compiler for the LSP; the standalone
+	-- `typst` CLI for building docs comes from nixos (cli.nix).
+	tinymist = {},
+
 	lua_ls = {
 		-- `workspace.library` is intentionally omitted: neodev (a dependency in
 		-- this plugin spec) configures the runtime library for Neovim Lua dev,

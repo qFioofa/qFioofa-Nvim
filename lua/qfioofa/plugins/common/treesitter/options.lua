@@ -31,6 +31,7 @@ local parsers = {
 	"regex",
 	"sql",
 	"toml",
+	"typst",
 	"tsx",
 	"typescript",
 	"vim",
