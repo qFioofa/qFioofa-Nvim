@@ -48,7 +48,13 @@ local parsers = {
 local compiler_available = has_compiler()
 
 return {
-	indent = { enable = true },
+	-- ponytail: treesitter indent is experimental and wrong on JS/TS (chained
+	-- calls, ternaries, object args). Neovim's built-in indent/javascript.vim
+	-- handles these correctly, so let it win for the js family.
+	indent = {
+		enable = true,
+		disable = { "javascript", "typescript", "tsx", "jsx" },
+	},
 	highlight = {
 		enable = true,
 		use_languagetree = true,

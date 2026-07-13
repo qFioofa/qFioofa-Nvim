@@ -21,16 +21,9 @@ local Options = {
 	-- Tabline
 	showtabline = 0,
 
-	-- Indentation: tabs, width 4. This is the editor-wide DEFAULT and the
-	-- single source of truth formatters derive from (see
-	-- plugins/conform/options.lua). It applies only when nothing higher in the
-	-- priority chain overrides it: .editorconfig (Neovim native) > guess-indent
-	-- detection > these defaults. `expandtab = false` is set explicitly so the
-	-- "tabs, not spaces" intent doesn't rely on Vim's implicit default.
 	expandtab = false,
 	shiftwidth = 4,
 	tabstop = 4,
-	smartindent = true,
 	autoindent = true,
 
 	-- Line
@@ -66,9 +59,6 @@ local Options = {
 
 	-- Cmd
 	cmdheight = 0,
-	-- Drop "pum" from the 0.12 default (pum,tagfile) so command-line completion
-	-- renders as the classic horizontal wildmenu above the command line instead
-	-- of the popup that 0.12 anchors at the bottom.
 	wildoptions = "tagfile",
 
 	-- Other
