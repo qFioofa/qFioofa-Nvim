@@ -128,9 +128,15 @@ local function setup(capabilities, attach_hook)
 
 	require("mason").setup()
 
+	-- Servers that ship with their own toolchain and have no mason package;
+	-- still configured and enabled, just not installed here.
+	local no_mason = { sourcekit = true }
+
 	-- jdtls is started in languages/java.lua, not via vim.lsp.config, so it
 	-- stays out of options.lua; installed here alongside formatters.
-	local ensure_installed = vim.tbl_keys(servers or {})
+	local ensure_installed = vim.tbl_filter(function(name)
+		return not no_mason[name]
+	end, vim.tbl_keys(servers or {}))
 	vim.list_extend(ensure_installed, {
 		"stylua",
 		"black",

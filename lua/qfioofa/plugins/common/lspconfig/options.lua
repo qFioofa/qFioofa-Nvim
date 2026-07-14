@@ -45,6 +45,16 @@ return {
 		},
 	},
 
+	kotlin_language_server = {},
+
+	-- C#. mason's omnisharp package ships a self-contained build, so no system
+	-- dotnet SDK is needed just for completion/diagnostics.
+	omnisharp = {},
+
+	-- Swift. sourcekit-lsp has no mason package: it comes with the Swift
+	-- toolchain (Xcode / swiftly), so shared.lua skips it when installing.
+	sourcekit = {},
+
 	-- Python: pyright for types, ruff for fast linting + import sorting.
 	pyright = {},
 	ruff = {},
