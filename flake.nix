@@ -83,6 +83,11 @@
           jdk21               # Java: jdtls (needs 21+), java-debug-adapter,
                               # java-test, google-java-format all run on the JVM
 
+          # Swift: sourcekit-lsp has no mason package (shared.lua's no_mason
+          # skip), so the config runs it straight from PATH. swift brings the
+          # compiler it indexes against.
+          sourcekit-lsp swift
+
           # Install toolchain Mason shells out to, plus tools the config uses.
           gcc gnumake curl wget git unzip gzip gnutar ripgrep fd
         ];

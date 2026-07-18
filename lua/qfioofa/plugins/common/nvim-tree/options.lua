@@ -35,7 +35,7 @@ return {
 	git = {
 		enable = true,
 		ignore = true,
-		show_on_dirs = true,
+		show_on_dirs = false,
 		timeout = 500,
 	},
 	modified = {
