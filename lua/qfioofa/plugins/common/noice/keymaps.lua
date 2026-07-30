@@ -29,13 +29,13 @@ return function()
 			end,
 			desc = "Noice All",
 		},
-		{
-			"<leader>nd",
-			function()
-				require("noice").cmd("dismiss")
-			end,
-			desc = "Dismiss All",
-		},
+		-- {
+		-- 	"<leader>nd",
+		-- 	function()
+		-- 		require("noice").cmd("dismiss")
+		-- 	end,
+		-- 	desc = "Dismiss All",
+		-- },
 	}
 
 	for _, keymap in ipairs(keymaps) do

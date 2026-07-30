@@ -1,10 +1,5 @@
 {
-  "workspace.library": [
-    "$VIMRUNTIME",
-    "${3rd}/luv/library"
-  ],
+  "workspace.library": ["$VIMRUNTIME", "${3rd}/luv/library"],
   "workspace.checkThirdParty": false,
-  "diagnostics.globals": [
-    "vim"
-  ]
+  "diagnostics.globals": ["vim"]
 }
