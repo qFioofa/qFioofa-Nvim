@@ -1,5 +1,5 @@
 local function config()
-	local java_doc = require("qfioofa.plugins.common.neogen.java-doc")
+	local java_doc = require("qfioofa.plugins.common.neogen.javaDoc")
 	require("neogen").setup({
 		snippet_engine = "luasnip",
 		languages = {
@@ -8,10 +8,10 @@ local function config()
 	})
 end
 
+local keys = require("qfioofa.plugins.common.neogen.keymaps")
+
 return {
 	"danymat/neogen",
 	config = config,
-	keys = {
-		{ "<leader>nd", "<cmd>Neogen<cr>", desc = "Generate Javadoc" },
-	},
+	keys = keys,
 }
