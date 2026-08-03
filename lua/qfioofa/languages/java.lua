@@ -170,59 +170,123 @@ local function map(lhs, rhs, desc)
 	vim.keymap.set("n", lhs, rhs, { buffer = true, silent = true, desc = desc })
 end
 
+-- Fallback-only helpers (used when nvim-jdtls isn't installed).
+local function setup_native_dap()
+	local ok, dap = pcall(require, "dap")
+	if not ok or dap.adapters.java then
+		return
+	end
+	dap.adapters.java = function(callback)
+		vim.lsp.buf_request(0, "workspace/executeCommand", {
+			command = "vscode.java.startDebugSession",
+		}, function(err, port)
+			if err then
+				vim.notify("jdtls: " .. err.message, vim.log.levels.ERROR)
+				return
+			end
+			callback({ type = "server", host = "127.0.0.1", port = port })
+		end)
+	end
+	if not dap.configurations.java then
+		dap.configurations.java = {
+			{
+				type = "java",
+				request = "attach",
+				name = "Debug (Attach) - Current",
+				hostName = "localhost",
+				port = 5005,
+			},
+			{
+				type = "java",
+				request = "launch",
+				name = "Debug (Launch) - Current File",
+				mainClass = "${file}",
+			},
+		}
+	end
+end
+
+local function class_lnum()
+	for i = 1, vim.api.nvim_buf_line_count(0) do
+		local line = vim.api.nvim_buf_get_lines(0, i - 1, i, false)[1] or ""
+		if line:match("^%s*[%w_%s<>?,%.]*%s+class%s+[%w_]+") then
+			return i
+		end
+	end
+end
+
+local function run_lens_at(lnum)
+	if lnum then
+		vim.api.nvim_win_set_cursor(0, { lnum, 0 })
+	end
+	vim.lsp.codelens.run()
+end
+
 function M.start()
 	local cfg = M.build()
 	if not cfg then
 		return
 	end
 
-	-- Progress + message throttling (init window then errors-only) is handled
-	-- universally for every LSP in lspconfig/notify, driven by LspAttach.
-
-	if require("qfioofa.pluginManager.profile") == "pack" then
-		vim.lsp.start({
-			name = "jdtls",
+	local has_jdtls, jdtls = pcall(require, "jdtls")
+	if has_jdtls then
+		-- Full nvim-jdtls path (lazy profile and, since v012, the pack profile).
+		-- Gives test class/method, DAP, extended symbols and jdtls:// sources.
+		jdtls.start_or_attach(vim.tbl_extend("force", {
 			cmd = cfg.cmd,
 			root_dir = cfg.root_dir,
 			settings = cfg.settings,
-			capabilities = vim.lsp.protocol.make_client_capabilities(),
-			init_options = { bundles = {} },
-		})
+			capabilities = (function()
+				local has_cmp, cmp = pcall(require, "cmp_nvim_lsp")
+				return has_cmp and cmp.default_capabilities()
+					or vim.lsp.protocol.make_client_capabilities()
+			end)(),
+			init_options = {
+				bundles = M.bundles(cfg.mason),
+				extendedClientCapabilities = jdtls.extendedClientCapabilities,
+			},
+		}, {
+			on_attach = function()
+				pcall(jdtls.setup_dap, { hotcodereplace = "auto" })
+				pcall(require("jdtls.dap").setup_dap_main_class_configs)
+			end,
+		}))
 
-		map("<leader>co", function()
-			vim.lsp.buf.code_action({
-				context = { only = { "source.organizeImports" } },
-				apply = true,
-			})
-		end, "Java: organize imports")
+		map("<leader>jc", jdtls.test_class, "Java: test class")
+		map("<leader>jm", jdtls.test_nearest_method, "Java: test nearest method")
+		map("<leader>jt", jdtls.pick_test, "Java: pick test")
+		map("<leader>jo", jdtls.organize_imports, "Java: organize imports")
+		map("<leader>jp", jdtls.update_project_config, "Java: reload project config")
+		map("<leader>jb", jdtls.compile, "Java: build workspace")
+		map("<leader>js", jdtls.extended_symbols, "Java: extended symbols (incl. inherited)")
+		map("<leader>jS", jdtls.super_implementation, "Java: go to super implementation")
 		return
 	end
 
-	local jdtls = require("jdtls")
-	jdtls.start_or_attach(vim.tbl_extend("force", {
+	-- Fallback: nvim-jdtls not installed. Bundle the debug/test extensions so
+	-- the java-test code lens ("run tests | debug tests") and DAP still work.
+	vim.lsp.start({
+		name = "jdtls",
 		cmd = cfg.cmd,
 		root_dir = cfg.root_dir,
 		settings = cfg.settings,
-		capabilities = (function()
-			local has_cmp, cmp = pcall(require, "cmp_nvim_lsp")
-			return has_cmp and cmp.default_capabilities()
-				or vim.lsp.protocol.make_client_capabilities()
-		end)(),
-		flags = { allow_incremental_sync = true },
-		init_options = {
-			bundles = M.bundles(cfg.mason),
-			extendedClientCapabilities = jdtls.extendedClientCapabilities,
-		},
-	}, {
-		on_attach = function()
-			jdtls.setup_dap({ hotcodereplace = "auto" })
-			require("jdtls.dap").setup_dap_main_class_configs()
-		end,
-	}))
+		capabilities = vim.lsp.protocol.make_client_capabilities(),
+		init_options = { bundles = M.bundles(cfg.mason) },
+	})
+	setup_native_dap()
 
-	map("<leader>co", jdtls.organize_imports, "Java: organize imports")
-	map("<leader>tc", jdtls.test_class, "Java: test class")
-	map("<leader>tm", jdtls.test_nearest_method, "Java: test nearest method")
+	map("<leader>jo", function()
+		vim.lsp.buf.code_action({
+			context = { only = { "source.organizeImports" } },
+			apply = true,
+		})
+	end, "Java: organize imports")
+	map("<leader>jc", function()
+		run_lens_at(class_lnum())
+	end, "Java: test class (code lens)")
+	map("<leader>jm", function()
+		run_lens_at(vim.api.nvim_win_get_cursor(0)[1])
+	end, "Java: test nearest method (code lens)")
 end
 
 return M

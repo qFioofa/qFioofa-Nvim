@@ -74,6 +74,22 @@ return function(event)
 	map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
 	map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
 
+	-- Range code action in visual mode (extract method/variable etc. in Java
+	-- needs the selected range, not just the cursor position).
+	vim.keymap.set(
+		{ "v", "x" },
+		"<leader>ca",
+		function()
+			vim.lsp.buf.range_code_action()
+		end,
+		{ buffer = event.buf, desc = "LSP: [C]ode [A]ction (range)" }
+	)
+
+	-- Signature help (params/overloads) is enabled in the jdtls settings but had
+	-- no trigger key before. ([d / ]d diagnostics navigation are Neovim
+	-- built-ins, so they are intentionally not redefined here.)
+	map("<leader>sh", vim.lsp.buf.signature_help, "[S]ignature [H]elp")
+
 	-- Note: `K` (hover documentation) is handled by hover.nvim, which already
 	-- includes an LSP source, so it is intentionally not mapped here.
 

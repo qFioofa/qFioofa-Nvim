@@ -10,6 +10,7 @@ return {
 		{ "<leader>c", group = "Code" },
 		{ "<leader>d", group = "Diagnostics / Debug / Delete" },
 		{ "<leader>t", group = "Toggle / Terminal" },
+		{ "<leader>j", group = "Java" },
 		{ "<leader>n", group = "Noice" },
 		{ "<leader>r", group = "Rename" },
 		{ "<leader>w", group = "Workspace / Write" },

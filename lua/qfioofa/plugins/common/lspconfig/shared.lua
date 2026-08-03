@@ -144,6 +144,7 @@ local function setup(capabilities, attach_hook)
 		"shfmt",
 		"prettier",
 		"sql-formatter",
+		"google-java-format",
 		"jdtls",
 		"java-debug-adapter",
 		"java-test",
