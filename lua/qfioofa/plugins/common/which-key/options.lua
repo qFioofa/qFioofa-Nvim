@@ -16,7 +16,7 @@ return {
 		{ "<leader>w", group = "Workspace / Write" },
 		{ "<leader>u", group = "UI / Notify" },
 		{ "<leader>l", group = "LazyGit" },
-		{ "<leader>s", group = "LSP (Saga)" },
+		{ "<leader>s", group = "LSP (Saga) / Session" },
 		{ "<leader>a", group = "Auto-save" },
 	},
 }

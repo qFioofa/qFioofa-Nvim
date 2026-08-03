@@ -57,9 +57,15 @@ vim.g.maplocalleader = " "
 -- Command --
 keymap("n", "<leader><C-q>", ":qa!<CR>", d("Quit all (force)"))
 keymap("n", "<leader><C-w>", ":w!<CR>", d("Write file (force)"))
+keymap({ "n", "i" }, "<C-s>", "<Esc>:w<CR>", d("Write file"))
+keymap("n", "<leader>x", ":bd<CR>", d("Buffer: close"))
 keymap({ "n", "v" }, "<C-;>", ":", d("Enter command mode"))
 keymap("n", "Y", "y$", d("Yank to end of line"))
 keymap("n", "gx", open_under_cursor, d("Open link/file under cursor"))
+
+-- Windows / splits
+keymap("n", "<leader>w-", ":split<CR>", d("Split: horizontal"))
+keymap("n", "<leader>w|", ":vsplit<CR>", d("Split: vertical"))
 
 -- Normal --
 keymap("n", "<C-h>", "<C-w>h", d("Window: focus left"))
@@ -76,6 +82,24 @@ keymap("n", "<C-Right>", ":vertical resize -2<CR>", d("Resize: decrease width"))
 
 keymap("n", "<S-l>", ":bnext<CR>", d("Buffer: next"))
 keymap("n", "<S-h>", ":bprevious<CR>", d("Buffer: previous"))
+
+-- New file: in a Java project goes through :JNew (package/imports/type), in
+-- any other context it just opens a scratch buffer with the given name.
+keymap("n", "<leader>fn", function()
+	local java = require("qfioofa.java.newfile")
+	if vim.bo.filetype == "java" or java.find_source_root() then
+		vim.cmd("JNew")
+	else
+		local fname = vim.fn.input("New file: ", "")
+		if fname ~= "" then
+			vim.cmd("edit " .. vim.fn.fnameescape(fname))
+			vim.cmd("startinsert")
+		end
+	end
+end, d("New file"))
+
+-- Clear search highlight without leaving a "no match" message behind.
+keymap("n", "<leader>uh", "<cmd>noh<CR>", d("Clear search highlight"))
 
 -- Visual --
 keymap("v", "<", "<gv", d("Indent left (keep selection)"))

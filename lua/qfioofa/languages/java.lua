@@ -250,6 +250,14 @@ function M.start()
 				pcall(jdtls.setup_dap, { hotcodereplace = "auto" })
 				pcall(require("jdtls.dap").setup_dap_main_class_configs)
 			end,
+			-- jdtls echoes its "0% Starting Java Language Server" / "Ready" /
+			-- "ServiceReady" status lines via `:echo`, which noice then renders
+			-- as notification popups. The status is redundant (lualine/navic
+			-- show the important state), so swallow it. The ServiceReady
+			-- source-path wiring still runs inside nvim-jdtls itself.
+			handlers = {
+				["language/status"] = function() end,
+			},
 		}))
 
 		map("<leader>jc", jdtls.test_class, "Java: test class")

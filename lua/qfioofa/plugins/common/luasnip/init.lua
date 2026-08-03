@@ -8,9 +8,11 @@ local function config()
 
 	require("luasnip.loaders.from_vscode").lazy_load()
 
-	-- Loading own snippers
+	-- Loading own snippers. override_priority makes the bundled snippets win
+	-- over friendly-snippets duplicates (class, ctor, fori, try, ...).
 	require("luasnip.loaders.from_lua").lazy_load({
 		paths = { vim.fn.stdpath("config") .. "/snippets" },
+		add_opts = { override_priority = 100 },
 	})
 end
 
