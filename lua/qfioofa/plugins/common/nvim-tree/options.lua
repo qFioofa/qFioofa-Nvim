@@ -5,7 +5,6 @@ return {
 	hijack_netrw = true,
 	open_on_tab = false,
 	hijack_cursor = false,
-	update_cwd = true,
 	filesystem_watchers = {
 		enable = true,
 	},
@@ -29,22 +28,27 @@ return {
 	},
 	update_focused_file = {
 		enable = true,
-		update_cwd = true,
-		ignore_list = {},
+		update_root = {
+			enable = true,
+			ignore_list = {},
+		},
 	},
 	git = {
 		enable = true,
 		ignore = true,
-		show_on_dirs = false,
+		show_on_dirs = true,
+		show_on_open_dirs = true,
 		timeout = 500,
 	},
 	modified = {
 		enable = true,
 		show_on_dirs = true,
+		show_on_open_dirs = true,
 	},
 	renderer = {
 		highlight_git = "all",
 		highlight_modified = "icon",
+		full_name = true,
 		root_folder_label = ":t",
 		indent_width = 2,
 		group_empty = true,
@@ -76,7 +80,7 @@ return {
 			glyphs = {
 				default = "",
 				symlink = "",
-				modified = "",
+				modified = "●",
 				bookmark = "",
 				git = {
 					unstaged = "",
@@ -114,11 +118,7 @@ return {
 		},
 	},
 	view = {
-		width = {
-			min = 30,
-			max = 60,
-			padding = 1,
-		},
+		width = 45,
 		number = false,
 		relativenumber = false,
 		signcolumn = "yes",
