@@ -56,7 +56,23 @@ return {
 	sourcekit = {},
 
 	-- Python: pyright for types, ruff for fast linting + import sorting.
-	pyright = {},
+	-- autoImportCompletions feeds imports straight into <Tab>/<C-Space>
+	-- completion; importFormat="absolute" keeps a pyproject/`.venv`-portable
+	-- import style. `autoImport` is the older pyright key, kept so this config
+	-- still works across pyright versions.
+	pyright = {
+		settings = {
+			python = {
+				analysis = {
+					autoImportCompletions = true,
+					autoImport = true,
+					autoSearchPaths = true,
+					useLibraryCodeForTypes = true,
+					importFormat = "absolute",
+				},
+			},
+		},
+	},
 	ruff = {},
 
 	gopls = {

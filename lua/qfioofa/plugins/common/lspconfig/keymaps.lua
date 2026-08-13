@@ -111,4 +111,30 @@ return function(event)
 			vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 		end, "[T]oggle Inlay [H]ints")
 	end
+
+	-- Python auto-import code actions (the pyright/ruff analogue of jdtls'
+	-- organize/add-imports for Java). Completions are already fed by the
+	-- `autoImport*` settings in options.lua; these keys run the import edits.
+	local PYTHON_SERVERS = {
+		pyright = true,
+		basedpyright = true,
+		ruff = true,
+		pylsp = true,
+	}
+	if client and PYTHON_SERVERS[client.name] then
+		map("<leader>po", function()
+			vim.lsp.buf.code_action({
+				context = { only = { "source.organizeImports" } },
+				apply = true,
+			})
+		end, "[P]ython [O]rganize imports")
+
+		-- pyright/basedpyright only; ruff has no addMissingImports action.
+		map("<leader>pa", function()
+			vim.lsp.buf.code_action({
+				context = { only = { "source.addMissingImports" } },
+				apply = true,
+			})
+		end, "[P]ython [A]dd missing imports")
+	end
 end

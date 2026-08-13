@@ -1,3 +1,30 @@
+-- Show the active Python virtual environment (or the nearest project venv).
+-- A plain lualine function component: no extra plugin. Priority: an activated
+-- shell env > a .venv/venv folder found upward from cwd > conda env > "".
+local function python_env()
+	if vim.bo.filetype ~= "python" then
+		return ""
+	end
+	local env = vim.env.VIRTUAL_ENV
+	if env and env ~= "" then
+		return vim.fn.fnamemodify(env, ":t")
+	end
+	local found = vim.fs.find({ ".venv", "venv" }, {
+		path = vim.fn.getcwd(),
+		upward = true,
+		limit = 1,
+		type = "directory",
+	})[1]
+	if found then
+		return vim.fn.fnamemodify(found, ":t")
+	end
+	local conda = vim.env.CONDA_DEFAULT_ENV
+	if conda and conda ~= "" then
+		return conda
+	end
+	return ""
+end
+
 -- The statusline sections, defined once so the toggleterm extension below can
 -- reuse the exact same configuration (mode, branch, diagnostics, location, ...)
 -- and only swap the filename slot for the shell terminal name.
@@ -22,6 +49,12 @@ local sections = {
 		"%=",
 	},
 	lualine_x = {
+		{
+			python_env,
+			icon = "󰌠",
+			separator = { left = "", right = "" },
+			right_padding = 2,
+		},
 		{
 			"diagnostics",
 			icon = " ",
