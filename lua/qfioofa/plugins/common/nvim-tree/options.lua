@@ -118,9 +118,9 @@ return {
 		},
 	},
 	view = {
-		width = 45,
+		width = { min = 25, max = 45, padding = 1 },
 		number = false,
-		relativenumber = false,
+		relativenumber = true,
 		signcolumn = "yes",
 		side = "left",
 		preserve_window_proportions = true,

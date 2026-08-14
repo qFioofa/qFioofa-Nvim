@@ -33,7 +33,7 @@ end
 return {
 	enabled = true,
 	trigger_events = {
-		immediate_save = { "BufLeave" },
+		immediate_save = { "InsertLeave" },
 		defer_save = {},
 		cancel_deferred_save = {},
 	},
