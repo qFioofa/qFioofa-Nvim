@@ -73,7 +73,7 @@
           neovim
 
           # Shared libs the prebuilt servers link against.
-          stdenv.cc.cc        # libstdc++ / libgcc_s  (clangd, lua-language-server)
+          stdenv.cc.cc.lib        # libstdc++ / libgcc_s  (clangd, lua-language-server)
           zlib openssl        # clangd, lemminx, marksman (.NET)
           ncurses             # libtinfo (clangd)
           icu                 # marksman (.NET globalization)

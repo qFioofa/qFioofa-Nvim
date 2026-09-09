@@ -45,8 +45,6 @@ return {
 		},
 	},
 
-	kotlin_language_server = {},
-
 	-- C#. mason's omnisharp package ships a self-contained build, so no system
 	-- dotnet SDK is needed just for completion/diagnostics.
 	omnisharp = {},

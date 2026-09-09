@@ -55,7 +55,7 @@ vim.g.mapleader = " "
 vim.g.maplocalleader = " "
 
 -- Command --
-keymap("n", "C-q>", ":qa!<CR>", d("Quit all (force)"))
+keymap("n", "<C-q>", ":qa!<CR>", d("Quit all (force)"))
 keymap("n", "<C-w>", ":w!<CR>", d("Write file (force)"))
 keymap({ "n", "i" }, "<C-s>", "<Esc>:w<CR>", d("Write file"))
 keymap("n", "<leader>x", ":bd<CR>", d("Buffer: close"))
