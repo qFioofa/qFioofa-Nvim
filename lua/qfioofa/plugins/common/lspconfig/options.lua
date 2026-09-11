@@ -106,6 +106,10 @@ return {
 	elixirls = {},
 	elp = {},
 
+	-- Ruby. ruby-lsp (by Shopify) auto-detects Rails projects, bundles rubocop
+	-- diagnostics, and provides inlay hints for Ruby 3.1+.
+	ruby_lsp = {},
+
 	-- SQL (general + PostgreSQL). sql-language-server provides completion,
 	-- linting and hover; formatting is handled by sql_formatter in conform.
 	sqlls = {},

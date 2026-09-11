@@ -43,6 +43,8 @@ local parsers = {
 	"erlang",
 	"heex",
 	"eex",
+	"ruby",
+	"erb",
 }
 
 local compiler_available = has_compiler()

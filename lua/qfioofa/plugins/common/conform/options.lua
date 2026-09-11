@@ -33,11 +33,11 @@ return {
 		go = { "gofmt" },
 		c = { "clang-format" },
 		cpp = { "clang-format" },
-		-- google-java-format is the de-facto standard for Java; clang-format's
-		-- Java support is a rough approximation and can't handle records/var.
 		java = { "google-java-format" },
 		elixir = { "mix" },
 		heex = { "mix" },
+		ruby = { "rubocop" },
+		eruby = { "rubocop" },
 		sql = { "sql_formatter" },
 		pgsql = { "sql_formatter" },
 		mysql = { "sql_formatter" },

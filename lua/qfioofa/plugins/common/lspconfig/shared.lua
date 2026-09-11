@@ -145,6 +145,7 @@ local function setup(capabilities, attach_hook)
 		"prettier",
 		"sql-formatter",
 		"google-java-format",
+		"rubocop",
 		"jdtls",
 		"java-debug-adapter",
 		"java-test",

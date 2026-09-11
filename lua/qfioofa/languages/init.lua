@@ -1,5 +1,6 @@
 local LANGUAGES = {
 	java = "qfioofa.languages.java",
+	ruby = "qfioofa.languages.ruby",
 }
 
 local function main()

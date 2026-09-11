@@ -25,6 +25,18 @@ vim.api.nvim_create_autocmd("TextYankPost", {
 	end,
 })
 
+-- Ruby / Rails: 2-space indentation is the community standard.
+vim.api.nvim_create_autocmd("FileType", {
+	group = vim.api.nvim_create_augroup("RubyIndent", { clear = true }),
+	pattern = { "ruby", "eruby", "haml", "slim" },
+	callback = function()
+		vim.bo.expandtab = true
+		vim.bo.shiftwidth = 2
+		vim.bo.tabstop = 2
+		vim.bo.softtabstop = 2
+	end,
+})
+
 vim.api.nvim_create_autocmd("WinEnter", {
 	group = vim.api.nvim_create_augroup("WindowSizeActive", { clear = true }),
 	callback = function()
