@@ -124,3 +124,10 @@ keymap("t", "<Esc>", "<C-\\><C-n>", td("Terminal: exit to normal mode"))
 
 -- <leader>tt now opens a floating terminal via toggleterm.nvim
 -- (see lua/qfioofa/plugins/toggleterm).
+
+-- <C-w> is rebound to save above. Neovim's built-in <C-w>d / <C-w><C-D> maps
+-- (diagnostics float) share that prefix, so pressing <C-w> would make nvim wait
+-- `timeoutlen` for a possible second key. Neutralizing them here lets the
+-- <C-w> (save) mapping fire immediately.
+keymap("n", "<C-w>d", "<Nop>", opts)
+keymap("n", "<C-w><C-d>", "<Nop>", opts)

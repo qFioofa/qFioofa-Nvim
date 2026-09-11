@@ -60,6 +60,7 @@ local Options = {
 	-- Cmd
 	cmdheight = 0,
 	wildoptions = "tagfile",
+	timeoutlen = 50,
 
 	-- Other
 	mouse = "a",

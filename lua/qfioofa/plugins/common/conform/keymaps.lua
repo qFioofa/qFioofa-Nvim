@@ -5,7 +5,7 @@ return {
 		function()
 			require("conform").format({
 				async = true,
-				lsp_format = "fallback",
+				lsp_format = "prefer-file",
 				timeout_ms = 1000,
 			})
 		end,
