@@ -70,6 +70,10 @@ for OptionName, OptionValue in pairs(Options) do
 	vim.opt[OptionName] = OptionValue
 end
 
+-- Don't persist unlisted buffers (e.g. the nvim-tree "NvimTree_1" buffer) in
+-- sessions; otherwise restoring a session recreates them as empty files.
+vim.opt.sessionoptions:remove("buffers")
+
 -- Set PowerShell as default shell on Windows
 if vim.fn.has("win32") == 1 or vim.fn.has("win64") == 1 then
 	local find_powershell = function()
