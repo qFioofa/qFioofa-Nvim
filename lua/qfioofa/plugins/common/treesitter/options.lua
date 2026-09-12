@@ -44,7 +44,7 @@ local parsers = {
 	"heex",
 	"eex",
 	"ruby",
-	"erb",
+	"embedded_template",
 }
 
 local compiler_available = has_compiler()
