@@ -44,10 +44,14 @@ return {
 		plsql = { "sql_formatter" },
 	},
 
-	format_on_save = {
-		timeout_ms = 500,
-		lsp_format = "prefer-file",
-	},
+	format_on_save = function(buf)
+		local ft = vim.bo[buf].filetype
+		if ft == "ruby" or ft == "eruby" then
+			-- rubocop --server needs a Ruby boot + first-run server spin-up
+			return { timeout_ms = 8000, lsp_format = "prefer-file" }
+		end
+		return { timeout_ms = 500, lsp_format = "prefer-file" }
+	end,
 
 	formatters = {
 		prettier = {

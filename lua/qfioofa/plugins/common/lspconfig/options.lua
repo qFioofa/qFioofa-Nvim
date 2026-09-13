@@ -108,7 +108,19 @@ return {
 
 	-- Ruby. ruby-lsp (by Shopify) auto-detects Rails projects, bundles rubocop
 	-- diagnostics, and provides inlay hints for Ruby 3.1+.
-	ruby_lsp = {},
+	--
+	-- Positions are pinned to UTF-16: ruby-lsp's UTF-8 scanner counts code
+	-- points while the LSP utf-8 encoding (and Neovim) measures bytes, so any
+	-- multibyte content (e.g. Cyrillic) drives positions past the end of the
+	-- line and ruby-lsp raises InvalidLocationError on hover/signature/completion.
+	-- Its Utf16Scanner is correct, and Neovim converts utf-16 natively.
+	ruby_lsp = {
+		capabilities = {
+			general = {
+				positionEncodings = { "utf-16" },
+			},
+		},
+	},
 
 	-- SQL (general + PostgreSQL). sql-language-server provides completion,
 	-- linting and hover; formatting is handled by sql_formatter in conform.
