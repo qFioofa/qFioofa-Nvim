@@ -33,14 +33,14 @@ end
 return {
 	enabled = true,
 		trigger_events = {
-			immediate_save = { "InsertLeave", "BufLeave" },
-			defer_save = { "TextChanged", "CursorHold" },
-			cancel_deferred_save = {},
-		},
+		immediate_save = {},
+		defer_save = { "CursorHold" },
+		cancel_deferred_save = {},
+	},
 	condition = should_save,
 	write_all_buffers = false,
 	noautocmd = false,
 	lockmarks = false,
-	debounce_delay = 1000,
+	debounce_delay = 3000,
 	debug = false,
 }
