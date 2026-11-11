@@ -81,6 +81,15 @@ local function setup(capabilities, attach_hook)
 		vim.lsp.config(server_name, server)
 	end
 
+	-- Servers that need a binary we cannot install through Mason. Enable them
+	-- only when the binary is actually on PATH; otherwise Neovim logs
+	-- `invalid "<name>" config` on every matching buffer.
+	local requires_exe = { sourcekit = "sourcekit-lsp" }
+	local enabled_servers = vim.tbl_filter(function(name)
+		local exe = requires_exe[name]
+		return not exe or vim.fn.executable(exe) == 1
+	end, vim.tbl_keys(servers or {}))
+
 	-- Only wire plantuml-lsp when both it and the `plantuml` renderer are on
 	-- PATH, else Neovim spawn-errors on every .puml/.uml buffer.
 	if
@@ -180,7 +189,7 @@ local function setup(capabilities, attach_hook)
 	-- lockfiles. mason-lspconfig only provides name mapping here.
 	require("mason-lspconfig").setup({ automatic_enable = false })
 
-	vim.lsp.enable(vim.tbl_keys(servers or {}))
+	vim.lsp.enable(enabled_servers)
 
 	-- Mason overwrites node_modules on (re)install, so re-patch sqlls and
 	-- re-enable just-installed servers without a restart.
@@ -188,7 +197,7 @@ local function setup(capabilities, attach_hook)
 		pattern = "MasonToolsUpdateCompleted",
 		callback = function()
 			require("qfioofa.plugins.common.lspconfig.patch_sqlls").run()
-			vim.lsp.enable(vim.tbl_keys(servers or {}))
+			vim.lsp.enable(enabled_servers)
 
 			if #failed_installs > 0 then
 				base_notify(

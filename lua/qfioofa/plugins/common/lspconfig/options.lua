@@ -1,3 +1,70 @@
+-- Ruby LSP refuses to boot when the project's Ruby version does not match the
+-- interpreter running the server: Bundler raises RubyVersionMismatch while
+-- composing the bundle. Detect that mismatch and fall back to running without
+-- the project bundle. Setting BUNDLE_GEMFILE makes ruby-lsp skip its composed
+-- bundle setup (see ruby-lsp's exe/ruby-lsp), so /dev/null is used as a
+-- sentinel. Indexing/navigation still work; only project-gem features (Rails
+-- addon, rubocop, ...) are unavailable until a matching Ruby is used.
+local function project_ruby_version(root)
+	if not root or root == "" then
+		return nil
+	end
+
+	local version_file = root .. "/.ruby-version"
+	if vim.fn.filereadable(version_file) == 1 then
+		local line = vim.fn.readfile(version_file)[1]
+		local version = line
+			and line:gsub("^ruby%-", ""):match("^%d+%.%d+%.%d+")
+		if version then
+			return version
+		end
+	end
+
+	local gemfile = root .. "/Gemfile"
+	if vim.fn.filereadable(gemfile) == 1 then
+		for _, line in ipairs(vim.fn.readfile(gemfile)) do
+			local version = line:match("^%s*ruby%s+[\"']([%d%.]+)[\"']")
+			if version and version:match("^%d+%.%d+%.%d+$") then
+				return version
+			end
+		end
+	end
+
+	return nil
+end
+
+local function running_ruby_version()
+	local out = vim.fn.systemlist({ "ruby", "-e", "print RUBY_VERSION" })
+	if vim.v.shell_error ~= 0 then
+		return nil
+	end
+	return out[1]
+end
+
+local function ruby_lsp_cmd(dispatchers, config)
+	local root = config and config.root_dir or vim.fn.getcwd()
+	local wanted = project_ruby_version(root)
+	local running = running_ruby_version()
+	local env = config and config.cmd_env or {}
+	local cmd = { "ruby-lsp" }
+
+	-- The NixOS `ruby312` wrapper runs ruby-lsp on the exact Ruby 3.1.2 with
+	-- the project bundle, so gems get indexed. Without it, fall back to the
+	-- bundled server and skip Bundler when the versions disagree.
+	if wanted == "3.1.2" and vim.fn.executable("ruby312") == 1 then
+		cmd = { "ruby312", "ruby-lsp" }
+	elseif wanted and running and wanted ~= running then
+		env = vim.tbl_extend("force", env, {
+			BUNDLE_GEMFILE = "/dev/null",
+		})
+	end
+
+	return vim.lsp.rpc.start(cmd, dispatchers, {
+		cwd = config and config.cmd_cwd or nil,
+		env = next(env) and env or nil,
+	})
+end
+
 -- Language servers to configure (and install via mason).
 -- Keys must be lspconfig server names (not mason package names). Formatters
 -- like clang-format are handled separately by conform, not here.
@@ -115,6 +182,7 @@ return {
 	-- line and ruby-lsp raises InvalidLocationError on hover/signature/completion.
 	-- Its Utf16Scanner is correct, and Neovim converts utf-16 natively.
 	ruby_lsp = {
+		cmd = ruby_lsp_cmd,
 		capabilities = {
 			general = {
 				positionEncodings = { "utf-16" },
