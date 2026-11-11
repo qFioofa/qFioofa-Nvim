@@ -52,7 +52,17 @@ local function ruby_lsp_cmd(dispatchers, config)
 	-- the project bundle, so gems get indexed. Without it, fall back to the
 	-- bundled server and skip Bundler when the versions disagree.
 	if wanted == "3.1.2" and vim.fn.executable("ruby312") == 1 then
-		cmd = { "ruby312", "ruby-lsp" }
+		local composed = root .. "/.ruby-lsp/Gemfile"
+		if vim.fn.filereadable(composed) == 1 then
+			-- Skip SetupBundler's slow bundle check; the composed bundle
+			-- exists and bundle exec starts the server in ~1s.
+			cmd = { "ruby312", "bundle", "exec", "ruby-lsp" }
+			env = vim.tbl_extend("force", env, {
+				BUNDLE_GEMFILE = composed,
+			})
+		else
+			cmd = { "ruby312", "ruby-lsp" }
+		end
 	elseif wanted and running and wanted ~= running then
 		env = vim.tbl_extend("force", env, {
 			BUNDLE_GEMFILE = "/dev/null",
@@ -60,7 +70,7 @@ local function ruby_lsp_cmd(dispatchers, config)
 	end
 
 	return vim.lsp.rpc.start(cmd, dispatchers, {
-		cwd = config and config.cmd_cwd or nil,
+		cwd = config and (config.cmd_cwd or config.root_dir) or nil,
 		env = next(env) and env or nil,
 	})
 end
