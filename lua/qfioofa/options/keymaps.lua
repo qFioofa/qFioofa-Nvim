@@ -59,6 +59,7 @@ keymap("n", "<C-q>", ":qa!<CR>", d("Quit all (force)"))
 keymap("n", "<C-w>", ":w!<CR>", d("Write file (force)"))
 keymap({ "n", "i" }, "<C-s>", "<Esc>:w<CR>", d("Write file"))
 keymap("n", "<leader>x", ":bd<CR>", d("Buffer: close"))
+keymap("n", "q", ":bd<CR>", d("Buffer: close"))
 keymap({ "n", "v" }, "<C-;>", ":", d("Enter command mode"))
 keymap("n", "Y", "y$", d("Yank to end of line"))
 keymap("n", "gx", open_under_cursor, d("Open link/file under cursor"))
@@ -131,3 +132,12 @@ keymap("t", "<Esc>", "<C-\\><C-n>", td("Terminal: exit to normal mode"))
 -- <C-w> (save) mapping fire immediately.
 keymap("n", "<C-w>d", "<Nop>", opts)
 keymap("n", "<C-w><C-d>", "<Nop>", opts)
+
+-- Disable highlight from search
+-- original from https://github.com/phtea/dotfiles/tree/main/nvim/.config/nvim
+keymap(
+	"n",
+	"<Esc>",
+	"<CMD>nohlsearch<CR>",
+	{ silent = true, desc = "Hide highlight" }
+)

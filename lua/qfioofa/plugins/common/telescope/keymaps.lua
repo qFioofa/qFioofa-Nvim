@@ -1,4 +1,6 @@
 -- Returned as a lazy.nvim `keys` spec so telescope only loads on first use.
+local snacks = require("qfioofa.plugins.common.snacks.actions")
+
 local function builtin(name)
 	return function()
 		require("telescope.builtin")[name]()
@@ -6,8 +8,10 @@ local function builtin(name)
 end
 
 return {
-	{ "<leader>ff", builtin("find_files"), desc = "Find Files" },
-	{ "<leader>fg", builtin("live_grep"), desc = "Find in Files" },
+	{ "<leader>ff", snacks.find_files, desc = "Find Files (tree)" },
+	{ "<leader>fF", builtin("find_files"), desc = "Find Files (flat)" },
+	{ "<leader>fg", snacks.grep, desc = "Find in Files (grouped)" },
+	{ "<leader>fG", builtin("live_grep"), desc = "Find in Files (flat)" },
 	{ "<leader>fw", builtin("grep_string"), desc = "Find Word (under cursor)" },
 	{
 		"<leader>fb",

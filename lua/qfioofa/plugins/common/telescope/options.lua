@@ -2,9 +2,18 @@ local actions = require("telescope.actions")
 
 return {
 	defaults = {
-		prompt_prefix = "   ",
+		prompt_prefix = "󰍉 ",
 		selection_caret = " ",
 		entry_prefix = " ",
+		multi_icon = " ",
+		prompt_title = " Search ",
+		results_title = " Results ",
+		-- Rounded popup border with readable, opaque windows.
+		border = true,
+		borderchars = { "─", "│", "─", "│", "╭", "╮", "╯", "╰" },
+		color_devicons = true,
+		dynamic_preview_title = true,
+		hl_result_eol = true,
 		sorting_strategy = "ascending",
 		-- flex auto-switches horizontal/vertical based on window width.
 		layout_strategy = "flex",
@@ -23,12 +32,14 @@ return {
 			"%.tmp",
 			"%.cache",
 		},
-		-- "smart" shows just enough path to disambiguate; wrap instead of cut.
-		path_display = { "smart" },
+		-- Show the filename first, then the rest of the path.
+		path_display = { "filename_first" },
 		wrap_results = true,
-		winblend = 10,
+		winblend = 0,
 		mappings = {
 			i = {
+				["<C-j>"] = actions.move_selection_next,
+				["<C-k>"] = actions.move_selection_previous,
 				["<C-u>"] = actions.preview_scrolling_up,
 				["<C-d>"] = actions.preview_scrolling_down,
 				["<C-q>"] = actions.send_to_qflist + actions.open_qflist,

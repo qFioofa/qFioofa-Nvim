@@ -111,7 +111,11 @@ local AnimateOptions = {
 	fps = 144,
 }
 
+local actions = require("qfioofa.plugins.common.snacks.actions")
+local picker = require("qfioofa.plugins.common.snacks.picker")
+
 return {
+	picker = picker,
 	bigfile = { enabled = true },
 	-- Inline image preview (PNG/JPG/GIF/etc. and images in markdown).
 	-- Cross-platform: renders via the Kitty graphics protocol, so it needs a
@@ -130,7 +134,7 @@ return {
 					icon = "🔍 ",
 					key = "f",
 					desc = "Find File",
-					action = ":Telescope find_files",
+					action = actions.find_files,
 				},
 				{
 					icon = "📄 ",
@@ -142,7 +146,7 @@ return {
 					icon = "💬 ",
 					key = "g",
 					desc = "Find Text",
-					action = ":Telescope live_grep",
+					action = actions.grep,
 				},
 				{
 					icon = "🕒 ",
@@ -154,8 +158,7 @@ return {
 					icon = "⚙️ ",
 					key = "c",
 					desc = "Config",
-					action = ":Telescope find_files cwd="
-						.. vim.fn.stdpath("config"),
+					action = actions.find_config,
 				},
 				{ icon = "🔌 ", key = "q", desc = "Quit", action = ":qa" },
 			},

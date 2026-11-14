@@ -15,6 +15,8 @@ return {
 	keys = require("qfioofa.plugins.common.telescope.keymaps"),
 	dependencies = {
 		"nvim-telescope/telescope-media-files.nvim",
+		-- File icons in results (`color_devicons = true`).
+		"nvim-tree/nvim-web-devicons",
 		-- Native C sorter: big fuzzy-matching speedup. `build` compiles it.
 		{ "nvim-telescope/telescope-fzf-native.nvim", build = "make" },
 		-- Routes vim.ui.select (LSP code-action/rename, etc.) through telescope.

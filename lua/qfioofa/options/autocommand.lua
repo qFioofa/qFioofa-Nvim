@@ -2,7 +2,21 @@ local function isExcludedWindow()
 	local ft = vim.api.nvim_get_option_value("filetype", { buf = 0 })
 
 	local buf_name = vim.api.nvim_buf_get_name(0)
-	local excluded_filetypes = { "nvimtree", "NvimTree" }
+	local excluded_filetypes = {
+		"nvimtree",
+		"NvimTree",
+		"git",
+		"gitcommit",
+		"gitrebase",
+		"gitconfig",
+		"DiffviewFiles",
+		"DiffviewFileHistory",
+		"DiffviewLog",
+		"fugitive",
+		"fugitiveblame",
+		"NeogitStatus",
+		"NeogitCommitView",
+	}
 
 	for _, excluded_ft in ipairs(excluded_filetypes) do
 		if ft == excluded_ft then

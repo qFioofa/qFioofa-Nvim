@@ -25,7 +25,7 @@ The default is `pack` on Neovim 0.12+ and `lazy` otherwise.
 | --- | ---: | --- |
 | `lua/qfioofa/options` | 5 | global options, keymaps, commands, autocmds |
 | `lua/qfioofa/pluginManager` | 5 | profile selection and backends |
-| `lua/qfioofa/plugins/common` | 92 / 39 plugin dirs | plugins shared by both profiles |
+| `lua/qfioofa/plugins/common` | 94 / 39 plugin dirs | plugins shared by both profiles |
 | `lua/qfioofa/plugins/v011` | 2 | lazy profile only (<0.12) |
 | `lua/qfioofa/plugins/v012` | 2 | pack profile only (>=0.12) |
 | `lua/qfioofa/languages` | 3 | FileType language modules |
@@ -91,7 +91,7 @@ Fixed top-level layout:
 | `snacks` | `folke/snacks.nvim` | 6 |
 | `stay-centered` | `arnamak/stay-centered.nvim` | 0 |
 | `tabout` | `abecodes/tabout.nvim` | 4 |
-| `telescope` | `nvim-telescope/telescope.nvim` | 21 |
+| `telescope` | `nvim-telescope/telescope.nvim` | 25 |
 | `toggleterm` | `akinsho/toggleterm.nvim` | 3 |
 | `treesitter` | `nvim-treesitter/nvim-treesitter` | 0 |
 | `treesitter-context` | `nvim-treesitter/nvim-treesitter-context` | 0 |
@@ -117,8 +117,8 @@ Fixed top-level layout:
 ### Current stats
 
 <!-- BEGIN GENERATED: STATS -->
-- Active custom mappings: **211**
-- All captured entries (including inactive/neutral): **239**
+- Active custom mappings: **217**
+- All captured entries (including inactive/neutral): **245**
 - Plugin modules: `common` = 39, `v011` = 2, `v012` = 2
 - Language modules: `java`, `ruby`
 <!-- END GENERATED: STATS -->

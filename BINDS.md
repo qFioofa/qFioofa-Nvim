@@ -14,8 +14,8 @@
 
 ## Сводка
 
-- Кастомных активных маппингов: **211**
-- Всего записей, включая неактивные и нейтрализованные: **239**
+- Кастомных активных маппингов: **217**
+- Всего записей, включая неактивные и нейтрализованные: **245**
 - Секций: **18**
 - Межпрофильных исходников: `common`, `v011`, `v012`
 
@@ -27,39 +27,41 @@
 | `<C-w>` | n | Write file (force) | глобально | [lua/qfioofa/options/keymaps.lua:59](lua/qfioofa/options/keymaps.lua#L59) |
 | `<C-s>` | n, i | Write file | глобально | [lua/qfioofa/options/keymaps.lua:60](lua/qfioofa/options/keymaps.lua#L60) |
 | `<leader>x` | n | Buffer: close | глобально | [lua/qfioofa/options/keymaps.lua:61](lua/qfioofa/options/keymaps.lua#L61) |
-| `<C-;>` | n, v | Enter command mode | глобально | [lua/qfioofa/options/keymaps.lua:62](lua/qfioofa/options/keymaps.lua#L62) |
-| `Y` | n | Yank to end of line | глобально | [lua/qfioofa/options/keymaps.lua:63](lua/qfioofa/options/keymaps.lua#L63) |
-| `gx` | n | Open link/file under cursor | глобально | [lua/qfioofa/options/keymaps.lua:64](lua/qfioofa/options/keymaps.lua#L64) |
-| `<leader>w-` | n | Split: horizontal | глобально | [lua/qfioofa/options/keymaps.lua:67](lua/qfioofa/options/keymaps.lua#L67) |
-| `<leader>w|` | n | Split: vertical | глобально | [lua/qfioofa/options/keymaps.lua:68](lua/qfioofa/options/keymaps.lua#L68) |
-| `<C-h>` | n | Window: focus left | глобально | [lua/qfioofa/options/keymaps.lua:71](lua/qfioofa/options/keymaps.lua#L71) |
-| `<C-j>` | n | Window: focus down | глобально | [lua/qfioofa/options/keymaps.lua:72](lua/qfioofa/options/keymaps.lua#L72) |
-| `<C-k>` | n | Window: focus up | глобально | [lua/qfioofa/options/keymaps.lua:73](lua/qfioofa/options/keymaps.lua#L73) |
-| `<C-l>` | n | Window: focus right | глобально | [lua/qfioofa/options/keymaps.lua:74](lua/qfioofa/options/keymaps.lua#L74) |
-| `<leader>dd` | n | Delete entire buffer | глобально | [lua/qfioofa/options/keymaps.lua:75](lua/qfioofa/options/keymaps.lua#L75) |
-| `<leader>yy` | n | Yank entire buffer | глобально | [lua/qfioofa/options/keymaps.lua:76](lua/qfioofa/options/keymaps.lua#L76) |
-| `<C-Up>` | n | Resize: decrease height | глобально | [lua/qfioofa/options/keymaps.lua:78](lua/qfioofa/options/keymaps.lua#L78) |
-| `<C-Down>` | n | Resize: increase height | глобально | [lua/qfioofa/options/keymaps.lua:79](lua/qfioofa/options/keymaps.lua#L79) |
-| `<C-Left>` | n | Resize: increase width | глобально | [lua/qfioofa/options/keymaps.lua:80](lua/qfioofa/options/keymaps.lua#L80) |
-| `<C-Right>` | n | Resize: decrease width | глобально | [lua/qfioofa/options/keymaps.lua:81](lua/qfioofa/options/keymaps.lua#L81) |
-| `<S-l>` | n | Buffer: next | глобально | [lua/qfioofa/options/keymaps.lua:83](lua/qfioofa/options/keymaps.lua#L83) |
-| `<S-h>` | n | Buffer: previous | глобально | [lua/qfioofa/options/keymaps.lua:84](lua/qfioofa/options/keymaps.lua#L84) |
-| `<leader>fn` | n | New file | глобально | [lua/qfioofa/options/keymaps.lua:88](lua/qfioofa/options/keymaps.lua#L88) |
-| `<leader>uh` | n | Clear search highlight | глобально | [lua/qfioofa/options/keymaps.lua:102](lua/qfioofa/options/keymaps.lua#L102) |
-| `<` | v | Indent left (keep selection) | глобально | [lua/qfioofa/options/keymaps.lua:105](lua/qfioofa/options/keymaps.lua#L105) |
-| `>` | v | Indent right (keep selection) | глобально | [lua/qfioofa/options/keymaps.lua:106](lua/qfioofa/options/keymaps.lua#L106) |
-| `<A-j>` | v | Move line down | глобально | [lua/qfioofa/options/keymaps.lua:108](lua/qfioofa/options/keymaps.lua#L108) |
-| `<A-k>` | v | Move line up | глобально | [lua/qfioofa/options/keymaps.lua:109](lua/qfioofa/options/keymaps.lua#L109) |
-| `p` | v | Paste without overwriting register | глобально | [lua/qfioofa/options/keymaps.lua:110](lua/qfioofa/options/keymaps.lua#L110) |
-| `J` | x | Move selection down | глобально | [lua/qfioofa/options/keymaps.lua:113](lua/qfioofa/options/keymaps.lua#L113) |
-| `K` | x | Move selection up | глобально | [lua/qfioofa/options/keymaps.lua:114](lua/qfioofa/options/keymaps.lua#L114) |
-| `<A-j>` | x | Move selection down | глобально | [lua/qfioofa/options/keymaps.lua:115](lua/qfioofa/options/keymaps.lua#L115) |
-| `<A-k>` | x | Move selection up | глобально | [lua/qfioofa/options/keymaps.lua:116](lua/qfioofa/options/keymaps.lua#L116) |
-| `<C-h>` | t | Terminal: focus left window | глобально | [lua/qfioofa/options/keymaps.lua:119](lua/qfioofa/options/keymaps.lua#L119) |
-| `<C-j>` | t | Terminal: focus down window | глобально | [lua/qfioofa/options/keymaps.lua:120](lua/qfioofa/options/keymaps.lua#L120) |
-| `<C-k>` | t | Terminal: focus up window | глобально | [lua/qfioofa/options/keymaps.lua:121](lua/qfioofa/options/keymaps.lua#L121) |
-| `<C-l>` | t | Terminal: focus right window | глобально | [lua/qfioofa/options/keymaps.lua:122](lua/qfioofa/options/keymaps.lua#L122) |
-| `<Esc>` | t | Terminal: exit to normal mode | глобально | [lua/qfioofa/options/keymaps.lua:123](lua/qfioofa/options/keymaps.lua#L123) |
+| `q` | n | Buffer: close | глобально | [lua/qfioofa/options/keymaps.lua:62](lua/qfioofa/options/keymaps.lua#L62) |
+| `<C-;>` | n, v | Enter command mode | глобально | [lua/qfioofa/options/keymaps.lua:63](lua/qfioofa/options/keymaps.lua#L63) |
+| `Y` | n | Yank to end of line | глобально | [lua/qfioofa/options/keymaps.lua:64](lua/qfioofa/options/keymaps.lua#L64) |
+| `gx` | n | Open link/file under cursor | глобально | [lua/qfioofa/options/keymaps.lua:65](lua/qfioofa/options/keymaps.lua#L65) |
+| `<leader>w-` | n | Split: horizontal | глобально | [lua/qfioofa/options/keymaps.lua:68](lua/qfioofa/options/keymaps.lua#L68) |
+| `<leader>w|` | n | Split: vertical | глобально | [lua/qfioofa/options/keymaps.lua:69](lua/qfioofa/options/keymaps.lua#L69) |
+| `<C-h>` | n | Window: focus left | глобально | [lua/qfioofa/options/keymaps.lua:72](lua/qfioofa/options/keymaps.lua#L72) |
+| `<C-j>` | n | Window: focus down | глобально | [lua/qfioofa/options/keymaps.lua:73](lua/qfioofa/options/keymaps.lua#L73) |
+| `<C-k>` | n | Window: focus up | глобально | [lua/qfioofa/options/keymaps.lua:74](lua/qfioofa/options/keymaps.lua#L74) |
+| `<C-l>` | n | Window: focus right | глобально | [lua/qfioofa/options/keymaps.lua:75](lua/qfioofa/options/keymaps.lua#L75) |
+| `<leader>dd` | n | Delete entire buffer | глобально | [lua/qfioofa/options/keymaps.lua:76](lua/qfioofa/options/keymaps.lua#L76) |
+| `<leader>yy` | n | Yank entire buffer | глобально | [lua/qfioofa/options/keymaps.lua:77](lua/qfioofa/options/keymaps.lua#L77) |
+| `<C-Up>` | n | Resize: decrease height | глобально | [lua/qfioofa/options/keymaps.lua:79](lua/qfioofa/options/keymaps.lua#L79) |
+| `<C-Down>` | n | Resize: increase height | глобально | [lua/qfioofa/options/keymaps.lua:80](lua/qfioofa/options/keymaps.lua#L80) |
+| `<C-Left>` | n | Resize: increase width | глобально | [lua/qfioofa/options/keymaps.lua:81](lua/qfioofa/options/keymaps.lua#L81) |
+| `<C-Right>` | n | Resize: decrease width | глобально | [lua/qfioofa/options/keymaps.lua:82](lua/qfioofa/options/keymaps.lua#L82) |
+| `<S-l>` | n | Buffer: next | глобально | [lua/qfioofa/options/keymaps.lua:84](lua/qfioofa/options/keymaps.lua#L84) |
+| `<S-h>` | n | Buffer: previous | глобально | [lua/qfioofa/options/keymaps.lua:85](lua/qfioofa/options/keymaps.lua#L85) |
+| `<leader>fn` | n | New file | глобально | [lua/qfioofa/options/keymaps.lua:89](lua/qfioofa/options/keymaps.lua#L89) |
+| `<leader>uh` | n | Clear search highlight | глобально | [lua/qfioofa/options/keymaps.lua:103](lua/qfioofa/options/keymaps.lua#L103) |
+| `<` | v | Indent left (keep selection) | глобально | [lua/qfioofa/options/keymaps.lua:106](lua/qfioofa/options/keymaps.lua#L106) |
+| `>` | v | Indent right (keep selection) | глобально | [lua/qfioofa/options/keymaps.lua:107](lua/qfioofa/options/keymaps.lua#L107) |
+| `<A-j>` | v | Move line down | глобально | [lua/qfioofa/options/keymaps.lua:109](lua/qfioofa/options/keymaps.lua#L109) |
+| `<A-k>` | v | Move line up | глобально | [lua/qfioofa/options/keymaps.lua:110](lua/qfioofa/options/keymaps.lua#L110) |
+| `p` | v | Paste without overwriting register | глобально | [lua/qfioofa/options/keymaps.lua:111](lua/qfioofa/options/keymaps.lua#L111) |
+| `J` | x | Move selection down | глобально | [lua/qfioofa/options/keymaps.lua:114](lua/qfioofa/options/keymaps.lua#L114) |
+| `K` | x | Move selection up | глобально | [lua/qfioofa/options/keymaps.lua:115](lua/qfioofa/options/keymaps.lua#L115) |
+| `<A-j>` | x | Move selection down | глобально | [lua/qfioofa/options/keymaps.lua:116](lua/qfioofa/options/keymaps.lua#L116) |
+| `<A-k>` | x | Move selection up | глобально | [lua/qfioofa/options/keymaps.lua:117](lua/qfioofa/options/keymaps.lua#L117) |
+| `<C-h>` | t | Terminal: focus left window | глобально | [lua/qfioofa/options/keymaps.lua:120](lua/qfioofa/options/keymaps.lua#L120) |
+| `<C-j>` | t | Terminal: focus down window | глобально | [lua/qfioofa/options/keymaps.lua:121](lua/qfioofa/options/keymaps.lua#L121) |
+| `<C-k>` | t | Terminal: focus up window | глобально | [lua/qfioofa/options/keymaps.lua:122](lua/qfioofa/options/keymaps.lua#L122) |
+| `<C-l>` | t | Terminal: focus right window | глобально | [lua/qfioofa/options/keymaps.lua:123](lua/qfioofa/options/keymaps.lua#L123) |
+| `<Esc>` | t | Terminal: exit to normal mode | глобально | [lua/qfioofa/options/keymaps.lua:124](lua/qfioofa/options/keymaps.lua#L124) |
+| `<Esc>` | n | Hide highlight | глобально | [lua/qfioofa/options/keymaps.lua:140](lua/qfioofa/options/keymaps.lua#L140) |
 
 ## Поиск и навигация
 
@@ -74,22 +76,24 @@
 | `gK` | n | hover.nvim (enter) | глобально | [lua/qfioofa/plugins/common/hover/keymaps.lua:13](lua/qfioofa/plugins/common/hover/keymaps.lua#L13) |
 | `<C-p>` | n | hover.nvim (previous source) | глобально | [lua/qfioofa/plugins/common/hover/keymaps.lua:21](lua/qfioofa/plugins/common/hover/keymaps.lua#L21) |
 | `<C-n>` | n | hover.nvim (next source) | глобально | [lua/qfioofa/plugins/common/hover/keymaps.lua:29](lua/qfioofa/plugins/common/hover/keymaps.lua#L29) |
-| `<leader>ff` | n | Find Files | глобально | [lua/qfioofa/plugins/common/telescope/keymaps.lua:9](lua/qfioofa/plugins/common/telescope/keymaps.lua#L9) |
-| `<leader>fg` | n | Find in Files | глобально | [lua/qfioofa/plugins/common/telescope/keymaps.lua:10](lua/qfioofa/plugins/common/telescope/keymaps.lua#L10) |
-| `<leader>fw` | n | Find Word (under cursor) | глобально | [lua/qfioofa/plugins/common/telescope/keymaps.lua:11](lua/qfioofa/plugins/common/telescope/keymaps.lua#L11) |
-| `<leader>fb` | n | Find in Buffer | глобально | [lua/qfioofa/plugins/common/telescope/keymaps.lua:13](lua/qfioofa/plugins/common/telescope/keymaps.lua#L13) |
-| `<leader>fr` | n | Recent Files | глобально | [lua/qfioofa/plugins/common/telescope/keymaps.lua:17](lua/qfioofa/plugins/common/telescope/keymaps.lua#L17) |
-| `<leader>fh` | n | Help Tags | глобально | [lua/qfioofa/plugins/common/telescope/keymaps.lua:18](lua/qfioofa/plugins/common/telescope/keymaps.lua#L18) |
-| `<leader>fc` | n | Commands | глобально | [lua/qfioofa/plugins/common/telescope/keymaps.lua:19](lua/qfioofa/plugins/common/telescope/keymaps.lua#L19) |
-| `<leader>fk` | n | Keymaps | глобально | [lua/qfioofa/plugins/common/telescope/keymaps.lua:20](lua/qfioofa/plugins/common/telescope/keymaps.lua#L20) |
-| `<leader>fl` | n | List Buffers | глобально | [lua/qfioofa/plugins/common/telescope/keymaps.lua:21](lua/qfioofa/plugins/common/telescope/keymaps.lua#L21) |
-| `<leader>fs` | n | Treesitter Symbols | глобально | [lua/qfioofa/plugins/common/telescope/keymaps.lua:22](lua/qfioofa/plugins/common/telescope/keymaps.lua#L22) |
-| `<leader>fd` | n | Diagnostics | глобально | [lua/qfioofa/plugins/common/telescope/keymaps.lua:23](lua/qfioofa/plugins/common/telescope/keymaps.lua#L23) |
-| `<leader>fm` | n | Media Files | глобально | [lua/qfioofa/plugins/common/telescope/keymaps.lua:25](lua/qfioofa/plugins/common/telescope/keymaps.lua#L25) |
-| `<leader>gf` | n | Git Files | глобально | [lua/qfioofa/plugins/common/telescope/keymaps.lua:31](lua/qfioofa/plugins/common/telescope/keymaps.lua#L31) |
-| `<leader>gs` | n | Git Status | глобально | [lua/qfioofa/plugins/common/telescope/keymaps.lua:32](lua/qfioofa/plugins/common/telescope/keymaps.lua#L32) |
-| `<leader>gc` | n | Git Commits | глобально | [lua/qfioofa/plugins/common/telescope/keymaps.lua:33](lua/qfioofa/plugins/common/telescope/keymaps.lua#L33) |
-| `<leader>gb` | n | Git Branches | глобально | [lua/qfioofa/plugins/common/telescope/keymaps.lua:34](lua/qfioofa/plugins/common/telescope/keymaps.lua#L34) |
+| `<leader>ff` | n | Find Files (tree) | глобально | [lua/qfioofa/plugins/common/telescope/keymaps.lua:11](lua/qfioofa/plugins/common/telescope/keymaps.lua#L11) |
+| `<leader>fF` | n | Find Files (flat) | глобально | [lua/qfioofa/plugins/common/telescope/keymaps.lua:12](lua/qfioofa/plugins/common/telescope/keymaps.lua#L12) |
+| `<leader>fg` | n | Find in Files (grouped) | глобально | [lua/qfioofa/plugins/common/telescope/keymaps.lua:13](lua/qfioofa/plugins/common/telescope/keymaps.lua#L13) |
+| `<leader>fG` | n | Find in Files (flat) | глобально | [lua/qfioofa/plugins/common/telescope/keymaps.lua:14](lua/qfioofa/plugins/common/telescope/keymaps.lua#L14) |
+| `<leader>fw` | n | Find Word (under cursor) | глобально | [lua/qfioofa/plugins/common/telescope/keymaps.lua:15](lua/qfioofa/plugins/common/telescope/keymaps.lua#L15) |
+| `<leader>fb` | n | Find in Buffer | глобально | [lua/qfioofa/plugins/common/telescope/keymaps.lua:17](lua/qfioofa/plugins/common/telescope/keymaps.lua#L17) |
+| `<leader>fr` | n | Recent Files | глобально | [lua/qfioofa/plugins/common/telescope/keymaps.lua:21](lua/qfioofa/plugins/common/telescope/keymaps.lua#L21) |
+| `<leader>fh` | n | Help Tags | глобально | [lua/qfioofa/plugins/common/telescope/keymaps.lua:22](lua/qfioofa/plugins/common/telescope/keymaps.lua#L22) |
+| `<leader>fc` | n | Commands | глобально | [lua/qfioofa/plugins/common/telescope/keymaps.lua:23](lua/qfioofa/plugins/common/telescope/keymaps.lua#L23) |
+| `<leader>fk` | n | Keymaps | глобально | [lua/qfioofa/plugins/common/telescope/keymaps.lua:24](lua/qfioofa/plugins/common/telescope/keymaps.lua#L24) |
+| `<leader>fl` | n | List Buffers | глобально | [lua/qfioofa/plugins/common/telescope/keymaps.lua:25](lua/qfioofa/plugins/common/telescope/keymaps.lua#L25) |
+| `<leader>fs` | n | Treesitter Symbols | глобально | [lua/qfioofa/plugins/common/telescope/keymaps.lua:26](lua/qfioofa/plugins/common/telescope/keymaps.lua#L26) |
+| `<leader>fd` | n | Diagnostics | глобально | [lua/qfioofa/plugins/common/telescope/keymaps.lua:27](lua/qfioofa/plugins/common/telescope/keymaps.lua#L27) |
+| `<leader>fm` | n | Media Files | глобально | [lua/qfioofa/plugins/common/telescope/keymaps.lua:29](lua/qfioofa/plugins/common/telescope/keymaps.lua#L29) |
+| `<leader>gf` | n | Git Files | глобально | [lua/qfioofa/plugins/common/telescope/keymaps.lua:35](lua/qfioofa/plugins/common/telescope/keymaps.lua#L35) |
+| `<leader>gs` | n | Git Status | глобально | [lua/qfioofa/plugins/common/telescope/keymaps.lua:36](lua/qfioofa/plugins/common/telescope/keymaps.lua#L36) |
+| `<leader>gc` | n | Git Commits | глобально | [lua/qfioofa/plugins/common/telescope/keymaps.lua:37](lua/qfioofa/plugins/common/telescope/keymaps.lua#L37) |
+| `<leader>gb` | n | Git Branches | глобально | [lua/qfioofa/plugins/common/telescope/keymaps.lua:38](lua/qfioofa/plugins/common/telescope/keymaps.lua#L38) |
 
 ## Git и история
 
@@ -236,12 +240,12 @@
 
 | Клавиши | Режим | Описание | Область | Источник |
 | --- | --- | --- | --- | --- |
-| `f` | n | Find File | dashboard | [lua/qfioofa/plugins/common/snacks/options.lua:131](lua/qfioofa/plugins/common/snacks/options.lua#L131) |
-| `n` | n | New File | dashboard | [lua/qfioofa/plugins/common/snacks/options.lua:137](lua/qfioofa/plugins/common/snacks/options.lua#L137) |
-| `g` | n | Find Text | dashboard | [lua/qfioofa/plugins/common/snacks/options.lua:143](lua/qfioofa/plugins/common/snacks/options.lua#L143) |
-| `r` | n | Recent Files | dashboard | [lua/qfioofa/plugins/common/snacks/options.lua:149](lua/qfioofa/plugins/common/snacks/options.lua#L149) |
-| `c` | n | Config | dashboard | [lua/qfioofa/plugins/common/snacks/options.lua:155](lua/qfioofa/plugins/common/snacks/options.lua#L155) |
-| `q` | n | Quit | dashboard | [lua/qfioofa/plugins/common/snacks/options.lua:160](lua/qfioofa/plugins/common/snacks/options.lua#L160) |
+| `f` | n | Find File | dashboard | [lua/qfioofa/plugins/common/snacks/options.lua:135](lua/qfioofa/plugins/common/snacks/options.lua#L135) |
+| `n` | n | New File | dashboard | [lua/qfioofa/plugins/common/snacks/options.lua:141](lua/qfioofa/plugins/common/snacks/options.lua#L141) |
+| `g` | n | Find Text | dashboard | [lua/qfioofa/plugins/common/snacks/options.lua:147](lua/qfioofa/plugins/common/snacks/options.lua#L147) |
+| `r` | n | Recent Files | dashboard | [lua/qfioofa/plugins/common/snacks/options.lua:153](lua/qfioofa/plugins/common/snacks/options.lua#L153) |
+| `c` | n | Config | dashboard | [lua/qfioofa/plugins/common/snacks/options.lua:159](lua/qfioofa/plugins/common/snacks/options.lua#L159) |
+| `q` | n | Quit | dashboard | [lua/qfioofa/plugins/common/snacks/options.lua:163](lua/qfioofa/plugins/common/snacks/options.lua#L163) |
 
 ## Терминал (toggleterm)
 
@@ -294,11 +298,13 @@
 | `<S-Tab>` | i | Выйти из пары/скобки назад | tabout | [lua/qfioofa/plugins/common/tabout/options.lua:3](lua/qfioofa/plugins/common/tabout/options.lua#L3) |
 | `<C-t>` | i | Обычный Tab | tabout | [lua/qfioofa/plugins/common/tabout/options.lua:6](lua/qfioofa/plugins/common/tabout/options.lua#L6) |
 | `<C-d>` | i | Обычный Shift-Tab | tabout | [lua/qfioofa/plugins/common/tabout/options.lua:7](lua/qfioofa/plugins/common/tabout/options.lua#L7) |
-| `<C-u>` | i | Прокрутить preview вверх | Telescope prompt | [lua/qfioofa/plugins/common/telescope/options.lua:32](lua/qfioofa/plugins/common/telescope/options.lua#L32) |
-| `<C-d>` | i | Прокрутить preview вниз | Telescope prompt | [lua/qfioofa/plugins/common/telescope/options.lua:33](lua/qfioofa/plugins/common/telescope/options.lua#L33) |
-| `<C-q>` | i | Отправить в quickfix и открыть | Telescope prompt | [lua/qfioofa/plugins/common/telescope/options.lua:34](lua/qfioofa/plugins/common/telescope/options.lua#L34) |
-| `<esc>` | i | Закрыть Telescope | Telescope prompt | [lua/qfioofa/plugins/common/telescope/options.lua:35](lua/qfioofa/plugins/common/telescope/options.lua#L35) |
-| `<C-x>` | i | Удалить буфер (buffers picker) | Telescope prompt | [lua/qfioofa/plugins/common/telescope/options.lua:56](lua/qfioofa/plugins/common/telescope/options.lua#L56) |
+| `<C-j>` | i | Следующий результат / файл | Telescope prompt | [lua/qfioofa/plugins/common/telescope/options.lua:41](lua/qfioofa/plugins/common/telescope/options.lua#L41) |
+| `<C-k>` | i | Предыдущий результат / файл | Telescope prompt | [lua/qfioofa/plugins/common/telescope/options.lua:42](lua/qfioofa/plugins/common/telescope/options.lua#L42) |
+| `<C-u>` | i | Прокрутить preview вверх | Telescope prompt | [lua/qfioofa/plugins/common/telescope/options.lua:43](lua/qfioofa/plugins/common/telescope/options.lua#L43) |
+| `<C-d>` | i | Прокрутить preview вниз | Telescope prompt | [lua/qfioofa/plugins/common/telescope/options.lua:44](lua/qfioofa/plugins/common/telescope/options.lua#L44) |
+| `<C-q>` | i | Отправить в quickfix и открыть | Telescope prompt | [lua/qfioofa/plugins/common/telescope/options.lua:45](lua/qfioofa/plugins/common/telescope/options.lua#L45) |
+| `<esc>` | i | Закрыть Telescope | Telescope prompt | [lua/qfioofa/plugins/common/telescope/options.lua:46](lua/qfioofa/plugins/common/telescope/options.lua#L46) |
+| `<C-x>` | i | Удалить буфер (buffers picker) | Telescope prompt | [lua/qfioofa/plugins/common/telescope/options.lua:67](lua/qfioofa/plugins/common/telescope/options.lua#L67) |
 
 ## Намеренно нейтрализованные клавиши
 
@@ -307,8 +313,8 @@
 | Клавиши | Режим | Описание | Область | Источник |
 | --- | --- | --- | --- | --- |
 | `<Space>` | n, x, s, o | Намеренно отключено | глобально | [lua/qfioofa/options/keymaps.lua:53](lua/qfioofa/options/keymaps.lua#L53) |
-| `<C-w>d` | n | Намеренно отключено | глобально | [lua/qfioofa/options/keymaps.lua:132](lua/qfioofa/options/keymaps.lua#L132) |
-| `<C-w><C-d>` | n | Намеренно отключено | глобально | [lua/qfioofa/options/keymaps.lua:133](lua/qfioofa/options/keymaps.lua#L133) |
+| `<C-w>d` | n | Намеренно отключено | глобально | [lua/qfioofa/options/keymaps.lua:133](lua/qfioofa/options/keymaps.lua#L133) |
+| `<C-w><C-d>` | n | Намеренно отключено | глобально | [lua/qfioofa/options/keymaps.lua:134](lua/qfioofa/options/keymaps.lua#L134) |
 
 ## Неактивные / мёртвые маппинги
 
