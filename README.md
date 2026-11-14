@@ -17,6 +17,7 @@ LuaJIT 2.1.1741730670
 ## Legend / Table of Contents
 
 - [About](#about)
+- [Documentation](#documentation)
 - [Features](#features)
 - [Prerequisites](#prerequisites)
   - [Outside dependencies](#outside-dependencies)
@@ -35,6 +36,18 @@ LuaJIT 2.1.1741730670
 ## About
 
 This is my personal Neovim configuration aimed at providing a modern, efficient, and feature-rich editing environment.
+
+## Documentation
+
+- [BINDS.md](./BINDS.md) — generated map of every custom keybinding.
+- [AGENTS.md](./AGENTS.md) — project structure, conventions, and maintenance rules for coding agents.
+
+Both files are generated from the Lua config:
+
+```bash
+make docs        # update AGENTS.md and BINDS.md
+make check-docs  # verify they are in sync
+```
 
 ## Features
 

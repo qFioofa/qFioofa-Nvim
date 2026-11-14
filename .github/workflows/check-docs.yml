@@ -1,0 +1,19 @@
+name: check-docs
+
+on:
+  push:
+  pull_request:
+
+permissions:
+  contents: read
+
+jobs:
+  docs:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: cachix/install-nix-action@v31
+      - name: Check generated documentation and lint
+        run: nix shell nixpkgs#neovim nixpkgs#lua51Packages.luacheck -c make check
+      - name: Run generator self-test
+        run: nix shell nixpkgs#neovim -c make self-test
