@@ -14,8 +14,8 @@
 
 ## Сводка
 
-- Кастомных активных маппингов: **217**
-- Всего записей, включая неактивные и нейтрализованные: **245**
+- Кастомных активных маппингов: **219**
+- Всего записей, включая неактивные и нейтрализованные: **247**
 - Секций: **18**
 - Межпрофильных исходников: `common`, `v011`, `v012`
 
@@ -129,24 +129,25 @@
 | Клавиши | Режим | Описание | Область | Источник |
 | --- | --- | --- | --- | --- |
 | `<leader>cf` | n, v | Format buffer/selection | глобально | [lua/qfioofa/plugins/common/conform/keymaps.lua:4](lua/qfioofa/plugins/common/conform/keymaps.lua#L4) |
-| `<leader>tl` | n | Toggle LSP (Detach/Reload) | глобально | [lua/qfioofa/plugins/common/lspconfig/keymaps.lua:5](lua/qfioofa/plugins/common/lspconfig/keymaps.lua#L5) |
-| `<leader>to` | n | Open lsp error messages | глобально | [lua/qfioofa/plugins/common/lspconfig/keymaps.lua:18](lua/qfioofa/plugins/common/lspconfig/keymaps.lua#L18) |
-| `<leader>te` | n | Toggle Errors Visibility | глобально | [lua/qfioofa/plugins/common/lspconfig/keymaps.lua:25](lua/qfioofa/plugins/common/lspconfig/keymaps.lua#L25) |
+| `<leader>tl` | n | Toggle LSP (Detach/Reload) | глобально | [lua/qfioofa/plugins/common/lspconfig/keymaps.lua:6](lua/qfioofa/plugins/common/lspconfig/keymaps.lua#L6) |
+| `<leader>to` | n | Open lsp error messages | глобально | [lua/qfioofa/plugins/common/lspconfig/keymaps.lua:19](lua/qfioofa/plugins/common/lspconfig/keymaps.lua#L19) |
+| `<leader>te` | n | Toggle Errors Visibility | глобально | [lua/qfioofa/plugins/common/lspconfig/keymaps.lua:26](lua/qfioofa/plugins/common/lspconfig/keymaps.lua#L26) |
 | `gd` | n | LSP: [G]oto [D]efinition | buffer: LSP | [lua/qfioofa/plugins/common/lspconfig/keymaps.lua:45](lua/qfioofa/plugins/common/lspconfig/keymaps.lua#L45) |
-| `gr` | n | LSP: [G]oto [R]eferences | buffer: LSP | [lua/qfioofa/plugins/common/lspconfig/keymaps.lua:50](lua/qfioofa/plugins/common/lspconfig/keymaps.lua#L50) |
-| `gI` | n | LSP: [G]oto [I]mplementation | buffer: LSP | [lua/qfioofa/plugins/common/lspconfig/keymaps.lua:55](lua/qfioofa/plugins/common/lspconfig/keymaps.lua#L55) |
-| `<leader>D` | n | LSP: Type [D]efinition | buffer: LSP | [lua/qfioofa/plugins/common/lspconfig/keymaps.lua:60](lua/qfioofa/plugins/common/lspconfig/keymaps.lua#L60) |
-| `<leader>ds` | n | LSP: [D]ocument [S]ymbols | buffer: LSP | [lua/qfioofa/plugins/common/lspconfig/keymaps.lua:65](lua/qfioofa/plugins/common/lspconfig/keymaps.lua#L65) |
-| `<leader>ws` | n | LSP: [W]orkspace [S]ymbols | buffer: LSP | [lua/qfioofa/plugins/common/lspconfig/keymaps.lua:70](lua/qfioofa/plugins/common/lspconfig/keymaps.lua#L70) |
-| `<leader>rn` | n | LSP: [R]e[n]ame | buffer: LSP | [lua/qfioofa/plugins/common/lspconfig/keymaps.lua:74](lua/qfioofa/plugins/common/lspconfig/keymaps.lua#L74) |
-| `<leader>ca` | n | LSP: [C]ode [A]ction | buffer: LSP | [lua/qfioofa/plugins/common/lspconfig/keymaps.lua:75](lua/qfioofa/plugins/common/lspconfig/keymaps.lua#L75) |
-| `<leader>ca` | v, x | LSP: [C]ode [A]ction (range) | buffer: LSP | [lua/qfioofa/plugins/common/lspconfig/keymaps.lua:81](lua/qfioofa/plugins/common/lspconfig/keymaps.lua#L81) |
-| `<leader>sh` | n | LSP: [S]ignature [H]elp | buffer: LSP | [lua/qfioofa/plugins/common/lspconfig/keymaps.lua:91](lua/qfioofa/plugins/common/lspconfig/keymaps.lua#L91) |
-| `gD` | n | LSP: [G]oto [D]eclaration | buffer: LSP | [lua/qfioofa/plugins/common/lspconfig/keymaps.lua:97](lua/qfioofa/plugins/common/lspconfig/keymaps.lua#L97) |
-| `<leader>cl` | n | LSP: [C]ode [L]ens run | buffer: LSP | [lua/qfioofa/plugins/common/lspconfig/keymaps.lua:102](lua/qfioofa/plugins/common/lspconfig/keymaps.lua#L102) |
-| `<leader>th` | n | LSP: [T]oggle Inlay [H]ints | buffer: LSP | [lua/qfioofa/plugins/common/lspconfig/keymaps.lua:110](lua/qfioofa/plugins/common/lspconfig/keymaps.lua#L110) |
-| `<leader>po` | n | LSP: [P]ython [O]rganize imports | buffer: LSP | [lua/qfioofa/plugins/common/lspconfig/keymaps.lua:125](lua/qfioofa/plugins/common/lspconfig/keymaps.lua#L125) |
-| `<leader>pa` | n | LSP: [P]ython [A]dd missing imports | buffer: LSP | [lua/qfioofa/plugins/common/lspconfig/keymaps.lua:133](lua/qfioofa/plugins/common/lspconfig/keymaps.lua#L133) |
+| `gr` | n | LSP: [G]oto [R]eferences | buffer: LSP | [lua/qfioofa/plugins/common/lspconfig/keymaps.lua:46](lua/qfioofa/plugins/common/lspconfig/keymaps.lua#L46) |
+| `gI` | n | LSP: [G]oto [I]mplementation | buffer: LSP | [lua/qfioofa/plugins/common/lspconfig/keymaps.lua:47](lua/qfioofa/plugins/common/lspconfig/keymaps.lua#L47) |
+| `<leader>D` | n | LSP: Type Search ([D], global) | buffer: LSP | [lua/qfioofa/plugins/common/lspconfig/keymaps.lua:48](lua/qfioofa/plugins/common/lspconfig/keymaps.lua#L48) |
+| `<leader>ds` | n | LSP: [D]ocument [S]ymbols | buffer: LSP | [lua/qfioofa/plugins/common/lspconfig/keymaps.lua:49](lua/qfioofa/plugins/common/lspconfig/keymaps.lua#L49) |
+| `<leader>ws` | n | LSP: [W]orkspace [S]ymbols | buffer: LSP | [lua/qfioofa/plugins/common/lspconfig/keymaps.lua:50](lua/qfioofa/plugins/common/lspconfig/keymaps.lua#L50) |
+| `gT` | n | LSP: [G]oto [T]ype Definition | buffer: LSP | [lua/qfioofa/plugins/common/lspconfig/keymaps.lua:55](lua/qfioofa/plugins/common/lspconfig/keymaps.lua#L55) |
+| `<leader>rn` | n | LSP: [R]e[n]ame | buffer: LSP | [lua/qfioofa/plugins/common/lspconfig/keymaps.lua:69](lua/qfioofa/plugins/common/lspconfig/keymaps.lua#L69) |
+| `<leader>ca` | n | LSP: [C]ode [A]ction | buffer: LSP | [lua/qfioofa/plugins/common/lspconfig/keymaps.lua:70](lua/qfioofa/plugins/common/lspconfig/keymaps.lua#L70) |
+| `<leader>ca` | v, x | LSP: [C]ode [A]ction (range) | buffer: LSP | [lua/qfioofa/plugins/common/lspconfig/keymaps.lua:76](lua/qfioofa/plugins/common/lspconfig/keymaps.lua#L76) |
+| `<leader>sh` | n | LSP: [S]ignature [H]elp | buffer: LSP | [lua/qfioofa/plugins/common/lspconfig/keymaps.lua:86](lua/qfioofa/plugins/common/lspconfig/keymaps.lua#L86) |
+| `gD` | n | LSP: [G]oto [D]eclaration | buffer: LSP | [lua/qfioofa/plugins/common/lspconfig/keymaps.lua:92](lua/qfioofa/plugins/common/lspconfig/keymaps.lua#L92) |
+| `<leader>cl` | n | LSP: [C]ode [L]ens run | buffer: LSP | [lua/qfioofa/plugins/common/lspconfig/keymaps.lua:97](lua/qfioofa/plugins/common/lspconfig/keymaps.lua#L97) |
+| `<leader>th` | n | LSP: [T]oggle Inlay [H]ints | buffer: LSP | [lua/qfioofa/plugins/common/lspconfig/keymaps.lua:105](lua/qfioofa/plugins/common/lspconfig/keymaps.lua#L105) |
+| `<leader>po` | n | LSP: [P]ython [O]rganize imports | buffer: LSP | [lua/qfioofa/plugins/common/lspconfig/keymaps.lua:120](lua/qfioofa/plugins/common/lspconfig/keymaps.lua#L120) |
+| `<leader>pa` | n | LSP: [P]ython [A]dd missing imports | buffer: LSP | [lua/qfioofa/plugins/common/lspconfig/keymaps.lua:128](lua/qfioofa/plugins/common/lspconfig/keymaps.lua#L128) |
 | `<leader>sd` | n | Saga: buffer diagnostics (float) | глобально | [lua/qfioofa/plugins/common/lspsaga/keymaps.lua:7](lua/qfioofa/plugins/common/lspsaga/keymaps.lua#L7) |
 | `<leader>sw` | n | Saga: workspace diagnostics (float) | глобально | [lua/qfioofa/plugins/common/lspsaga/keymaps.lua:12](lua/qfioofa/plugins/common/lspsaga/keymaps.lua#L12) |
 | `<leader>so` | n | Saga: symbols outline | глобально | [lua/qfioofa/plugins/common/lspsaga/keymaps.lua:17](lua/qfioofa/plugins/common/lspsaga/keymaps.lua#L17) |
@@ -348,6 +349,12 @@
 | `r` | n | dapui: repl *(неактивно)* | dapui | [lua/qfioofa/plugins/common/dap/options.lua:54](lua/qfioofa/plugins/common/dap/options.lua#L54) |
 | `t` | n | dapui: toggle *(неактивно)* | dapui | [lua/qfioofa/plugins/common/dap/options.lua:55](lua/qfioofa/plugins/common/dap/options.lua#L55) |
 
+## Прочие плагины
+
+| Клавиши | Режим | Описание | Область | Источник |
+| --- | --- | --- | --- | --- |
+| `<leader>kp` | n | Physical keyboard UI | глобально | [lua/qfioofa/plugins/common/physical-keyboard/init.lua:6](lua/qfioofa/plugins/common/physical-keyboard/init.lua#L6) |
+
 ## which-key: группы префиксов
 
 | Префикс | Группа | Источник |
@@ -358,16 +365,17 @@
 | `<leader>c` | Code | [lua/qfioofa/plugins/common/which-key/options.lua:11](lua/qfioofa/plugins/common/which-key/options.lua#L11) |
 | `<leader>d` | Diagnostics / Debug / Delete | [lua/qfioofa/plugins/common/which-key/options.lua:12](lua/qfioofa/plugins/common/which-key/options.lua#L12) |
 | `<leader>t` | Toggle / Terminal | [lua/qfioofa/plugins/common/which-key/options.lua:13](lua/qfioofa/plugins/common/which-key/options.lua#L13) |
-| `<leader>j` | Java | [lua/qfioofa/plugins/common/which-key/options.lua:14](lua/qfioofa/plugins/common/which-key/options.lua#L14) |
-| `<leader>n` | Noice | [lua/qfioofa/plugins/common/which-key/options.lua:15](lua/qfioofa/plugins/common/which-key/options.lua#L15) |
-| `<leader>r` | Rename / Ruby | [lua/qfioofa/plugins/common/which-key/options.lua:16](lua/qfioofa/plugins/common/which-key/options.lua#L16) |
-| `<leader>w` | Workspace / Write | [lua/qfioofa/plugins/common/which-key/options.lua:17](lua/qfioofa/plugins/common/which-key/options.lua#L17) |
-| `<leader>u` | UI / Notify | [lua/qfioofa/plugins/common/which-key/options.lua:18](lua/qfioofa/plugins/common/which-key/options.lua#L18) |
-| `<leader>l` | LazyGit | [lua/qfioofa/plugins/common/which-key/options.lua:19](lua/qfioofa/plugins/common/which-key/options.lua#L19) |
-| `<leader>s` | LSP (Saga) / Session | [lua/qfioofa/plugins/common/which-key/options.lua:20](lua/qfioofa/plugins/common/which-key/options.lua#L20) |
-| `<leader>a` | Auto-save | [lua/qfioofa/plugins/common/which-key/options.lua:21](lua/qfioofa/plugins/common/which-key/options.lua#L21) |
-| `<leader>p` | Python | [lua/qfioofa/plugins/common/which-key/options.lua:22](lua/qfioofa/plugins/common/which-key/options.lua#L22) |
-| `<leader>y` | Yank | [lua/qfioofa/plugins/common/which-key/options.lua:23](lua/qfioofa/plugins/common/which-key/options.lua#L23) |
+| `<leader>k` | Keyboard | [lua/qfioofa/plugins/common/which-key/options.lua:14](lua/qfioofa/plugins/common/which-key/options.lua#L14) |
+| `<leader>j` | Java | [lua/qfioofa/plugins/common/which-key/options.lua:15](lua/qfioofa/plugins/common/which-key/options.lua#L15) |
+| `<leader>n` | Noice | [lua/qfioofa/plugins/common/which-key/options.lua:16](lua/qfioofa/plugins/common/which-key/options.lua#L16) |
+| `<leader>r` | Rename / Ruby | [lua/qfioofa/plugins/common/which-key/options.lua:17](lua/qfioofa/plugins/common/which-key/options.lua#L17) |
+| `<leader>w` | Workspace / Write | [lua/qfioofa/plugins/common/which-key/options.lua:18](lua/qfioofa/plugins/common/which-key/options.lua#L18) |
+| `<leader>u` | UI / Notify | [lua/qfioofa/plugins/common/which-key/options.lua:19](lua/qfioofa/plugins/common/which-key/options.lua#L19) |
+| `<leader>l` | LazyGit | [lua/qfioofa/plugins/common/which-key/options.lua:20](lua/qfioofa/plugins/common/which-key/options.lua#L20) |
+| `<leader>s` | LSP (Saga) / Session | [lua/qfioofa/plugins/common/which-key/options.lua:21](lua/qfioofa/plugins/common/which-key/options.lua#L21) |
+| `<leader>a` | Auto-save | [lua/qfioofa/plugins/common/which-key/options.lua:22](lua/qfioofa/plugins/common/which-key/options.lua#L22) |
+| `<leader>p` | Python | [lua/qfioofa/plugins/common/which-key/options.lua:23](lua/qfioofa/plugins/common/which-key/options.lua#L23) |
+| `<leader>y` | Yank | [lua/qfioofa/plugins/common/which-key/options.lua:24](lua/qfioofa/plugins/common/which-key/options.lua#L24) |
 
 ## Пересечения клавиш
 
@@ -375,8 +383,8 @@
 | --- | --- | --- | --- | --- |
 | `<S-Tab>` | i | cmp, tabout | Предыдущий пункт / jump назад — [lua/qfioofa/plugins/common/cmp/options.lua:65](lua/qfioofa/plugins/common/cmp/options.lua#L65)<br>Выйти из пары/скобки назад — [lua/qfioofa/plugins/common/tabout/options.lua:3](lua/qfioofa/plugins/common/tabout/options.lua#L3) | известно: cmp и tabout оба переопределяют S-Tab в insert; проверить порядок загрузки |
 | `<Tab>` | i | cmp, tabout | Следующий пункт / jump по сниппету — [lua/qfioofa/plugins/common/cmp/options.lua:51](lua/qfioofa/plugins/common/cmp/options.lua#L51)<br>Выйти из пары/скобки вперёд — [lua/qfioofa/plugins/common/tabout/options.lua:2](lua/qfioofa/plugins/common/tabout/options.lua#L2) | известно: cmp и tabout оба переопределяют Tab в insert; проверить порядок загрузки |
-| `<leader>rn` | n | lsp, ruby | LSP: [R]e[n]ame — [lua/qfioofa/plugins/common/lspconfig/keymaps.lua:74](lua/qfioofa/plugins/common/lspconfig/keymaps.lua#L74)<br>Rails: run nearest test — [lua/qfioofa/languages/ruby.lua:20](lua/qfioofa/languages/ruby.lua#L20) | известно: LSP rename перекрывается Ruby Rails nearest test |
-| `<leader>th` | n | global, lsp | LSP: [T]oggle Inlay [H]ints — [lua/qfioofa/plugins/common/lspconfig/keymaps.lua:110](lua/qfioofa/plugins/common/lspconfig/keymaps.lua#L110)<br>Terminal: horizontal split — [lua/qfioofa/plugins/common/toggleterm/keymaps.lua:11](lua/qfioofa/plugins/common/toggleterm/keymaps.lua#L11) | известно: toggleterm horizontal split перекрывается buffer-local LSP inlay hints |
+| `<leader>rn` | n | lsp, ruby | LSP: [R]e[n]ame — [lua/qfioofa/plugins/common/lspconfig/keymaps.lua:69](lua/qfioofa/plugins/common/lspconfig/keymaps.lua#L69)<br>Rails: run nearest test — [lua/qfioofa/languages/ruby.lua:20](lua/qfioofa/languages/ruby.lua#L20) | известно: LSP rename перекрывается Ruby Rails nearest test |
+| `<leader>th` | n | global, lsp | LSP: [T]oggle Inlay [H]ints — [lua/qfioofa/plugins/common/lspconfig/keymaps.lua:105](lua/qfioofa/plugins/common/lspconfig/keymaps.lua#L105)<br>Terminal: horizontal split — [lua/qfioofa/plugins/common/toggleterm/keymaps.lua:11](lua/qfioofa/plugins/common/toggleterm/keymaps.lua#L11) | известно: toggleterm horizontal split перекрывается buffer-local LSP inlay hints |
 
 ## Как обновлять
 

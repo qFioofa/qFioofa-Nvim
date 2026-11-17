@@ -25,7 +25,7 @@ The default is `pack` on Neovim 0.12+ and `lazy` otherwise.
 | --- | ---: | --- |
 | `lua/qfioofa/options` | 5 | global options, keymaps, commands, autocmds |
 | `lua/qfioofa/pluginManager` | 5 | profile selection and backends |
-| `lua/qfioofa/plugins/common` | 94 / 39 plugin dirs | plugins shared by both profiles |
+| `lua/qfioofa/plugins/common` | 96 / 40 plugin dirs | plugins shared by both profiles |
 | `lua/qfioofa/plugins/v011` | 2 | lazy profile only (<0.12) |
 | `lua/qfioofa/plugins/v012` | 2 | pack profile only (>=0.12) |
 | `lua/qfioofa/languages` | 3 | FileType language modules |
@@ -76,7 +76,7 @@ Fixed top-level layout:
 | `hover` | `lewis6991/hover.nvim` | 4 |
 | `lazygit` | `kdheepak/lazygit.nvim` | 1 |
 | `lsp_signature` | `ray-x/lsp_signature.nvim` | 0 |
-| `lspconfig` | — | 18 |
+| `lspconfig` | — | 19 |
 | `lspsaga` | `nvimdev/lspsaga.nvim` | 4 |
 | `lualine` | `nvim-lualine/lualine.nvim` | 0 |
 | `luasnip` | `L3MON4D3/LuaSnip` | 0 |
@@ -87,6 +87,7 @@ Fixed top-level layout:
 | `nui` | `MunifTanjim/nui.nvim` | 0 |
 | `nvim-tree` | `kyazdani42/nvim-tree.lua` | 37 |
 | `nvim-ts-autotag` | `windwp/nvim-ts-autotag` | 0 |
+| `physical-keyboard` | `qFioofa/physical-keyboard.nvim` | 1 |
 | `render-markdown` | `meanderingprogrammer/render-markdown.nvim` | 1 |
 | `snacks` | `folke/snacks.nvim` | 6 |
 | `stay-centered` | `arnamak/stay-centered.nvim` | 0 |
@@ -103,23 +104,23 @@ Fixed top-level layout:
 | Module | Repository | Custom keys |
 | --- | --- | ---: |
 | `jdtls` | `mfussenegger/nvim-jdtls` | 0 |
-| `lspconfig` | `neovim/nvim-lspconfig` | 18 |
+| `lspconfig` | `neovim/nvim-lspconfig` | 19 |
 
 ### v012
 
 | Module | Repository | Custom keys |
 | --- | --- | ---: |
 | `jdtls` | `mfussenegger/nvim-jdtls` | 0 |
-| `lspconfig` | `neovim/nvim-lspconfig` | 18 |
+| `lspconfig` | `neovim/nvim-lspconfig` | 19 |
 
 <!-- END GENERATED: PLUGIN INVENTORY -->
 
 ### Current stats
 
 <!-- BEGIN GENERATED: STATS -->
-- Active custom mappings: **217**
-- All captured entries (including inactive/neutral): **245**
-- Plugin modules: `common` = 39, `v011` = 2, `v012` = 2
+- Active custom mappings: **219**
+- All captured entries (including inactive/neutral): **247**
+- Plugin modules: `common` = 40, `v011` = 2, `v012` = 2
 - Language modules: `java`, `ruby`
 <!-- END GENERATED: STATS -->
 
