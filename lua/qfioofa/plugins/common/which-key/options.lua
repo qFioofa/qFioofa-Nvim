@@ -11,6 +11,7 @@ return {
 		{ "<leader>c", group = "Code" },
 		{ "<leader>d", group = "Diagnostics / Debug / Delete" },
 		{ "<leader>t", group = "Toggle / Terminal" },
+		{ "<leader>k", group = "Keyboard" },
 		{ "<leader>j", group = "Java" },
 		{ "<leader>n", group = "Noice" },
 		{ "<leader>r", group = "Rename / Ruby" },

@@ -1,6 +1,7 @@
 -- Buffer-local LSP mappings, applied from the LspAttach autocmd in init.lua.
 return function(event)
 	local client = vim.lsp.get_client_by_id(event.data.client_id)
+	local pickers = require("qfioofa.plugins.common.snacks.actions")
 
 	vim.keymap.set("n", "<leader>tl", function()
 		local clients = vim.lsp.get_clients({ bufnr = 0 })
@@ -41,36 +42,30 @@ return function(event)
 		)
 	end
 
-	map(
-		"gd",
-		require("telescope.builtin").lsp_definitions,
-		"[G]oto [D]efinition"
-	)
-	map(
-		"gr",
-		require("telescope.builtin").lsp_references,
-		"[G]oto [R]eferences"
-	)
-	map(
-		"gI",
-		require("telescope.builtin").lsp_implementations,
-		"[G]oto [I]mplementation"
-	)
-	map(
-		"<leader>D",
-		require("telescope.builtin").lsp_type_definitions,
-		"Type [D]efinition"
-	)
-	map(
-		"<leader>ds",
-		require("telescope.builtin").lsp_document_symbols,
-		"[D]ocument [S]ymbols"
-	)
-	map(
-		"<leader>ws",
-		require("telescope.builtin").lsp_dynamic_workspace_symbols,
-		"[W]orkspace [S]ymbols"
-	)
+	map("gd", pickers.lsp_definitions, "[G]oto [D]efinition")
+	map("gr", pickers.lsp_references, "[G]oto [R]eferences")
+	map("gI", pickers.lsp_implementations, "[G]oto [I]mplementation")
+	map("<leader>D", pickers.lsp_types, "Type Search ([D], global)")
+	map("<leader>ds", pickers.lsp_symbols, "[D]ocument [S]ymbols")
+	map("<leader>ws", pickers.lsp_workspace_symbols, "[W]orkspace [S]ymbols")
+
+	-- Some servers (ts_ls, jdtls, ...) do not implement
+	-- `textDocument/typeDefinition`. Fall back to the same request used by
+	-- "Go To Definition" instead of notifying about the unsupported method.
+	map("gT", function()
+		local supports_types = false
+		for _, c in ipairs(vim.lsp.get_clients({ bufnr = event.buf })) do
+			if c:supports_method("textDocument/typeDefinition", event.buf) then
+				supports_types = true
+				break
+			end
+		end
+		if supports_types then
+			vim.lsp.buf.type_definition()
+		else
+			vim.lsp.buf.definition()
+		end
+	end, "[G]oto [T]ype Definition")
 	map("<leader>rn", vim.lsp.buf.rename, "[R]e[n]ame")
 	map("<leader>ca", vim.lsp.buf.code_action, "[C]ode [A]ction")
 
