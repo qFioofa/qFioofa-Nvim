@@ -69,8 +69,49 @@ local function grep_grouped(opts, ctx)
 	end
 end
 
+local function move_to_file(picker, delta)
+	local count = picker.list:count()
+	for _ = 1, count do
+		picker.list:move(delta)
+		local item = picker.list:current()
+		if item and item.group_file then
+			return
+		end
+	end
+end
+
+local function next_file(picker)
+	move_to_file(picker, 1)
+end
+
+local function prev_file(picker)
+	move_to_file(picker, -1)
+end
+
+-- Snacks maps `o` in the explorer to `explorer_open`, which hands the entry to
+-- the OS file manager. Keep every interaction inside Neovim instead: toggle
+-- directories and jump to files like the regular confirm action.
+local function open_in_nvim(picker, item, action)
+	if not item then
+		return
+	end
+	if item.dir then
+		local explorer = require("snacks.explorer.actions")
+		return explorer.actions.confirm(picker, item, action)
+	end
+	return require("snacks.picker.actions").jump(picker, item, action)
+end
+
 return {
 	sources = {
+		explorer = {
+			actions = {
+				explorer_open = {
+					action = open_in_nvim,
+					desc = "Open in Neovim",
+				},
+			},
+		},
 		grep_grouped = {
 			finder = grep_grouped,
 			format = grep_format,
@@ -82,6 +123,18 @@ return {
 			need_search = true,
 			matcher = { keep_parents = true },
 			sort = { fields = { "file", "idx" } },
+			actions = {
+				grep_next_file = next_file,
+				grep_prev_file = prev_file,
+			},
+			win = {
+				list = {
+					keys = {
+						["}"] = "grep_next_file",
+						["{"] = "grep_prev_file",
+					},
+				},
+			},
 		},
 	},
 }
