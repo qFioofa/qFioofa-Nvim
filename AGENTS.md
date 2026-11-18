@@ -25,10 +25,10 @@ The default is `pack` on Neovim 0.12+ and `lazy` otherwise.
 | --- | ---: | --- |
 | `lua/qfioofa/options` | 5 | global options, keymaps, commands, autocmds |
 | `lua/qfioofa/pluginManager` | 5 | profile selection and backends |
-| `lua/qfioofa/plugins/common` | 96 / 40 plugin dirs | plugins shared by both profiles |
+| `lua/qfioofa/plugins/common` | 99 / 40 plugin dirs | plugins shared by both profiles |
 | `lua/qfioofa/plugins/v011` | 2 | lazy profile only (<0.12) |
 | `lua/qfioofa/plugins/v012` | 2 | pack profile only (>=0.12) |
-| `lua/qfioofa/languages` | 3 | FileType language modules |
+| `lua/qfioofa/languages` | 4 | FileType language modules |
 | `lua/qfioofa/java` | 1 | :JNew command and Java templates |
 | `scripts` | 8 | deploy/cleanup and docs generator |
 | `scripts/docs` | 3 | collect/render AGENTS and BINDS |
@@ -121,7 +121,7 @@ Fixed top-level layout:
 - Active custom mappings: **219**
 - All captured entries (including inactive/neutral): **247**
 - Plugin modules: `common` = 40, `v011` = 2, `v012` = 2
-- Language modules: `java`, `ruby`
+- Language modules: `java`, `plantuml`, `ruby`
 <!-- END GENERATED: STATS -->
 
 ## 3. Boot flow

@@ -1,5 +1,6 @@
 local LANGUAGES = {
 	java = "qfioofa.languages.java",
+	plantuml = "qfioofa.languages.plantuml",
 	ruby = "qfioofa.languages.ruby",
 }
 

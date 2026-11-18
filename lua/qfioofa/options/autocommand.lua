@@ -31,6 +31,16 @@ local function isExcludedWindow()
 	return false
 end
 
+vim.filetype.add({
+	extension = {
+		iuml = "plantuml",
+		plantuml = "plantuml",
+		pu = "plantuml",
+		puml = "plantuml",
+		wsd = "plantuml",
+	},
+})
+
 -- Briefly highlight yanked text as visual feedback.
 vim.api.nvim_create_autocmd("TextYankPost", {
 	group = vim.api.nvim_create_augroup("YankHighlight", { clear = true }),

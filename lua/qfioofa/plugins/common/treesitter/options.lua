@@ -7,45 +7,7 @@ local function has_compiler()
 	return false
 end
 
-local parsers = {
-	"comment",
-	"bash",
-	"c",
-	"diff",
-	"dockerfile",
-	"go",
-	"html",
-	"java",
-	"javascript",
-	"jsdoc",
-	"json",
-	"jsonc",
-	"lua",
-	"luadoc",
-	"luap",
-	"markdown",
-	"markdown_inline",
-	"printf",
-	"python",
-	"query",
-	"regex",
-	"sql",
-	"toml",
-	"typst",
-	"tsx",
-	"typescript",
-	"vim",
-	"vimdoc",
-	"xml",
-	"yaml",
-	"svelte",
-	"elixir",
-	"erlang",
-	"heex",
-	"eex",
-	"ruby",
-	"embedded_template",
-}
+local parsers = require("qfioofa.plugins.common.treesitter.parsers")
 
 local compiler_available = has_compiler()
 
