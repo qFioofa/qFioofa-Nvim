@@ -9,14 +9,14 @@
 
 - `<leader>` — пробел (`vim.g.mapleader = " "`).
 - Режимы: `n` normal, `i` insert, `v` visual/select, `x` visual block, `o` operator-pending, `t` terminal, `c` command-line, `s` select.
-- Область: `глобально`, `buffer: LSP`, `buffer: Java`, `buffer: Ruby`, `nvim-tree`, `dashboard`, `cmp`, `tabout`, `Telescope prompt`, `dapui`.
+- Область: `глобально`, `buffer: LSP`, `buffer: Java`, `buffer: Ruby`, `nvim-tree`, `neo-tree`, `dashboard`, `cmp`, `tabout`, `Telescope prompt`, `dapui`.
 - В таблицах указаны только маппинги, которые заданы или переопределены этим конфигом; встроенные default-маппинги плагинов не перечислены.
 
 ## Сводка
 
-- Кастомных активных маппингов: **214**
-- Всего записей, включая неактивные и нейтрализованные: **247**
-- Секций: **18**
+- Кастомных активных маппингов: **215**
+- Всего записей, включая неактивные и нейтрализованные: **248**
+- Секций: **19**
 - Межпрофильных исходников: `common`, `v011`, `v012`
 
 ## Редактор, файлы, буферы, окна
@@ -43,25 +43,25 @@
 | `<C-Down>` | n | Resize: increase height | глобально | [lua/qfioofa/options/keymaps.lua:85](lua/qfioofa/options/keymaps.lua#L85) |
 | `<C-Left>` | n | Resize: increase width | глобально | [lua/qfioofa/options/keymaps.lua:86](lua/qfioofa/options/keymaps.lua#L86) |
 | `<C-Right>` | n | Resize: decrease width | глобально | [lua/qfioofa/options/keymaps.lua:87](lua/qfioofa/options/keymaps.lua#L87) |
-| `<S-l>` | n | Buffer: next | глобально | [lua/qfioofa/options/keymaps.lua:89](lua/qfioofa/options/keymaps.lua#L89) |
-| `<S-h>` | n | Buffer: previous | глобально | [lua/qfioofa/options/keymaps.lua:90](lua/qfioofa/options/keymaps.lua#L90) |
-| `<leader>fn` | n | New file | глобально | [lua/qfioofa/options/keymaps.lua:94](lua/qfioofa/options/keymaps.lua#L94) |
-| `<leader>uh` | n | Clear search highlight | глобально | [lua/qfioofa/options/keymaps.lua:108](lua/qfioofa/options/keymaps.lua#L108) |
-| `<` | v | Indent left (keep selection) | глобально | [lua/qfioofa/options/keymaps.lua:111](lua/qfioofa/options/keymaps.lua#L111) |
-| `>` | v | Indent right (keep selection) | глобально | [lua/qfioofa/options/keymaps.lua:112](lua/qfioofa/options/keymaps.lua#L112) |
-| `<A-j>` | v | Move line down | глобально | [lua/qfioofa/options/keymaps.lua:114](lua/qfioofa/options/keymaps.lua#L114) |
-| `<A-k>` | v | Move line up | глобально | [lua/qfioofa/options/keymaps.lua:115](lua/qfioofa/options/keymaps.lua#L115) |
-| `p` | v | Paste without overwriting register | глобально | [lua/qfioofa/options/keymaps.lua:116](lua/qfioofa/options/keymaps.lua#L116) |
-| `J` | x | Move selection down | глобально | [lua/qfioofa/options/keymaps.lua:119](lua/qfioofa/options/keymaps.lua#L119) |
-| `K` | x | Move selection up | глобально | [lua/qfioofa/options/keymaps.lua:120](lua/qfioofa/options/keymaps.lua#L120) |
-| `<A-j>` | x | Move selection down | глобально | [lua/qfioofa/options/keymaps.lua:121](lua/qfioofa/options/keymaps.lua#L121) |
-| `<A-k>` | x | Move selection up | глобально | [lua/qfioofa/options/keymaps.lua:122](lua/qfioofa/options/keymaps.lua#L122) |
-| `<C-h>` | t | Terminal: focus left window | глобально | [lua/qfioofa/options/keymaps.lua:125](lua/qfioofa/options/keymaps.lua#L125) |
-| `<C-j>` | t | Terminal: focus down window | глобально | [lua/qfioofa/options/keymaps.lua:126](lua/qfioofa/options/keymaps.lua#L126) |
-| `<C-k>` | t | Terminal: focus up window | глобально | [lua/qfioofa/options/keymaps.lua:127](lua/qfioofa/options/keymaps.lua#L127) |
-| `<C-l>` | t | Terminal: focus right window | глобально | [lua/qfioofa/options/keymaps.lua:128](lua/qfioofa/options/keymaps.lua#L128) |
-| `<Esc>` | t | Terminal: exit to normal mode | глобально | [lua/qfioofa/options/keymaps.lua:129](lua/qfioofa/options/keymaps.lua#L129) |
-| `<Esc>` | n | Hide highlight | глобально | [lua/qfioofa/options/keymaps.lua:145](lua/qfioofa/options/keymaps.lua#L145) |
+| `<S-l>` | n | Buffer: next | глобально | [lua/qfioofa/options/keymaps.lua:181](lua/qfioofa/options/keymaps.lua#L181) |
+| `<S-h>` | n | Buffer: previous | глобально | [lua/qfioofa/options/keymaps.lua:184](lua/qfioofa/options/keymaps.lua#L184) |
+| `<leader>fn` | n | New file | глобально | [lua/qfioofa/options/keymaps.lua:190](lua/qfioofa/options/keymaps.lua#L190) |
+| `<leader>uh` | n | Clear search highlight | глобально | [lua/qfioofa/options/keymaps.lua:204](lua/qfioofa/options/keymaps.lua#L204) |
+| `<` | v | Indent left (keep selection) | глобально | [lua/qfioofa/options/keymaps.lua:207](lua/qfioofa/options/keymaps.lua#L207) |
+| `>` | v | Indent right (keep selection) | глобально | [lua/qfioofa/options/keymaps.lua:208](lua/qfioofa/options/keymaps.lua#L208) |
+| `<A-j>` | v | Move line down | глобально | [lua/qfioofa/options/keymaps.lua:210](lua/qfioofa/options/keymaps.lua#L210) |
+| `<A-k>` | v | Move line up | глобально | [lua/qfioofa/options/keymaps.lua:211](lua/qfioofa/options/keymaps.lua#L211) |
+| `p` | v | Paste without overwriting register | глобально | [lua/qfioofa/options/keymaps.lua:212](lua/qfioofa/options/keymaps.lua#L212) |
+| `J` | x | Move selection down | глобально | [lua/qfioofa/options/keymaps.lua:215](lua/qfioofa/options/keymaps.lua#L215) |
+| `K` | x | Move selection up | глобально | [lua/qfioofa/options/keymaps.lua:216](lua/qfioofa/options/keymaps.lua#L216) |
+| `<A-j>` | x | Move selection down | глобально | [lua/qfioofa/options/keymaps.lua:217](lua/qfioofa/options/keymaps.lua#L217) |
+| `<A-k>` | x | Move selection up | глобально | [lua/qfioofa/options/keymaps.lua:218](lua/qfioofa/options/keymaps.lua#L218) |
+| `<C-h>` | t | Terminal: focus left window | глобально | [lua/qfioofa/options/keymaps.lua:221](lua/qfioofa/options/keymaps.lua#L221) |
+| `<C-j>` | t | Terminal: focus down window | глобально | [lua/qfioofa/options/keymaps.lua:222](lua/qfioofa/options/keymaps.lua#L222) |
+| `<C-k>` | t | Terminal: focus up window | глобально | [lua/qfioofa/options/keymaps.lua:223](lua/qfioofa/options/keymaps.lua#L223) |
+| `<C-l>` | t | Terminal: focus right window | глобально | [lua/qfioofa/options/keymaps.lua:224](lua/qfioofa/options/keymaps.lua#L224) |
+| `<Esc>` | t | Terminal: exit to normal mode | глобально | [lua/qfioofa/options/keymaps.lua:225](lua/qfioofa/options/keymaps.lua#L225) |
+| `<Esc>` | n | Hide highlight | глобально | [lua/qfioofa/options/keymaps.lua:241](lua/qfioofa/options/keymaps.lua#L241) |
 
 ## Поиск и навигация
 
@@ -237,6 +237,12 @@
 | `y` | n | nvim-tree: Copy | nvim-tree | [lua/qfioofa/plugins/common/nvim-tree/keymaps.lua:127](lua/qfioofa/plugins/common/nvim-tree/keymaps.lua#L127) |
 | `<C-e>` | n | Toggle file tree | глобально | [lua/qfioofa/plugins/common/nvim-tree/keymaps.lua:135](lua/qfioofa/plugins/common/nvim-tree/keymaps.lua#L135) |
 
+## Буферы (neo-tree)
+
+| Клавиши | Режим | Описание | Область | Источник |
+| --- | --- | --- | --- | --- |
+| `<leader>eb` | n | Toggle buffer explorer | глобально | [lua/qfioofa/plugins/common/neo-tree/keymaps.lua:4](lua/qfioofa/plugins/common/neo-tree/keymaps.lua#L4) |
+
 ## Dashboard (snacks)
 
 | Клавиши | Режим | Описание | Область | Источник |
@@ -314,8 +320,8 @@
 | Клавиши | Режим | Описание | Область | Источник |
 | --- | --- | --- | --- | --- |
 | `<Space>` | n, x, s, o | Намеренно отключено | глобально | [lua/qfioofa/options/keymaps.lua:53](lua/qfioofa/options/keymaps.lua#L53) |
-| `<C-w>d` | n | Намеренно отключено | глобально | [lua/qfioofa/options/keymaps.lua:138](lua/qfioofa/options/keymaps.lua#L138) |
-| `<C-w><C-d>` | n | Намеренно отключено | глобально | [lua/qfioofa/options/keymaps.lua:139](lua/qfioofa/options/keymaps.lua#L139) |
+| `<C-w>d` | n | Намеренно отключено | глобально | [lua/qfioofa/options/keymaps.lua:234](lua/qfioofa/options/keymaps.lua#L234) |
+| `<C-w><C-d>` | n | Намеренно отключено | глобально | [lua/qfioofa/options/keymaps.lua:235](lua/qfioofa/options/keymaps.lua#L235) |
 
 ## Неактивные / мёртвые маппинги
 
@@ -359,23 +365,24 @@
 
 | Префикс | Группа | Источник |
 | --- | --- | --- |
-| `<leader>f` | Find | [lua/qfioofa/plugins/common/which-key/options.lua:8](lua/qfioofa/plugins/common/which-key/options.lua#L8) |
-| `<leader>g` | Git / Diff / Goto | [lua/qfioofa/plugins/common/which-key/options.lua:9](lua/qfioofa/plugins/common/which-key/options.lua#L9) |
-| `<leader>h` | Git hunks | [lua/qfioofa/plugins/common/which-key/options.lua:10](lua/qfioofa/plugins/common/which-key/options.lua#L10) |
-| `<leader>c` | Code | [lua/qfioofa/plugins/common/which-key/options.lua:11](lua/qfioofa/plugins/common/which-key/options.lua#L11) |
-| `<leader>d` | Diagnostics / Debug / Delete | [lua/qfioofa/plugins/common/which-key/options.lua:12](lua/qfioofa/plugins/common/which-key/options.lua#L12) |
-| `<leader>t` | Toggle / Terminal | [lua/qfioofa/plugins/common/which-key/options.lua:13](lua/qfioofa/plugins/common/which-key/options.lua#L13) |
-| `<leader>k` | Keyboard | [lua/qfioofa/plugins/common/which-key/options.lua:14](lua/qfioofa/plugins/common/which-key/options.lua#L14) |
-| `<leader>j` | Java | [lua/qfioofa/plugins/common/which-key/options.lua:15](lua/qfioofa/plugins/common/which-key/options.lua#L15) |
-| `<leader>n` | Noice | [lua/qfioofa/plugins/common/which-key/options.lua:16](lua/qfioofa/plugins/common/which-key/options.lua#L16) |
-| `<leader>r` | Rename / Ruby | [lua/qfioofa/plugins/common/which-key/options.lua:17](lua/qfioofa/plugins/common/which-key/options.lua#L17) |
-| `<leader>w` | Workspace / Write | [lua/qfioofa/plugins/common/which-key/options.lua:18](lua/qfioofa/plugins/common/which-key/options.lua#L18) |
-| `<leader>u` | UI / Notify | [lua/qfioofa/plugins/common/which-key/options.lua:19](lua/qfioofa/plugins/common/which-key/options.lua#L19) |
-| `<leader>l` | LazyGit | [lua/qfioofa/plugins/common/which-key/options.lua:20](lua/qfioofa/plugins/common/which-key/options.lua#L20) |
-| `<leader>s` | LSP (Saga) / Session | [lua/qfioofa/plugins/common/which-key/options.lua:21](lua/qfioofa/plugins/common/which-key/options.lua#L21) |
-| `<leader>a` | Auto-save | [lua/qfioofa/plugins/common/which-key/options.lua:22](lua/qfioofa/plugins/common/which-key/options.lua#L22) |
-| `<leader>p` | Python | [lua/qfioofa/plugins/common/which-key/options.lua:23](lua/qfioofa/plugins/common/which-key/options.lua#L23) |
-| `<leader>y` | Yank | [lua/qfioofa/plugins/common/which-key/options.lua:24](lua/qfioofa/plugins/common/which-key/options.lua#L24) |
+| `<leader>e` | Explorer / Buffers | [lua/qfioofa/plugins/common/which-key/options.lua:8](lua/qfioofa/plugins/common/which-key/options.lua#L8) |
+| `<leader>f` | Find | [lua/qfioofa/plugins/common/which-key/options.lua:9](lua/qfioofa/plugins/common/which-key/options.lua#L9) |
+| `<leader>g` | Git / Diff / Goto | [lua/qfioofa/plugins/common/which-key/options.lua:10](lua/qfioofa/plugins/common/which-key/options.lua#L10) |
+| `<leader>h` | Git hunks | [lua/qfioofa/plugins/common/which-key/options.lua:11](lua/qfioofa/plugins/common/which-key/options.lua#L11) |
+| `<leader>c` | Code | [lua/qfioofa/plugins/common/which-key/options.lua:12](lua/qfioofa/plugins/common/which-key/options.lua#L12) |
+| `<leader>d` | Diagnostics / Debug / Delete | [lua/qfioofa/plugins/common/which-key/options.lua:13](lua/qfioofa/plugins/common/which-key/options.lua#L13) |
+| `<leader>t` | Toggle / Terminal | [lua/qfioofa/plugins/common/which-key/options.lua:14](lua/qfioofa/plugins/common/which-key/options.lua#L14) |
+| `<leader>k` | Keyboard | [lua/qfioofa/plugins/common/which-key/options.lua:15](lua/qfioofa/plugins/common/which-key/options.lua#L15) |
+| `<leader>j` | Java | [lua/qfioofa/plugins/common/which-key/options.lua:16](lua/qfioofa/plugins/common/which-key/options.lua#L16) |
+| `<leader>n` | Noice | [lua/qfioofa/plugins/common/which-key/options.lua:17](lua/qfioofa/plugins/common/which-key/options.lua#L17) |
+| `<leader>r` | Rename / Ruby | [lua/qfioofa/plugins/common/which-key/options.lua:18](lua/qfioofa/plugins/common/which-key/options.lua#L18) |
+| `<leader>w` | Workspace / Write | [lua/qfioofa/plugins/common/which-key/options.lua:19](lua/qfioofa/plugins/common/which-key/options.lua#L19) |
+| `<leader>u` | UI / Notify | [lua/qfioofa/plugins/common/which-key/options.lua:20](lua/qfioofa/plugins/common/which-key/options.lua#L20) |
+| `<leader>l` | LazyGit | [lua/qfioofa/plugins/common/which-key/options.lua:21](lua/qfioofa/plugins/common/which-key/options.lua#L21) |
+| `<leader>s` | LSP (Saga) / Session | [lua/qfioofa/plugins/common/which-key/options.lua:22](lua/qfioofa/plugins/common/which-key/options.lua#L22) |
+| `<leader>a` | Auto-save | [lua/qfioofa/plugins/common/which-key/options.lua:23](lua/qfioofa/plugins/common/which-key/options.lua#L23) |
+| `<leader>p` | Python | [lua/qfioofa/plugins/common/which-key/options.lua:24](lua/qfioofa/plugins/common/which-key/options.lua#L24) |
+| `<leader>y` | Yank | [lua/qfioofa/plugins/common/which-key/options.lua:25](lua/qfioofa/plugins/common/which-key/options.lua#L25) |
 
 ## Пересечения клавиш
 

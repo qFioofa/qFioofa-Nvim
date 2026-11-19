@@ -970,6 +970,17 @@ function M.collect(opts)
 		tree.global()
 	end)
 
+	local neo_tree =
+		load_path("lua/qfioofa/plugins/common/neo-tree/keymaps.lua")
+	with_context({
+		section = "buffers",
+		scope = "global",
+		context = "global",
+		plugin = "neo-tree",
+	}, function()
+		neo_tree.global()
+	end)
+
 	do
 		local snacks =
 			load_path("lua/qfioofa/plugins/common/snacks/options.lua")

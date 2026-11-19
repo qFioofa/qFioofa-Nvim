@@ -86,8 +86,104 @@ keymap("n", "<C-Down>", ":resize +2<CR>", d("Resize: increase height"))
 keymap("n", "<C-Left>", ":vertical resize +2<CR>", d("Resize: increase width"))
 keymap("n", "<C-Right>", ":vertical resize -2<CR>", d("Resize: decrease width"))
 
-keymap("n", "<S-l>", ":bnext<CR>", d("Buffer: next"))
-keymap("n", "<S-h>", ":bprevious<CR>", d("Buffer: previous"))
+local function visible_buffer_order()
+	local ok, order = pcall(function()
+		local manager = require("neo-tree.sources.manager")
+		local renderer = require("neo-tree.ui.renderer")
+		local state = manager.get_state("buffers")
+		if
+			not state
+			or not state.tree
+			or not renderer.tree_is_visible(state)
+		then
+			return nil
+		end
+
+		local bufs = {}
+		for _, node in ipairs(renderer.get_all_visible_nodes(state.tree)) do
+			if node.type == "file" or node.type == "terminal" then
+				local bufnr = node.extra and node.extra.bufnr
+				if
+					bufnr
+					and vim.api.nvim_buf_is_valid(bufnr)
+					and vim.fn.buflisted(bufnr) == 1
+				then
+					bufs[#bufs + 1] = bufnr
+				end
+			end
+		end
+		return #bufs > 0 and bufs or nil
+	end)
+	if ok and order then
+		return order
+	end
+
+	local bufs = {}
+	for _, info in ipairs(vim.fn.getbufinfo({ buflisted = 1 })) do
+		if info.buftype == "" and info.name ~= "" then
+			local ft = vim.bo[info.bufnr].filetype
+			if ft ~= "neo-tree" and ft ~= "neo-tree-popup" then
+				bufs[#bufs + 1] = info.bufnr
+			end
+		end
+	end
+	table.sort(bufs, function(a, b)
+		return vim.api.nvim_buf_get_name(a) < vim.api.nvim_buf_get_name(b)
+	end)
+	return bufs
+end
+
+local function switch_buffer(delta)
+	local bufs = visible_buffer_order()
+	if #bufs == 0 then
+		return
+	end
+
+	local current = vim.api.nvim_get_current_buf()
+	local index
+	for i, bufnr in ipairs(bufs) do
+		if bufnr == current then
+			index = i
+			break
+		end
+	end
+	if index then
+		index = (index - 1 + delta) % #bufs + 1
+	else
+		index = delta > 0 and 1 or #bufs
+	end
+
+	local target = bufs[index]
+	local wins = vim.fn.win_findbuf(target)
+	if #wins > 0 then
+		vim.api.nvim_set_current_win(wins[1])
+		return
+	end
+
+	local win = vim.api.nvim_get_current_win()
+	if vim.bo.filetype == "neo-tree" or vim.bo.filetype == "neo-tree-popup" then
+		for _, candidate in ipairs(vim.api.nvim_list_wins()) do
+			local ft = vim.bo[vim.api.nvim_win_get_buf(candidate)].filetype
+			if
+				ft ~= "neo-tree"
+				and ft ~= "neo-tree-popup"
+				and vim.api.nvim_win_get_config(candidate).relative == ""
+			then
+				win = candidate
+				break
+			end
+		end
+	end
+	vim.api.nvim_win_set_buf(win, target)
+	vim.api.nvim_set_current_win(win)
+end
+
+keymap("n", "<S-l>", function()
+	switch_buffer(1)
+end, d("Buffer: next"))
+keymap("n", "<S-h>", function()
+	switch_buffer(-1)
+end, d("Buffer: previous"))
 
 -- New file: in a Java project goes through :JNew (package/imports/type), in
 -- any other context it just opens a scratch buffer with the given name.

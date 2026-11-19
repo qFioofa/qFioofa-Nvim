@@ -25,7 +25,7 @@ The default is `pack` on Neovim 0.12+ and `lazy` otherwise.
 | --- | ---: | --- |
 | `lua/qfioofa/options` | 5 | global options, keymaps, commands, autocmds |
 | `lua/qfioofa/pluginManager` | 5 | profile selection and backends |
-| `lua/qfioofa/plugins/common` | 99 / 40 plugin dirs | plugins shared by both profiles |
+| `lua/qfioofa/plugins/common` | 102 / 41 plugin dirs | plugins shared by both profiles |
 | `lua/qfioofa/plugins/v011` | 2 | lazy profile only (<0.12) |
 | `lua/qfioofa/plugins/v012` | 2 | pack profile only (>=0.12) |
 | `lua/qfioofa/languages` | 4 | FileType language modules |
@@ -81,6 +81,7 @@ Fixed top-level layout:
 | `lualine` | `nvim-lualine/lualine.nvim` | 0 |
 | `luasnip` | `L3MON4D3/LuaSnip` | 0 |
 | `navic` | `SmiteshP/nvim-navic` | 0 |
+| `neo-tree` | `nvim-neo-tree/neo-tree.nvim` | 1 |
 | `neogen` | `danymat/neogen` | 2 |
 | `noice` | `folke/noice.nvim` | 4 |
 | `notify` | `rcarriga/nvim-notify` | 1 |
@@ -118,9 +119,9 @@ Fixed top-level layout:
 ### Current stats
 
 <!-- BEGIN GENERATED: STATS -->
-- Active custom mappings: **214**
-- All captured entries (including inactive/neutral): **247**
-- Plugin modules: `common` = 40, `v011` = 2, `v012` = 2
+- Active custom mappings: **215**
+- All captured entries (including inactive/neutral): **248**
+- Plugin modules: `common` = 41, `v011` = 2, `v012` = 2
 - Language modules: `java`, `plantuml`, `ruby`
 <!-- END GENERATED: STATS -->
 

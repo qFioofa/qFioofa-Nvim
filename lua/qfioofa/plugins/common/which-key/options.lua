@@ -5,6 +5,7 @@ return {
 	preset = "modern",
 	delay = 300,
 	spec = {
+		{ "<leader>e", group = "Explorer / Buffers" },
 		{ "<leader>f", group = "Find" },
 		{ "<leader>g", group = "Git / Diff / Goto" },
 		{ "<leader>h", group = "Git hunks" },

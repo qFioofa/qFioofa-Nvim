@@ -35,6 +35,7 @@ local function scope_text(scope)
 		java = "buffer: Java",
 		ruby = "buffer: Ruby",
 		tree = "nvim-tree",
+		buffers = "neo-tree",
 		dashboard = "dashboard",
 		cmp = "cmp",
 		tabout = "tabout",
@@ -172,7 +173,7 @@ local function render_binds(data, meta)
 		"- Режимы: `n` normal, `i` insert, `v` visual/select, `x` visual block, `o` operator-pending, `t` terminal, `c` command-line, `s` select."
 	)
 	add(
-		"- Область: `глобально`, `buffer: LSP`, `buffer: Java`, `buffer: Ruby`, `nvim-tree`, `dashboard`, `cmp`, `tabout`, `Telescope prompt`, `dapui`."
+		"- Область: `глобально`, `buffer: LSP`, `buffer: Java`, `buffer: Ruby`, `nvim-tree`, `neo-tree`, `dashboard`, `cmp`, `tabout`, `Telescope prompt`, `dapui`."
 	)
 	add(
 		"- В таблицах указаны только маппинги, которые заданы или переопределены этим конфигом; встроенные default-маппинги плагинов не перечислены."

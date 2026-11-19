@@ -5,6 +5,9 @@ local function isExcludedWindow()
 	local excluded_filetypes = {
 		"nvimtree",
 		"NvimTree",
+		"neo-tree",
+		"neo-tree-popup",
+		"neo-tree-preview",
 		"git",
 		"gitcommit",
 		"gitrebase",
@@ -82,7 +85,7 @@ vim.api.nvim_create_autocmd("WinEnter", {
 
 		local current_width = vim.api.nvim_win_get_width(0)
 		if current_width < min_width then
-			vim.cmd("vertical resize " .. min_width)
+			-- vim.cmd("vertical resize " .. min_width)
 		end
 	end,
 })
