@@ -1178,6 +1178,7 @@ function M.collect(opts)
 							scope = "global",
 							context = "global",
 							plugin = name,
+							inactive = spec.enabled == false,
 						}, source, state)
 					end
 				end

@@ -70,7 +70,7 @@ Fixed top-level layout:
 | `dap` | `mfussenegger/nvim-dap` | 7 |
 | `diffview` | `sindrets/diffview.nvim` | 5 |
 | `endwise` | `tpope/vim-endwise` | 0 |
-| `flash` | `folke/flash.nvim` | 5 |
+| `flash` | `folke/flash.nvim` | 0 |
 | `gitsigns` | `lewis6991/gitsigns.nvim` | 18 |
 | `guess-indent` | `NMAC427/guess-indent.nvim` | 0 |
 | `hover` | `lewis6991/hover.nvim` | 4 |
@@ -118,7 +118,7 @@ Fixed top-level layout:
 ### Current stats
 
 <!-- BEGIN GENERATED: STATS -->
-- Active custom mappings: **219**
+- Active custom mappings: **214**
 - All captured entries (including inactive/neutral): **247**
 - Plugin modules: `common` = 40, `v011` = 2, `v012` = 2
 - Language modules: `java`, `plantuml`, `ruby`

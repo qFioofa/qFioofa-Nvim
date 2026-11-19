@@ -56,7 +56,12 @@ vim.g.maplocalleader = " "
 
 -- Command --
 keymap("n", "<C-q>", ":qa!<CR>", d("Quit all (force)"))
-keymap("n", "<C-w>", ":w!<CR>", d("Write file (force)"))
+keymap(
+	"n",
+	"<C-w>",
+	":w!<CR>",
+	vim.tbl_extend("force", d("Write file (force)"), { nowait = true })
+)
 keymap({ "n", "i" }, "<C-s>", "<Esc>:w<CR>", d("Write file"))
 keymap("n", "<leader>x", ":bd<CR>", d("Buffer: close"))
 keymap("n", "q", ":bd<CR>", d("Buffer: close"))

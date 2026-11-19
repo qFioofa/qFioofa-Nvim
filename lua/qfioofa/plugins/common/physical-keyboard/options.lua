@@ -28,6 +28,12 @@ return {
 		commandline = true, -- clean :map/:nmap output
 		api = true, -- clean Snacks/Telescope/which-key lists
 	},
+	-- The 1.x v3 integration clears which-key's trigger mappings on every
+	-- mirrored keymap change, so which-key never opens. native.api already
+	-- hides mirrored bindings from which-key; keep the integration off.
+	which_key = {
+		enabled = false,
+	},
 	cmdline = {
 		enabled = true,
 		aliases = { "JNew", "Telescope", "Lazy", "Mason", "checkhealth" },

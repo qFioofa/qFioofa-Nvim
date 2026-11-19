@@ -259,12 +259,14 @@ local function main()
 	register_commands()
 
 	for _, item in ipairs(ordered) do
-		local ok, err = pcall(run_setup, item.spec)
-		if not ok then
-			vim.notify(
-				"[pack] setup failed: " .. item.spec[1] .. "\n" .. err,
-				vim.log.levels.ERROR
-			)
+		if item.spec.enabled ~= false then
+			local ok, err = pcall(run_setup, item.spec)
+			if not ok then
+				vim.notify(
+					"[pack] setup failed: " .. item.spec[1] .. "\n" .. err,
+					vim.log.levels.ERROR
+				)
+			end
 		end
 	end
 end
