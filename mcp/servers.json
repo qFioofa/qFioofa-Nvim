@@ -1,0 +1,17 @@
+{
+  "mcpServers": {
+    "context7": {
+      "url": "https://mcp.context7.com/mcp",
+      "autoApprove": true
+    },
+    "pg-docs": {
+      "url": "https://mcp.tigerdata.com/docs",
+      "autoApprove": true
+    }
+  },
+  "nativeMCPServers": {
+    "neovim": {
+      "disabled_tools": ["execute_lua"]
+    }
+  }
+}

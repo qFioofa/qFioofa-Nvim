@@ -14,9 +14,9 @@
 
 ## Сводка
 
-- Кастомных активных маппингов: **215**
-- Всего записей, включая неактивные и нейтрализованные: **248**
-- Секций: **19**
+- Кастомных активных маппингов: **228**
+- Всего записей, включая неактивные и нейтрализованные: **261**
+- Секций: **20**
 - Межпрофильных исходников: `common`, `v011`, `v012`
 
 ## Редактор, файлы, буферы, окна
@@ -123,6 +123,24 @@
 | `<leader>tb` | n | Toggle line blame | глобально | [lua/qfioofa/plugins/common/gitsigns/keymaps.lua:93](lua/qfioofa/plugins/common/gitsigns/keymaps.lua#L93) |
 | `<leader>tw` | n | Toggle word diff | глобально | [lua/qfioofa/plugins/common/gitsigns/keymaps.lua:98](lua/qfioofa/plugins/common/gitsigns/keymaps.lua#L98) |
 | `<leader>lg` | n | LazyGit | глобально | [lua/qfioofa/plugins/common/lazygit/keymaps.lua:2](lua/qfioofa/plugins/common/lazygit/keymaps.lua#L2) |
+
+## AI-агент (Avante + MCP)
+
+| Клавиши | Режим | Описание | Область | Источник |
+| --- | --- | --- | --- | --- |
+| `<leader>ic` | n | Avante: chat | глобально | [lua/qfioofa/plugins/v012/avante/keymaps.lua:9](lua/qfioofa/plugins/v012/avante/keymaps.lua#L9) |
+| `<leader>ia` | n | Avante: ask | глобально | [lua/qfioofa/plugins/v012/avante/keymaps.lua:14](lua/qfioofa/plugins/v012/avante/keymaps.lua#L14) |
+| `<leader>in` | n | Avante: new chat | глобально | [lua/qfioofa/plugins/v012/avante/keymaps.lua:19](lua/qfioofa/plugins/v012/avante/keymaps.lua#L19) |
+| `<leader>ir` | n | Avante: resume session | глобально | [lua/qfioofa/plugins/v012/avante/keymaps.lua:24](lua/qfioofa/plugins/v012/avante/keymaps.lua#L24) |
+| `<leader>it` | n | Avante: toggle sidebar | глобально | [lua/qfioofa/plugins/v012/avante/keymaps.lua:29](lua/qfioofa/plugins/v012/avante/keymaps.lua#L29) |
+| `<leader>if` | n | Avante: focus sidebar | глобально | [lua/qfioofa/plugins/v012/avante/keymaps.lua:34](lua/qfioofa/plugins/v012/avante/keymaps.lua#L34) |
+| `<leader>is` | n | Avante: stop request | глобально | [lua/qfioofa/plugins/v012/avante/keymaps.lua:39](lua/qfioofa/plugins/v012/avante/keymaps.lua#L39) |
+| `<leader>ie` | v | Avante: edit selection | глобально | [lua/qfioofa/plugins/v012/avante/keymaps.lua:44](lua/qfioofa/plugins/v012/avante/keymaps.lua#L44) |
+| `<leader>ix` | n | Avante: clear history | глобально | [lua/qfioofa/plugins/v012/avante/keymaps.lua:50](lua/qfioofa/plugins/v012/avante/keymaps.lua#L50) |
+| `<leader>iM` | n | Avante: switch provider | глобально | [lua/qfioofa/plugins/v012/avante/keymaps.lua:55](lua/qfioofa/plugins/v012/avante/keymaps.lua#L55) |
+| `<leader>iP` | n | Agent: plan mode | глобально | [lua/qfioofa/plugins/v012/avante/keymaps.lua:60](lua/qfioofa/plugins/v012/avante/keymaps.lua#L60) |
+| `<leader>ib` | n | Agent: build mode | глобально | [lua/qfioofa/plugins/v012/avante/keymaps.lua:65](lua/qfioofa/plugins/v012/avante/keymaps.lua#L65) |
+| `<leader>im` | n | MCP Hub: open | глобально | [lua/qfioofa/plugins/v012/mcphub/keymaps.lua:3](lua/qfioofa/plugins/v012/mcphub/keymaps.lua#L3) |
 
 ## LSP и код
 
@@ -284,7 +302,7 @@
 
 | Клавиши | Режим | Описание | Область | Источник |
 | --- | --- | --- | --- | --- |
-| `<leader>tm` | n | Toggle markdown render | глобально | [lua/qfioofa/plugins/common/render-markdown/init.lua:29](lua/qfioofa/plugins/common/render-markdown/init.lua#L29) |
+| `<leader>tm` | n | Toggle markdown render | глобально | [lua/qfioofa/plugins/common/render-markdown/init.lua:30](lua/qfioofa/plugins/common/render-markdown/init.lua#L30) |
 | `<leader>U` | n | [U]ndo tree | глобально | [lua/qfioofa/plugins/common/undotree/init.lua:7](lua/qfioofa/plugins/common/undotree/init.lua#L7) |
 
 ## Внутренние маппинги плагинов
@@ -381,8 +399,9 @@
 | `<leader>l` | LazyGit | [lua/qfioofa/plugins/common/which-key/options.lua:21](lua/qfioofa/plugins/common/which-key/options.lua#L21) |
 | `<leader>s` | LSP (Saga) / Session | [lua/qfioofa/plugins/common/which-key/options.lua:22](lua/qfioofa/plugins/common/which-key/options.lua#L22) |
 | `<leader>a` | Auto-save | [lua/qfioofa/plugins/common/which-key/options.lua:23](lua/qfioofa/plugins/common/which-key/options.lua#L23) |
-| `<leader>p` | Python | [lua/qfioofa/plugins/common/which-key/options.lua:24](lua/qfioofa/plugins/common/which-key/options.lua#L24) |
-| `<leader>y` | Yank | [lua/qfioofa/plugins/common/which-key/options.lua:25](lua/qfioofa/plugins/common/which-key/options.lua#L25) |
+| `<leader>i` | AI / Avante | [lua/qfioofa/plugins/common/which-key/options.lua:24](lua/qfioofa/plugins/common/which-key/options.lua#L24) |
+| `<leader>p` | Python | [lua/qfioofa/plugins/common/which-key/options.lua:25](lua/qfioofa/plugins/common/which-key/options.lua#L25) |
+| `<leader>y` | Yank | [lua/qfioofa/plugins/common/which-key/options.lua:26](lua/qfioofa/plugins/common/which-key/options.lua#L26) |
 
 ## Пересечения клавиш
 

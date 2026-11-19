@@ -15,6 +15,7 @@ M.sections = {
 	},
 	{ id = "find", title = "Поиск и навигация", order = 20 },
 	{ id = "git", title = "Git и история", order = 30 },
+	{ id = "ai", title = "AI-агент (Avante + MCP)", order = 35 },
 	{ id = "lsp", title = "LSP и код", order = 40 },
 	{ id = "debug", title = "Отладка (DAP)", order = 50 },
 	{ id = "java", title = "Java (buffer-local)", order = 60 },
@@ -56,6 +57,8 @@ M.sections = {
 M.plugin_sections = {
 	["auto-save"] = "session",
 	["auto-session"] = "session",
+	["avante"] = "ai",
+	["mcphub"] = "ai",
 	["cmp"] = "internal",
 	["conform"] = "lsp",
 	["dap"] = "debug",

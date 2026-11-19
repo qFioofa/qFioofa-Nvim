@@ -80,6 +80,8 @@
 
           # Runtimes Mason uses to fetch/build/run servers & formatters.
           nodejs python3 go
+          # Avante native libraries (source-build fallback) and mcp-hub JSON.
+          rustc cargo pkg-config cmake jq
           jdk21               # Java: jdtls (needs 21+), java-debug-adapter,
                               # java-test, google-java-format all run on the JVM
 

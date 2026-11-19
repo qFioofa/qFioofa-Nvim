@@ -180,10 +180,19 @@ local function register_builds(builds)
 			if build:sub(1, 1) == ":" then
 				vim.cmd(build:sub(2))
 			else
-				vim.system(
+				local result = vim.system(
 					vim.split(build, "%s+", { trimempty = true }),
 					{ cwd = ev.data.path }
-				)
+				):wait()
+				if result.code ~= 0 then
+					vim.notify(
+						"[pack] build failed: "
+							.. ev.data.spec.name
+							.. "\n"
+							.. (result.stderr or ""),
+						vim.log.levels.ERROR
+					)
+				end
 			end
 		end,
 	})

@@ -19,6 +19,7 @@ LuaJIT 2.1.1741730670
 - [About](#about)
 - [Documentation](#documentation)
 - [Features](#features)
+- [AI agent (Avante + MCPHub)](#ai-agent-avante--mcphub)
 - [Prerequisites](#prerequisites)
   - [Outside dependencies](#outside-dependencies)
 - [Installation](#installation)
@@ -59,6 +60,24 @@ make check-docs  # verify they are in sync
 - **Nvim-tree:** File explorer.
 - **Dashboard:** Custom startup screen.
 - _(Add more features based on your actual plugins)_
+
+## AI agent (Avante + MCPHub)
+
+Requires Neovim 0.12+ and the `pack` profile (the default on 0.12). Avante's
+native agentic mode is wired to MCPHub's built-in Neovim server, so file edits,
+shell commands, search, todos and subagents work without an external agent CLI.
+
+- `:AvanteChat` / `<leader>ic` — open the agent sidebar.
+- `:AgentMode plan|build` (`<leader>iP` / `<leader>ib`) — read-only planning or
+  editing mode.
+- `:MCPHub` (`<leader>im`) — manage MCP servers; the config lives in
+  `mcp/servers.json`.
+- First install builds Avante's Rust libraries (`make`) and bundles `mcp-hub`;
+  both need `node`, `npm`, `cargo` and `make`.
+- The `omniroute` provider points at `http://localhost:20128/v1`; its API key
+  defaults to `not-needed`.
+- Global rules and skills are read from `~/.config/opencode/AGENTS.md` and
+  `~/.config/opencode/skills/*/SKILL.md`.
 
 ## Prerequisites
 

@@ -35,6 +35,7 @@ local Options = {
 	title = true,
 	splitright = true,
 	splitbelow = true,
+	laststatus = 3,
 
 	fillchars = {
 		eob = " ",

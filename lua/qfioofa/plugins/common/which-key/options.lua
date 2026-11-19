@@ -21,6 +21,7 @@ return {
 		{ "<leader>l", group = "LazyGit" },
 		{ "<leader>s", group = "LSP (Saga) / Session" },
 		{ "<leader>a", group = "Auto-save" },
+		{ "<leader>i", group = "AI / Avante" },
 		{ "<leader>p", group = "Python" },
 		{ "<leader>y", group = "Yank" },
 	},

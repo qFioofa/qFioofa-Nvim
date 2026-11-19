@@ -332,6 +332,11 @@ local function render_agents(data, root)
 		"- On NixOS, Mason servers need the FHS wrapper in `flake.nix`; Java needs JDK 21+ (`JAVA_HOME` or `JDTLS_JAVA_HOME`).",
 		"- Ruby LSP falls back to `BUNDLE_GEMFILE=/dev/null` when the project Ruby version does not match the running interpreter.",
 		"- `vim.tbl_flatten` is shimmed in `options/options.lua` for plugins that still call the removed API.",
+		"- Avante v0.5.0 requires Neovim 0.12+ and lives in `plugins/v012`; the lazy profile (0.11 and lazy on 0.12) does not load it.",
+		"- Avante plan mode is a prompt + tool-filter layer, not a separate read-only agent with its own model.",
+		"- MCPHub permissions are per tool call and match shell commands by pattern; complex shell wrappers can bypass the intended rule.",
+		"- `mcp/servers.json` is the Neovim-side MCP list; it must be kept in sync with the opencode MCP config.",
+		"- First install builds Avante from source and bundles `mcp-hub`, so it needs `node`, `npm`, `cargo`, `make` and network access.",
 	}
 	if #data.unknown_groups > 0 then
 		known_issues[#known_issues + 1] = "- Missing which-key group definitions for: "
@@ -373,6 +378,7 @@ Fixed top-level layout:
 ├── init.lua                 -- vim.loader.enable(); require("qfioofa.init")()
 ├── flake.nix / flake.lock   -- Nix packages and Home Manager module
 ├── lua/qfioofa/             -- all config modules
+├── mcp/servers.json         -- MCPHub servers (Avante native tools)
 ├── snippets/                -- LuaSnip snippets
 ├── scripts/                 -- deploy/cleanup + docs generator
 ├── Makefile                 -- fmt, lint, docs, check targets
@@ -416,6 +422,12 @@ prefixes; use it instead of hard-coded `"qfioofa."` strings in new code.
   specs or overrides only.
 - `lua/qfioofa/languages/` — language-specific setup and buffer-local keymaps.
 - `lua/qfioofa/java/newfile.lua` — the `:JNew` command and Java templates.
+- `lua/qfioofa/plugins/v012/avante/` — Avante agent config, tools, modes and
+  prompts. Avante v0.5.0 requires Neovim 0.12+, so it is pack-only.
+- `lua/qfioofa/plugins/v012/mcphub/` — MCPHub client, permissions and the
+  built-in `neovim` MCP server used by Avante.
+- `mcp/servers.json` — MCP server definitions; keep it in sync with
+  `~/.config/opencode/opencode.jsonc`.
 - `snippets/` — own LuaSnip snippets, loaded with priority over friendly-snippets.
 
 Each plugin directory normally contains:
@@ -523,7 +535,7 @@ bash scripts/cleanup.sh
 `stylua` and `luacheck` are not guaranteed to be on `PATH`. With Nix:
 
 ```bash
-nix shell nixpkgs#stylua nixpkgs#luacheck -c make check
+nix shell nixpkgs#stylua 'nixpkgs#luaPackages.luacheck' -c make check
 ```
 
 On Windows, run the generator directly:
@@ -535,6 +547,8 @@ nvim --clean -l scripts/gen_docs.lua --write
 User commands owned by this config:
 
 - `:JNew` — create a Java file with package, imports and a starter type.
+- `:AgentMode plan|build` — switch the Avante agent between read-only planning
+  and editing; plan mode also blocks MCP mutations.
 - `:PackUpdate`, `:PackList`, `:PackDel` — native `vim.pack` management (pack profile).
 - `:MasonToolsInstall` — install/update Mason tools when the LSP bootstrap asks for it.
 

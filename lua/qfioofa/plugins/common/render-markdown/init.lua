@@ -1,6 +1,6 @@
 return {
 	"meanderingprogrammer/render-markdown.nvim",
-	ft = { "markdown" },
+	ft = { "markdown", "Avante", "markdown.Avante" },
 	dependencies = {
 		"nvim-treesitter/nvim-treesitter",
 		"nvim-mini/mini.nvim",
@@ -8,6 +8,7 @@ return {
 	---@module 'render-markdown'
 	---@type render.md.UserConfig
 	opts = {
+		file_types = { "markdown", "Avante", "markdown.Avante" },
 		heading = {
 			width = "block",
 			left_pad = 0,
