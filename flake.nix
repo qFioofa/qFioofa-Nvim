@@ -92,6 +92,10 @@
 
           # Install toolchain Mason shells out to, plus tools the config uses.
           gcc gnumake curl wget git unzip gzip gnutar ripgrep fd
+
+          # snacks.image shells out to `magick`/`convert`/`identify` for every
+          # placement (PNG included), so images fail to render without it.
+          imagemagick
         ];
 
         # Belt-and-braces for servers that dlopen libs by soname at runtime

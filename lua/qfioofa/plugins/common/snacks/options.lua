@@ -118,9 +118,14 @@ return {
 	picker = picker,
 	bigfile = { enabled = true },
 	-- Inline image preview (PNG/JPG/GIF/etc. and images in markdown).
-	-- Cross-platform: renders via the Kitty graphics protocol, so it needs a
-	-- capable terminal (Kitty, WezTerm, Ghostty) plus ImageMagick on PATH.
-	image = { enabled = true },
+	-- Renders via the Kitty graphics protocol, so it needs a capable terminal
+	-- (Kitty, WezTerm, Ghostty; under tmux snacks turns on pane passthrough).
+	-- ImageMagick is required as well: every placement, PNG included, is
+	-- measured and converted with `magick`/`identify`.
+	image = {
+		enabled = true,
+		convert = { notify = true },
+	},
 	animate = AnimateOptions,
 	dashboard = {
 		enabled = true,
