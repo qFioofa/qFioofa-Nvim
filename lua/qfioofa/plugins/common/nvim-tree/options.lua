@@ -70,6 +70,9 @@ return {
 			},
 		},
 		icons = {
+			git_placement = "right_align",
+			modified_placement = "right_align",
+			diagnostics_placement = "right_align",
 			show = {
 				file = true,
 				folder = true,

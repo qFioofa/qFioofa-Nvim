@@ -10,15 +10,17 @@ local function config()
 	end
 end
 
-return {
-	"ravitemer/mcphub.nvim",
-	tag = "v6.2.0",
-	build = "nvim --clean --headless -l bundled_build.lua",
-	dependencies = {
-		"nvim-lua/plenary.nvim",
-		"MunifTanjim/nui.nvim",
-	},
-	opts = require("qfioofa.plugins.v012.mcphub.options"),
-	keys = require("qfioofa.plugins.v012.mcphub.keymaps"),
-	config = config,
-}
+-- Disabled on purposed
+return {}
+-- return {
+-- 	"ravitemer/mcphub.nvim",
+-- 	tag = "v6.2.0",
+-- 	build = "nvim --clean --headless -l bundled_build.lua",
+-- 	dependencies = {
+-- 		"nvim-lua/plenary.nvim",
+-- 		"MunifTanjim/nui.nvim",
+-- 	},
+-- 	opts = require("qfioofa.plugins.v012.mcphub.options"),
+-- 	keys = require("qfioofa.plugins.v012.mcphub.keymaps"),
+-- 	config = config,
+-- }

@@ -112,18 +112,18 @@ Fixed top-level layout:
 
 | Module | Repository | Custom keys |
 | --- | --- | ---: |
-| `avante` | `yetone/avante.nvim` | 12 |
+| `avante` | — | 0 |
 | `jdtls` | `mfussenegger/nvim-jdtls` | 0 |
 | `lspconfig` | `neovim/nvim-lspconfig` | 19 |
-| `mcphub` | `ravitemer/mcphub.nvim` | 1 |
+| `mcphub` | — | 0 |
 
 <!-- END GENERATED: PLUGIN INVENTORY -->
 
 ### Current stats
 
 <!-- BEGIN GENERATED: STATS -->
-- Active custom mappings: **228**
-- All captured entries (including inactive/neutral): **261**
+- Active custom mappings: **215**
+- All captured entries (including inactive/neutral): **248**
 - Plugin modules: `common` = 41, `v011` = 2, `v012` = 4
 - Language modules: `java`, `plantuml`, `ruby`
 <!-- END GENERATED: STATS -->

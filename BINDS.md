@@ -14,8 +14,8 @@
 
 ## Сводка
 
-- Кастомных активных маппингов: **228**
-- Всего записей, включая неактивные и нейтрализованные: **261**
+- Кастомных активных маппингов: **215**
+- Всего записей, включая неактивные и нейтрализованные: **248**
 - Секций: **20**
 - Межпрофильных исходников: `common`, `v011`, `v012`
 
@@ -123,24 +123,6 @@
 | `<leader>tb` | n | Toggle line blame | глобально | [lua/qfioofa/plugins/common/gitsigns/keymaps.lua:93](lua/qfioofa/plugins/common/gitsigns/keymaps.lua#L93) |
 | `<leader>tw` | n | Toggle word diff | глобально | [lua/qfioofa/plugins/common/gitsigns/keymaps.lua:98](lua/qfioofa/plugins/common/gitsigns/keymaps.lua#L98) |
 | `<leader>lg` | n | LazyGit | глобально | [lua/qfioofa/plugins/common/lazygit/keymaps.lua:2](lua/qfioofa/plugins/common/lazygit/keymaps.lua#L2) |
-
-## AI-агент (Avante + MCP)
-
-| Клавиши | Режим | Описание | Область | Источник |
-| --- | --- | --- | --- | --- |
-| `<leader>ic` | n | Avante: chat | глобально | [lua/qfioofa/plugins/v012/avante/keymaps.lua:9](lua/qfioofa/plugins/v012/avante/keymaps.lua#L9) |
-| `<leader>ia` | n | Avante: ask | глобально | [lua/qfioofa/plugins/v012/avante/keymaps.lua:14](lua/qfioofa/plugins/v012/avante/keymaps.lua#L14) |
-| `<leader>in` | n | Avante: new chat | глобально | [lua/qfioofa/plugins/v012/avante/keymaps.lua:19](lua/qfioofa/plugins/v012/avante/keymaps.lua#L19) |
-| `<leader>ir` | n | Avante: resume session | глобально | [lua/qfioofa/plugins/v012/avante/keymaps.lua:24](lua/qfioofa/plugins/v012/avante/keymaps.lua#L24) |
-| `<leader>it` | n | Avante: toggle sidebar | глобально | [lua/qfioofa/plugins/v012/avante/keymaps.lua:29](lua/qfioofa/plugins/v012/avante/keymaps.lua#L29) |
-| `<leader>if` | n | Avante: focus sidebar | глобально | [lua/qfioofa/plugins/v012/avante/keymaps.lua:34](lua/qfioofa/plugins/v012/avante/keymaps.lua#L34) |
-| `<leader>is` | n | Avante: stop request | глобально | [lua/qfioofa/plugins/v012/avante/keymaps.lua:39](lua/qfioofa/plugins/v012/avante/keymaps.lua#L39) |
-| `<leader>ie` | v | Avante: edit selection | глобально | [lua/qfioofa/plugins/v012/avante/keymaps.lua:44](lua/qfioofa/plugins/v012/avante/keymaps.lua#L44) |
-| `<leader>ix` | n | Avante: clear history | глобально | [lua/qfioofa/plugins/v012/avante/keymaps.lua:50](lua/qfioofa/plugins/v012/avante/keymaps.lua#L50) |
-| `<leader>iM` | n | Avante: switch provider | глобально | [lua/qfioofa/plugins/v012/avante/keymaps.lua:55](lua/qfioofa/plugins/v012/avante/keymaps.lua#L55) |
-| `<leader>iP` | n | Agent: plan mode | глобально | [lua/qfioofa/plugins/v012/avante/keymaps.lua:60](lua/qfioofa/plugins/v012/avante/keymaps.lua#L60) |
-| `<leader>ib` | n | Agent: build mode | глобально | [lua/qfioofa/plugins/v012/avante/keymaps.lua:65](lua/qfioofa/plugins/v012/avante/keymaps.lua#L65) |
-| `<leader>im` | n | MCP Hub: open | глобально | [lua/qfioofa/plugins/v012/mcphub/keymaps.lua:3](lua/qfioofa/plugins/v012/mcphub/keymaps.lua#L3) |
 
 ## LSP и код
 
@@ -265,12 +247,12 @@
 
 | Клавиши | Режим | Описание | Область | Источник |
 | --- | --- | --- | --- | --- |
-| `f` | n | Find File | dashboard | [lua/qfioofa/plugins/common/snacks/options.lua:135](lua/qfioofa/plugins/common/snacks/options.lua#L135) |
-| `n` | n | New File | dashboard | [lua/qfioofa/plugins/common/snacks/options.lua:141](lua/qfioofa/plugins/common/snacks/options.lua#L141) |
-| `g` | n | Find Text | dashboard | [lua/qfioofa/plugins/common/snacks/options.lua:147](lua/qfioofa/plugins/common/snacks/options.lua#L147) |
-| `r` | n | Recent Files | dashboard | [lua/qfioofa/plugins/common/snacks/options.lua:153](lua/qfioofa/plugins/common/snacks/options.lua#L153) |
-| `c` | n | Config | dashboard | [lua/qfioofa/plugins/common/snacks/options.lua:159](lua/qfioofa/plugins/common/snacks/options.lua#L159) |
-| `q` | n | Quit | dashboard | [lua/qfioofa/plugins/common/snacks/options.lua:163](lua/qfioofa/plugins/common/snacks/options.lua#L163) |
+| `f` | n | Find File | dashboard | [lua/qfioofa/plugins/common/snacks/options.lua:140](lua/qfioofa/plugins/common/snacks/options.lua#L140) |
+| `n` | n | New File | dashboard | [lua/qfioofa/plugins/common/snacks/options.lua:146](lua/qfioofa/plugins/common/snacks/options.lua#L146) |
+| `g` | n | Find Text | dashboard | [lua/qfioofa/plugins/common/snacks/options.lua:152](lua/qfioofa/plugins/common/snacks/options.lua#L152) |
+| `r` | n | Recent Files | dashboard | [lua/qfioofa/plugins/common/snacks/options.lua:158](lua/qfioofa/plugins/common/snacks/options.lua#L158) |
+| `c` | n | Config | dashboard | [lua/qfioofa/plugins/common/snacks/options.lua:164](lua/qfioofa/plugins/common/snacks/options.lua#L164) |
+| `q` | n | Quit | dashboard | [lua/qfioofa/plugins/common/snacks/options.lua:168](lua/qfioofa/plugins/common/snacks/options.lua#L168) |
 
 ## Терминал (toggleterm)
 
