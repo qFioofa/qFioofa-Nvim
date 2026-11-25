@@ -25,7 +25,7 @@ The default is `pack` on Neovim 0.12+ and `lazy` otherwise.
 | --- | ---: | --- |
 | `lua/qfioofa/options` | 5 | global options, keymaps, commands, autocmds |
 | `lua/qfioofa/pluginManager` | 5 | profile selection and backends |
-| `lua/qfioofa/plugins/common` | 102 / 41 plugin dirs | plugins shared by both profiles |
+| `lua/qfioofa/plugins/common` | 103 / 41 plugin dirs | plugins shared by both profiles |
 | `lua/qfioofa/plugins/v011` | 2 | lazy profile only (<0.12) |
 | `lua/qfioofa/plugins/v012` | 13 | pack profile only (>=0.12) |
 | `lua/qfioofa/languages` | 4 | FileType language modules |

@@ -4,9 +4,9 @@ return {
 		return math.floor(vim.o.lines * 0.35)
 	end,
 	max_width = function()
-		return math.floor(vim.o.columns * 0.35)
+		return vim.o.columns - 1
 	end,
-	render = "compact",
+	render = require("qfioofa.plugins.common.notify.render"),
 	stages = "fade", -- "fade_in_slide_out", "fade", "slide", "static"
 	timeout = 1500,
 	top_down = false,
